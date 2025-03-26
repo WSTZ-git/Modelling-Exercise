@@ -1,0 +1,192 @@
+\documentclass[lang=cn,newtx,10pt,scheme=chinese]{../Template/elegantbook}
+
+\title{Demo}
+\subtitle{空}
+
+\author{邹文杰}
+\institute{无}
+\date{2024/10/25}
+\version{ElegantBook-4.5}
+\bioinfo{自定义}{信息}
+
+\extrainfo{宠辱不惊,闲看庭前花开花落;\\去留无意,漫随天外云卷云舒.}
+
+\setcounter{tocdepth}{3}
+
+\logo{logo-blue.png}
+\cover{cover.png}
+
+% 本文档额外使用的宏包和命令
+\usepackage{../Styles/mystyle-elegantbook}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+
+\chapter{问题1}
+
+\section{螺线方程}
+
+在题目图4中的直角坐标系下,以坐标原点\(O\)为极点建立极坐标系,设图4中的等距螺线\(\varGamma\)的极坐标方程为
+\begin{align}\label{1..1}
+\varGamma :\rho =a+b\theta.
+\end{align}
+其中\(\rho\)为极径,\(\theta\)为极角,\(a\),\(b\)均为待定常数.设龙头前把手中心的初始位置\(P_0\)极坐标和直角坐标分别为\((\rho _0,\theta _0)\),\((x_0,y_0)\),记\(d_0(\mathrm{m})\)为图4中等距螺线的螺距,则由题可知
+\begin{align}
+d_0 = 0.55,\rho _0 = 16d_0 = 8.8,\theta _0 = 16\times 2\pi = 32\pi.
+\end{align}
+又由图4可知图中等距螺线\(\varGamma\)过原点\(O\)和\((\rho _0,\theta _0)\)点,于是将\((0,0)\)和\((\rho _0,\theta _0)\)代入\eqref{1..1}式解得
+\begin{align}
+    a = 0,b = \frac{d_0}{2\pi}=\frac{0.55}{2\pi}。
+\end{align}
+因此,等距螺线\(\varGamma\)的极坐标方程为
+\begin{align}
+\varGamma :\rho =\frac{d_0}{2\pi}\theta ,(0\leqslant \theta \leqslant 32\pi) .\label{0.1}
+\end{align}
+再利用
+\[\begin{cases}
+x=\rho \cos \theta\\
+y=\rho \sin \theta\\
+\end{cases},\]
+得到等距螺线\(\varGamma\)的直角坐标方程为
+\begin{align}
+\begin{cases}
+x=\frac{d_0}{2\pi}\theta \cos \theta\\
+y=\frac{d_0}{2\pi}\theta \sin \theta\\
+\end{cases},(0\leqslant \theta \leqslant 32\pi) .\label{0.0}
+\end{align}
+
+\section{计算龙头前把手中心在各时刻的位置}\label{1.(2)}
+
+设龙头前把手的行进速度为\(v_0\),由题可知\(v_0 = 1(\mathrm{m}\cdot s^{-1})\).记龙头前把手中心在第\(t\)秒时的位置为\(P_0(t)\),\(P_0(t)\)点的极坐标和直角坐标分别为\((\rho _0(t),\theta _0(t))\)和\((x_0(t),y_0(t))\),
+则利用第一型曲线积分计算公式可得,曲线\(\overgroup{P_0P_0(t)}\)的长度\(S\)为
+\begin{align}
+S=\int_{\overgroup{P_0P_0(t)}}{\mathrm{d}s}=\int_{\theta _0(t)}^{\theta _0}{\sqrt{[\rho (\theta )]^2+[\rho ' (\theta )]^2}\mathrm{d}\theta}.\label{1.1}
+\end{align}
+又由题可知
+\begin{align}
+S = v_0t.\label{1.2}
+\end{align}
+联立\eqref{0.1}\eqref{1.1}\eqref{1.2}式解得
+\begin{align}
+\theta _t\sqrt{\theta _{t}^{2}+1}-\ln (\theta _0(t)+\sqrt{(\theta _0(t))^2+1}) =\theta _0\sqrt{\theta _{0}^{2}+1}+\ln (\theta _0+\sqrt{\theta _{0}^{2}+1}) -\frac{4\pi}{d_0}v_0t .
+\end{align}
+根据上式,利用Python求解得到当\(t\in \{ 1,2,\cdots ,300 \}\)时,\(P_0(t)\)的极角\(\theta _0(t)\),再将其代入\eqref{0.1}式得到,\(P_0(t)\)的极坐标\((\rho _0(t),\theta _0(t))\)见表1.再利用
+\begin{align}
+\begin{cases}
+x_0(t)=\rho _0(t)\cos \theta _0(t)\\
+y_0(t)=\rho _0(t)\sin \theta _0(t)\\
+\end{cases},
+\end{align}
+得到当\(t\in \{ 1,2,\cdots ,300 \}\)时,\(P_0(t)\)的的直角坐标\((x_0(t),y_0(t))\)见表2.
+
+\section{计算板凳龙其余各节板凳的后把手中心在各时刻的位置}
+
+记第\(i\)节板凳的后把手中心在第\(t\)秒时的位置为\(P_{i}(t)\),并设\(P_{i}(t)\)的极坐标和直角坐标分别为\((\rho _{i}(t),\theta _{i}(t))\)和\((x_{i}(t),y_{i}(t))\),再记\(P_{i}(t)\)与\(P_{t}^{i+1}\)之间的距离为\(| P_{i}(t)P_{t}^{i+1}|(\mathrm{m}) (0\leqslant i\leqslant 223)\).再记\(l_1\),\(l_2\)分别为龙头和龙身前把手中心与后把手中心之间的距离,则由条件可知
+\begin{gather}
+| P_0(t)P_1(t)| = l_1 = 3.41 - 2\times 0.275 = 2.86；
+\\
+| P_{i-1}(t)P_{i}(t)| = l_2 = 2.2 - 2\times 0.275 = 1.65,2\leqslant i\leqslant 223.
+\end{gather}
+
+\subsection{计算第1节板凳的后把手中心在第\(t\)秒时的位置\(P_1(t)\)}\label{2.(1)}
+
+当\(t\in \{ 1,2,\cdots ,300 \}\)时,由极坐标系的两点之间距离公式可得
+\begin{align}
+l_{1}^{2}=| P_0(t)P_1(t)|^2=(\rho _1(t))^2+(\rho _0(t))^2 - 2\rho _1(t)\rho _0(t)\cos (\theta _0(t)-\theta _1(t)) .\label{2.1} 
+\end{align}
+又因为板凳龙各把手中心均位于螺线\(\varGamma\)上,所以再结合\eqref{0.0}式可得
+\begin{align}
+\rho _1(t)=\frac{d_0}{2\pi}\theta _1(t),(0\leqslant \theta _1(t)\leqslant 32\pi) .\label{2.2}
+\end{align}
+因此联立\eqref{2.1}\eqref{2.2}式可得
+\begin{align}
+l_{1}^{2}=\frac{d_{0}^{2}}{4\pi ^2}[(\theta _1(t))^2+(\theta _0(t))^2 - 2\theta _1(t)\theta _0(t)\cos (\theta _0(t)-\theta _1(t))] .\label{2.0}
+\end{align}
+根据上式利用Python求解\(\theta _1(t)\),可能得到多个不同解.不妨设这些为不同的解为\(\alpha _{j}^{1}(t) (j = 1,2,\cdots ,m)\),注意到一定有\(\theta _1(t)>\theta _0(t)\),因此令
+\begin{align}
+A_1 = \{ \alpha _{j}^{1}(t) |\alpha _{j}^{1}(t) >\theta _0(t),j = 1,2,\cdots ,m \} .
+\end{align}
+又因为龙头前把手与第1个把手的极角之差一定最小,所以
+\begin{align}
+\theta _1(t) =\underset{\alpha _j(t) \in A}{\min}[\,\alpha _{j}^{1}(t) -\theta _0(t)] +\theta _0(t).
+\end{align}
+再将上述求得的\(\theta _1(t)\)代入\eqref{2.2}式就能得到此时\(P_1(t)\)的极坐标\((\rho _1(t),\theta _1(t))\).令\(t\)依次取\(1\),\(2\),\(\cdots\),\(300\),反复进行上述操作就能得到,当\(t\in \{ 1,2,\cdots ,300 \}\)时,\(P_1(t)\)的极坐标\((\rho _1(t),\theta _1(t))\).再利用
+\begin{align}
+\begin{cases}
+x_1(t)=\rho _1(t)\cos \theta _1(t)\\
+y_1(t)=\rho _1(t)\sin \theta _1(t)\\
+\end{cases},    
+\end{align}
+得到当\(t\in \{ 1,2,\cdots ,300 \}\)时,\(P_1(t)\)的直角坐标\((x_1(t),y_1(t))\).
+
+\subsection{计算第\(i(2\leqslant i\leqslant 223)\)节板凳的后把手中心在第\(t\)秒时的位置\(P_{i}(t)\)}\label{2.(2)}
+
+当\(i\in \{ 2,3,\cdots ,223 \}\)时,由\eqref{2.(1)}同理可得,当\(t\in \{ 1,2,\cdots ,300 \}\)时,我们有
+\begin{gather}
+l_{2}^{2}=| P_{i-1}(t)P_{i}(t)|^2=(\rho _{i}(t))^2+(\rho _{i-1}(t))^2 - 2\rho _{i}(t)\rho _{i-1}(t)\cos (\theta _{i-1}(t)-\theta _{i}(t)) .\label{2.2.1}
+\\
+\rho _{i}(t)=\frac{d_0}{2\pi}\theta _{i}(t),(0\leqslant \theta _{i}(t)\leqslant 32\pi) .\label{2.2.2}
+\end{gather}
+从而联立\eqref{2.2.1}\eqref{2.2.2}式可得
+\begin{align}
+l_{2}^{2}=\frac{d_{0}^{2}}{4\pi ^2}[(\theta _{i}(t))^2+(\theta _{i-1}(t))^2 - 2\theta _{i}(t)\theta _{i-1}(t)\cos (\theta _{i-1}(t)-\theta _{i}(t))] .\label{2.0.0}
+\end{align}
+根据上式利用Python求解\(\theta _{i}(t)\),可能得到多个不同解.不妨设这些为不同的解为\(\alpha _{j}^{i}(t) (j = 1,2,\cdots ,m)\),注意到一定有\(\theta _{i}(t)>\theta _{i-1}(t)\),因此令
+\begin{align}
+A_i = \{ \alpha _{j}^{i}(t) |\alpha _{j}^{i}(t) >\theta _{i-1}(t),j = 1,2,\cdots ,m \},
+\end{align}
+又因为第\(i - 1\)个把手与第\(i\)个把手的极角之差一定最小,所以
+\begin{align}
+\theta _i(t) =\underset{\alpha _{j}^{i}(t) \in A_i}{\min}[\alpha _{j}^{i}(t) -\theta _{i - 1}(t)] +\theta _{i - 1}(t).    
+\end{align}
+再将上述求得的\(\theta _i(t)\)代入\eqref{2.2}式就能得到此时\(P_{i}(t)\)的极坐标\((\rho _{i}(t),\theta _{i}(t))\).令\(t\)依次取\(1\),\(2\),\(\cdots\),\(300\),反复进行上述操作就能得到,当\(t\in \{ 1,2,\cdots ,300 \}\)时,\(P_{i}(t)\)的极坐标\((\rho _{i}(t),\theta _{i}(t))\).再利用
+\begin{align}
+\begin{cases}
+x_{i}(t)=\rho _{i}(t)\cos \theta _{i}(t)\\
+y_{i}(t)=\rho _{i}(t)\sin \theta _{i}(t)\\
+\end{cases}, 
+\end{align}
+得到当\(t\in \{ 1,2,\cdots ,300 \}\)时,\(P_{i}(t)\)的直角坐标\((x_{i}(t),y_{i}(t))\).
+
+综上所述,令\(i\)依次取\(1\),\(2\),\(\cdots\),\(223\),按照上述\eqref{2.(1)}\eqref{2.(2)}的方式,利用Python不断迭代计算就能得到每秒板凳龙各把手中心的位置直角坐标见表3.
+
+\section{计算板凳龙其余各节板凳的后把手中心在各时刻的速度}
+
+记第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心在第\(t\)秒时的速度为\(v_i(t)\).根据\eqref{1.(2)},\eqref{2.(1)},\eqref{2.(2)}得到的第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心第\(t\)秒时的位置\(P_{i}(t)\)的极坐标\((\rho _{i}(t),\theta _{i}(t))\),于是当\(i\in \{ 1,2,\cdots ,223 \}\)时,对\eqref{2.0}\eqref{2.0.0}式两边同时对\(t\)求导可得
+\begin{align}
+\frac{\mathrm{d}\theta _i}{\mathrm{d}t}=\frac{\theta _{i - 1}+\theta _i\cos(\theta _{i - 1}-\theta _i)-\theta _i\theta _{i - 1}\sin(\theta _{i - 1}-\theta _i)}{\theta _i+\theta _i\theta _{i - 1}\sin(\theta _{i - 1}-\theta _i)-\theta _{i - 1}\cos(\theta _{i - 1}-\theta _i)}\cdot \frac{\mathrm{d}\theta _{i - 1}}{\mathrm{d}t}.\label{3.0}
+\end{align}
+设第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心在充分短的时间\(\mathrm{d}t\)内经过的路程微分为\(\mathrm{d}s_i\),又因为各把手中心始终在螺线\(\varGamma\)上,从而各把手的路程微分\(\mathrm{d}s_i\)就是螺线\(\varGamma\)的弧微分,所以利用\eqref{0.1}式及弧微分的计算公式可得
+\begin{align}
+\mathrm{d}s_i=\sqrt{[\rho (\theta _i)]^2+[\rho \prime (\theta _i)]^2}\mathrm{d}\theta _i=\frac{d_0}{2\pi}\sqrt{{\theta _i}^2+1}\mathrm{d}\theta _i,i\in \{ 1,2,\cdots ,223 \}  
+\end{align}
+故当\(t\in \{ 1,2,\cdots ,300 \}\)时,由瞬时速度的定义可得
+\begin{align}
+v_i(t) =\frac{\mathrm{d}s_i}{\mathrm{d}t}=\frac{d_0}{2\pi}\frac{\sqrt{{\theta _i}^2 + 1}\mathrm{d}\theta _i}{\mathrm{d}t}, i\in \{1, 2, \cdots, 223\}. \label{3.1}
+\end{align}
+联立\eqref{3.0}\eqref{3.1}式得到
+\begin{align}
+|v_i(t)| &= \left|\frac{d_0}{2\pi}\frac{\sqrt{{\theta _i}^2 + 1}\mathrm{d}\theta _i}{\mathrm{d}t}\right| 
+= \frac{|\theta _{i - 1} + \theta _i\cos(\theta _{i - 1} - \theta _i) - \theta _i\theta _{i - 1}\sin(\theta _{i - 1} - \theta _i)|}{|\theta _i + \theta _i\theta _{i - 1}\sin(\theta _{i - 1} - \theta _i) - \theta _{i - 1}\cos(\theta _{i - 1} - \theta _i)|}\sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\left|\frac{\mathrm{d}\theta _{i - 1}}{\mathrm{d}t}\right| \\
+&= \frac{|\theta _{i - 1}(t) + \theta _i\cos(\theta _{i - 1} - \theta _i) - \theta _i\theta _{i - 1}\sin(\theta _{i - 1} - \theta _i)|}{|\theta _i + \theta _i\theta _{i - 1}\sin(\theta _{i - 1} - \theta _i) - \theta _{i - 1}\cos(\theta _{i - 1} - \theta _i)|}\sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}|v_{i - 1}(t)|, i\in \{1, 2, \cdots, 223\}.
+\end{align}
+其中\(\theta _i = \theta _i(t)\),\(\theta _{i - 1} = \theta _{i - 1}(t)\),\(v_0(t) \equiv 1, \forall t\geqslant 0\).又因为\(v_i(t) (1\leqslant i\leqslant 223)\)均大于\(0\),所以上式可化为
+\begin{align}
+v_i(t) = \sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\frac{|\theta _{i - 1} + \theta _i\cos(\theta _{i - 1} - \theta _i) - \theta _i\theta _{i - 1}\sin(\theta _{i - 1} - \theta _i)|}{|\theta _i + \theta _i\theta _{i - 1}\sin(\theta _{i - 1} - \theta _i) - \theta _{i - 1}\cos(\theta _{i - 1} - \theta _i)|}v_{i - 1}(t), i\in \{1, 2, \cdots, 223\},
+\end{align}
+其中\(\theta _i = \theta _i(t)\),\(\theta _{i - 1} = \theta _{i - 1}(t)\),\(v_0(t) \equiv 1, \forall t\geqslant 0\).
+于是根据上式,令\(i\)依次取\(1, 2, \cdots, 223\),再利用Python进行迭代计算,就能得到板凳龙的第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心在第\(t\)秒时的速度\(v_i(t)\).
+再令\(t\)依次取\(1, 2, \cdots, 300\),反复进行上述操作,就能得到当\(t\in \{1, 2, \cdots, 300\}\)时,板凳龙的第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心每秒的速度见表\(7\).
+
+
+
+
+\end{document}

@@ -1,0 +1,7 @@
+\contentsline {chapter}{\numberline {第一章}问题1}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}螺线方程}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}计算龙头前把手中心在各时刻的位置}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}计算板凳龙其余各节板凳的后把手中心在各时刻的位置}{2}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}计算第1节板凳的后把手中心在第\(t\)秒时的位置\(P_1(t)\)}{2}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}计算第\(i(2\leqslant i\leqslant 223)\)节板凳的后把手中心在第\(t\)秒时的位置\(P_{i}(t)\)}{2}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}计算板凳龙其余各节板凳的后把手中心在各时刻的速度}{3}{section.1.4}%
