@@ -89,11 +89,11 @@ y_0(t)=\rho _0(t)\sin \theta _0(t)\\
 
 \section{计算板凳龙其余各节板凳的后把手中心在各时刻的位置}
 
-记第\(i\)节板凳的后把手中心在第\(t\)秒时的位置为\(P_{i}(t)\),并设\(P_{i}(t)\)的极坐标和直角坐标分别为\((\rho _{i}(t),\theta _{i}(t))\)和\((x_{i}(t),y_{i}(t))\),再记\(P_{i}(t)\)与\(P_{t}^{i+1}\)之间的距离为\(| P_{i}(t)P_{t}^{i+1}|(\mathrm{m}) (0\leqslant i\leqslant 223)\).再记\(l_1\),\(l_2\)分别为龙头和龙身前把手中心与后把手中心之间的距离,则由条件可知
+记第\(i\)节板凳的后把手中心在第\(t\)秒时的位置为\(P_{i}(t)\),并设\(P_{i}(t)\)的极坐标和直角坐标分别为\((\rho _{i}(t),\theta _{i}(t))\)和\((x_{i}(t),y_{i}(t))\),再记\(P_{i-1}(t)\)与\(P_{i}(t)\)之间的距离为\(| P_{i-1}(t)P_{i}(t)|(\mathrm{m}) (0\leqslant i\leqslant 223)\).再记第$i$节板凳前把手中心与后把手中心之间的距离为\(l_i(\mathrm{m})(1\leq i\leq 223)\),则由条件可知
 \begin{gather}
-| P_0(t)P_1(t)| = l_1 = 3.41 - 2\times 0.275 = 2.86；
+| P_0(t)P_1(t)| = l_1 = 3.41 - 2\times 0.275 = 2.86;
 \\
-| P_{i-1}(t)P_{i}(t)| = l_2 = 2.2 - 2\times 0.275 = 1.65,2\leqslant i\leqslant 223.
+| P_{i-1}(t)P_{i}(t)| = l_i = 2.2 - 2\times 0.275 = 1.65,2\leqslant i\leqslant 223.
 \end{gather}
 
 \subsection{计算第1节板凳的后把手中心在第\(t\)秒时的位置\(P_1(t)\)}\label{2.(1)}
@@ -114,7 +114,7 @@ l_{1}^{2}=\frac{d_{0}^{2}}{4\pi ^2}[(\theta _1(t))^2+(\theta _0(t))^2 - 2\theta 
 \begin{align}
 A_1 = \{ \alpha _{j}^{1}(t) |\alpha _{j}^{1}(t) >\theta _0(t),j = 1,2,\cdots ,m \} .
 \end{align}
-又因为龙头前把手与第1个把手的极角之差一定最小,所以
+又因为第1个把手的极角一定是$A_1$中最小的,所以
 \begin{align}
 \theta _1(t)=\underset{\alpha _j(t)\in A}{\min}\,\alpha _{j}^{1}(t).
 \end{align}
@@ -131,19 +131,19 @@ y_1(t)=\rho _1(t)\sin \theta _1(t)\\
 
 当\(i\in \{ 2,3,\cdots ,223 \}\)时,由\eqref{2.(1)}同理可得,当\(t\in \{ 1,2,\cdots ,300 \}\)时,我们有
 \begin{gather}
-l_{2}^{2}=| P_{i-1}(t)P_{i}(t)|^2=(\rho _{i}(t))^2+(\rho _{i-1}(t))^2 - 2\rho _{i}(t)\rho _{i-1}(t)\cos (\theta _{i-1}(t)-\theta _{i}(t)) .\label{2.2.1}
+l_{i}^{2}=| P_{i-1}(t)P_{i}(t)|^2=(\rho _{i}(t))^2+(\rho _{i-1}(t))^2 - 2\rho _{i}(t)\rho _{i-1}(t)\cos (\theta _{i-1}(t)-\theta _{i}(t)) .\label{2.2.1}
 \\
 \rho _{i}(t)=\frac{d_0}{2\pi}\theta _{i}(t),(0\leqslant \theta _{i}(t)\leqslant 32\pi) .\label{2.2.2}
 \end{gather}
 从而联立\eqref{2.2.1}\eqref{2.2.2}式可得
 \begin{align}
-l_{2}^{2}=\frac{d_{0}^{2}}{4\pi ^2}[(\theta _{i}(t))^2+(\theta _{i-1}(t))^2 - 2\theta _{i}(t)\theta _{i-1}(t)\cos (\theta _{i-1}(t)-\theta _{i}(t))] .\label{2.0.0}
+l_{i}^{2}=\frac{d_{0}^{2}}{4\pi ^2}[(\theta _{i}(t))^2+(\theta _{i-1}(t))^2 - 2\theta _{i}(t)\theta _{i-1}(t)\cos (\theta _{i-1}(t)-\theta _{i}(t))] .\label{2.0.0}
 \end{align}
 根据上式利用Python求解\(\theta _{i}(t)\),可能得到多个不同解.不妨设这些为不同的解为\(\alpha _{j}^{i}(t) (j = 1,2,\cdots ,m)\),注意到一定有\(\theta _{i}(t)>\theta _{i-1}(t)\),因此令
 \begin{align}
 A_i = \{ \alpha _{j}^{i}(t) |\alpha _{j}^{i}(t) >\theta _{i-1}(t),j = 1,2,\cdots ,m \},
 \end{align}
-又因为第\(i - 1\)个把手与第\(i\)个把手的极角之差一定最小,所以
+又因为第\(i - 1\)个把手的极角一定是$A_i$中最小的,所以
 \begin{align}
 \theta _i(t)=\underset{\alpha _{j}^{i}(t)\in A_i}{\min}\alpha _{j}^{i}(t).   
 \end{align}
@@ -185,6 +185,123 @@ v_i(t) = \sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\frac{|\theta _
 其中\(\theta _i = \theta _i(t)\),\(\theta _{i - 1} = \theta _{i - 1}(t)\),\(v_0(t) \equiv 1, \forall t\geqslant 0\).
 于是根据上式,令\(i\)依次取\(1, 2, \cdots, 223\),再利用Python进行迭代计算,就能得到板凳龙的第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心在第\(t\)秒时的速度\(v_i(t)\).
 再令\(t\)依次取\(1, 2, \cdots, 300\),反复进行上述操作,就能得到当\(t\in \{1, 2, \cdots, 300\}\)时,板凳龙的第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心每秒的速度见表\(7\).
+
+
+
+\chapter{问题2}
+
+\section{计算各节板凳四个顶点的坐标}
+
+$\forall t\in \mathbb{N}$,根据\textbf{问题1}求解得到龙头前把手中心、第$i(i=1,2,\cdots,223)$节板凳后把手中心在第$t$秒的直角坐标分别为$(x_0(t),y_0(t))$,$(x_i(t),y_i(t))$.设所有板凳的板宽均为$w$,板凳把手中心离最近的板头距离为$h$,则由条件可知$w=0.3m,h=0.275m$.当第$i(i=1,2,\cdots,223)$节板凳后把手刚盘入螺线(即后把手恰好在初始位置)时,记离原点较远且离$P_i$较近的顶点为$A_i$,再按顺时针方向分别记其余顶点为$B_i,C_i,D_i$.记$A_i,B_i,C_i,D_i$在第$i$秒时的位置分别为$A_i(t),B_i(t),C_i(t),D_i(t)$,其直角坐标分别为$(x_{A_i}(t),y_{A_i}(t)),(x_{B_i}(t),y_{B_i}(t)),(x_{C_i}(t),y_{C_i}(t)),(x_{D_i}(t),y_{D_i}(t))$.于是根据向量垂直坐标变换公式可得,对$\forall i\in {0,1,2,\cdots,222}$,都有
+\begin{gather}
+\overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) }=\left( x_i\left( t \right) -x_{i+1}\left( t \right) ,y_i\left( t \right) -y_{i+1}\left( t \right) \right) ,\label{problem-2.1}
+\\
+\overrightarrow{A_i\left( t \right) D_i\left( t \right) }=\overrightarrow{B_i\left( t \right) C_i\left( t \right) }=\left( -\left[ y_i\left( t \right) -y_{i+1}\left( t \right) \right] ,x_i\left( t \right) -x_{i+1}\left( t \right) \right) ,\label{problem-2.2}
+\\
+\left| \overrightarrow{A_i\left( t \right) D_i\left( t \right) } \right|=\left| \overrightarrow{B_i\left( t \right) C_i\left( t \right) } \right|=w.\label{problem-2.3}
+\end{gather}
+再记$B_iC_i$和$A_iD_i$的中点分别为$E_i,F_i$,它们在第$t$秒时的位置分别为$E_i(t),F_i(t)$,直角坐标分别为
+\begin{align}
+E_i(t)=(x_{E_i}(t),y_{E_i}(t)),
+\\
+F_i(t)=(x_{F_i}(t),y_{F_i}(t)).
+\end{align}
+从而
+\begin{gather}
+\overrightarrow{P_{i+1}\left( t \right) E_i\left( t \right) }=\left( x_{E_i}\left( t \right) -x_{i+1}\left( t \right) ,y_{E_i}\left( t \right) -x_{i+1}\left( t \right) \right) ,\label{problem-2.4}
+\\
+\overrightarrow{P_i\left( t \right) F_i\left( t \right) }=\left( x_{F_i}\left( t \right) -x_i\left( t \right) ,y_{F_i}\left( t \right) -x_i\left( t \right) \right) ,\label{problem-2.5}
+\\
+\left| \overrightarrow{P_{i+1}\left( t \right) E_i\left( t \right) } \right|=\left| \overrightarrow{P_i\left( t \right) F_i\left( t \right) } \right|=h.\label{problem-2.6}
+\\
+\overrightarrow{E_i\left( t \right) B_i\left( t \right) }=\left( x_{B_i}\left( t \right) -x_{E_i}\left( t \right) ,y_{B_i}\left( t \right) -y_{E_i}\left( t \right) \right) ,\label{problem-2..1}
+\\
+\overrightarrow{E_i\left( t \right) C_i\left( t \right) }=\left( x_{C_i}\left( t \right) -x_{E_i}\left( t \right) ,y_{C_i}\left( t \right) -y_{E_i}\left( t \right) \right) ,\label{problem-2..2}
+\\
+\overrightarrow{F_i\left( t \right) A_i\left( t \right) }=\left( x_{A_i}\left( t \right) -x_{F_i}\left( t \right) ,y_{A_i}\left( t \right) -y_{F_i}\left( t \right) \right) ,\label{problem-2..3}
+\\
+\overrightarrow{F_i\left( t \right) D_i\left( t \right) }=\left( x_{D_i}\left( t \right) -x_{F_i}\left( t \right) ,y_{D_i}\left( t \right) -y_{F_i}\left( t \right) \right) .\label{problem-2..4}
+\end{gather}
+由$E_i,P_i,P_{i+1},F_i$共线可得
+\begin{gather}
+\overrightarrow{P_{i+1}\left( t \right) E_i\left( t \right) }=-\frac{\overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) }}{\left| \overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) } \right|}\cdot \left| \overrightarrow{P_{i+1}\left( t \right) E_i\left( t \right) } \right|,\label{problem-2.7}
+\\
+\overrightarrow{P_i\left( t \right) F_i\left( t \right) }=-\frac{\overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) }}{\left| \overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) } \right|}\cdot \left| \overrightarrow{P_{i+1}\left( t \right) E_i\left( t \right) } \right|.\label{problem-2.8}
+\end{gather}
+联立\eqref{problem-2.1}\eqref{problem-2.4}\eqref{problem-2.5}\eqref{problem-2.6}\eqref{problem-2.7}\eqref{problem-2.8}式可得
+\begin{gather}
+\begin{cases}
+x_{E_i}\left( t \right) =x_{i+1}\left( t \right) -\frac{h}{l_{i+1}}\left( x_i\left( t \right) -x_{i+1}\left( t \right) \right)\\
+y_{E_i}\left( t \right) =y_{i+1}\left( t \right) -\frac{h}{l_{i+1}}\left( y_i\left( t \right) -y_{i+1}\left( t \right) \right)\\
+\end{cases},\label{problem-2.9}
+\\
+\begin{cases}
+x_{F_i}\left( t \right) =x_i\left( t \right) +\frac{h}{l_{i+1}}\left( x_i\left( t \right) -x_{i+1}\left( t \right) \right)\\
+y_{F_i}\left( t \right) =y_i\left( t \right) +\frac{h}{l_{i+1}}\left( y_i\left( t \right) -y_{i+1}\left( t \right) \right)\\
+\end{cases}.\label{problem-2.10}
+\end{gather}
+又由$E_i$是$B_i,C_{i}$的中点和$F_i$是$A_i,D_i$的中点可得
+\begin{gather}
+\overrightarrow{E_i\left( t \right) B_i\left( t \right) }=-\frac{\overrightarrow{B_i\left( t \right) C_i\left( t \right) }}{2},\label{problem-2.11}
+\\
+\overrightarrow{E_i\left( t \right) C_i\left( t \right) }=\frac{\overrightarrow{B_i\left( t \right) C_i\left( t \right) }}{2},\label{problem-2.12}
+\\
+\overrightarrow{F_i\left( t \right) A_i\left( t \right) }=-\frac{\overrightarrow{A_i\left( t \right) D_i\left( t \right) }}{2},\label{problem-2.13}
+\\
+\overrightarrow{F_i\left( t \right) D_i\left( t \right) }=\frac{\overrightarrow{A_i\left( t \right) D_i\left( t \right) }}{2}.   \label{problem-2.14} 
+\end{gather}
+因此联立\eqref{problem-2.2}\eqref{problem-2.3}\eqref{problem-2..1}\eqref{problem-2..2}\eqref{problem-2..3}\eqref{problem-2..4}\eqref{problem-2.9}\eqref{problem-2.10}\eqref{problem-2.11}\eqref{problem-2.12}\eqref{problem-2.13}式,解得
+\begin{gather}
+\begin{cases}
+x_{A_i}\left( t \right) =x_i\left( t \right) +\frac{h}{l_{i+1}}\left( x_i\left( t \right) -x_{i+1}\left( t \right) \right) +\frac{y_i\left( t \right) -y_{i+1}\left( t \right)}{2}\\
+y_{A_i}\left( t \right) =y_i\left( t \right) +\frac{h}{l_{i+1}}\left( y_i\left( t \right) -y_{i+1}\left( t \right) \right) -\frac{x_i\left( t \right) -x_{i+1}\left( t \right)}{2}\\
+\end{cases},
+\\
+\begin{cases}
+x_{B_i}\left( t \right) =x_{i+1}\left( t \right) -\frac{h}{l_{i+1}}\left( x_i\left( t \right) -x_{i+1}\left( t \right) \right) +\frac{y_i\left( t \right) -y_{i+1}\left( t \right)}{2}\\
+y_{B_i}\left( t \right) =y_{i+1}\left( t \right) -\frac{h}{l_{i+1}}\left( y_i\left( t \right) -y_{i+1}\left( t \right) \right) -\frac{x_i\left( t \right) -x_{i+1}\left( t \right)}{2}\\
+\end{cases},
+\\
+\begin{cases}
+x_{C_i}\left( t \right) =x_{i+1}\left( t \right) -\frac{h}{l_{i+1}}\left( x_i\left( t \right) -x_{i+1}\left( t \right) \right) -\frac{y_i\left( t \right) -y_{i+1}\left( t \right)}{2}\\
+y_{C_i}\left( t \right) =y_{i+1}\left( t \right) -\frac{h}{l_{i+1}}\left( y_i\left( t \right) -y_{i+1}\left( t \right) \right) +\frac{x_i\left( t \right) -x_{i+1}\left( t \right)}{2}\\
+\end{cases},
+\\
+\begin{cases}
+x_{D_i}\left( t \right) =x_i\left( t \right) +\frac{h}{l_{i+1}}\left( x_i\left( t \right) -x_{i+1}\left( t \right) \right) -\frac{y_i\left( t \right) -y_{i+1}\left( t \right)}{2}\\
+y_{D_i}\left( t \right) =y_i\left( t \right) +\frac{h}{l_{i+1}}\left( y_i\left( t \right) -y_{i+1}\left( t \right) \right) +\frac{x_i\left( t \right) -x_{i+1}\left( t \right)}{2}\\
+\end{cases}.
+\end{gather}
+
+\section{计算板凳龙发生碰撞的时间}
+
+对$\forall t>0$,板凳龙在第$t$秒发生碰撞的充要条件是:当$t=t_0$时,存在$s,k\in \{1,2,\cdots,223\}$,使得$A_s(t),$ $B_s(t),$ $C_s(t),$ $D_s(t)$和$A_k(t)$,$B_k(t)$,$C_k(t)$,$D_k(t)$所对应的两节板凳在第$t$秒发生碰撞,即此时矩形$A_s(t)B_s(t)C_s(t)D_s(t)$和矩形$A_k(t)$ $B_k(t)$ $C_k(t)$ $D_k(t)$有交点.于是我们只需要判断在第$t$秒时,对$\forall i,j\in{1,2,\cdots,223}$,矩形$A_i(t)$ $B_i(t)$ $C_i(t)$ $D_i(t)$和矩形$A_j(t)$ $B_j(t)$ $C_j(t)$ $D_j(t)$是否有交点即可.
+
+\subsection{判断矩形$A_i(t)B_i(t)C_i(t)D_i(t)$和矩形$A_j(t)B_j(t)C_j(t)D_j(t)$是否有交点的算法}\label{判断矩形相交的算法}
+
+任取矩形$A_i(t)B_i(t)C_i(t)D_i(t)$的一条边记为$X_1(t)Y_1(t)$,矩形$A_j(t)B_j(t)C_j(t)D_j(t)$的一条边记为$X_2(t)Y_2(t)$.
+则利用向量叉乘的性质(详见\href{https://zhuanlan.zhihu.com/p/644689588}{几何算法：判断两条线段是否相交})可得
+\begin{align}
+\begin{cases}
+\text{若}\left( \overrightarrow{X_1\left( t \right) Y_1\left( t \right) }\times \overrightarrow{X_1\left( t \right) X_2\left( t \right) } \right) \cdot \left( \overrightarrow{X_1\left( t \right) Y_1\left( t \right) }\times \overrightarrow{X_1\left( t \right) Y_2\left( t \right) } \right) >0,\text{则}\overrightarrow{X_1\left( t \right) Y_1\left( t \right) },\overrightarrow{X_2\left( t \right) Y_2\left( t \right) }\text{相交},\\
+\text{若}\left( \overrightarrow{X_1\left( t \right) Y_1\left( t \right) }\times \overrightarrow{X_1\left( t \right) X_2\left( t \right) } \right) \cdot \left( \overrightarrow{X_1\left( t \right) Y_1\left( t \right) }\times \overrightarrow{X_1\left( t \right) Y_2\left( t \right) } \right) \leqslant 0,\text{则}\overrightarrow{X_1\left( t \right) Y_1\left( t \right) },\overrightarrow{X_2\left( t \right) Y_2\left( t \right) }\text{不相交}.\\
+\end{cases}
+\end{align}
+将矩形$A_i(t)B_i(t)C_i(t)D_i(t)$和矩形$A_j(t)B_j(t)C_j(t)D_j(t)$的每一条边都代入上式,若所有边代入后都不相交,则这两个矩形无交点,否则有交点.
+
+\subsection{判断板凳龙是否发生碰撞}\label{判断板凳龙是否发生碰撞}
+
+在第$t$秒时,若对$\forall i,j\in\{1,2,\cdots,223\}$,将矩形$A_i(t)B_i(t)C_i(t)D_i(t)$和矩形$A_j(t)B_j(t)C_j(t)D_j(t)$代入\eqref{判断矩形相交的算法}后,结果都不相交.则板凳龙在第$t$秒不发生碰撞,否则发生碰撞.
+
+\subsection{计算板凳龙发生碰撞的时间及此时板凳龙各把手的位置和速度}
+
+令$t$依次取$1,2,\cdots$,代入\eqref{判断板凳龙是否发生碰撞},利用Python计算得到板凳龙第一次发生碰撞的时间$t_0$,从而板凳龙盘入的终止时刻为$t_0$.在将$t_0$代入\textbf{问题1}的模型,利用Python求解得到此时板凳龙各把手的位置直角坐标和速度见表.
+
+
+
+\chapter{问题3}
+
+
 
 
 
