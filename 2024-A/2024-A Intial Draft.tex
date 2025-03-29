@@ -40,7 +40,7 @@
 \end{align}
 其中\(\rho\)为极径,\(\theta\)为极角,\(a\),\(b\)均为待定常数.设龙头前把手中心的初始位置\(P_0\)极坐标和直角坐标分别为\((\rho _0,\theta _0)\),\((x_0,y_0)\),记\(d_0(\mathrm{m})\)为图4中等距螺线的螺距,则由题可知
 \begin{align}
-d_0 = 0.55,\rho _0 = 16d_0 = 8.8,\theta _0 = 16\times 2\pi = 32\pi.
+d_0 = 0.055,\rho _0 = 16d_0 = 0.88,\theta _0 = 16\times 2\pi = 32\pi.
 \end{align}
 又由图4可知图中等距螺线\(\varGamma\)过原点\(O\)和\((\rho _0,\theta _0)\)点,于是将\((0,0)\)和\((\rho _0,\theta _0)\)代入\eqref{1..1}式解得
 \begin{align}
@@ -57,7 +57,7 @@ y=\rho \sin \theta\\
 \end{cases},\]
 得到等距螺线\(\varGamma\)的直角坐标方程为
 \begin{align}
-\begin{cases}
+\varGamma:\begin{cases}
 x=\frac{d_0}{2\pi}\theta \cos \theta\\
 y=\frac{d_0}{2\pi}\theta \sin \theta\\
 \end{cases},(0\leqslant \theta \leqslant 32\pi) .\label{0.0}
@@ -76,7 +76,7 @@ S = v_0t.\label{1.2}
 \end{align}
 联立\eqref{0.1}\eqref{1.1}\eqref{1.2}式解得
 \begin{align}
-\theta _t\sqrt{\theta _{t}^{2}+1}-\ln (\theta _0(t)+\sqrt{(\theta _0(t))^2+1}) =\theta _0\sqrt{\theta _{0}^{2}+1}+\ln (\theta _0+\sqrt{\theta _{0}^{2}+1}) -\frac{4\pi}{d_0}v_0t .
+\theta _0(t)\sqrt{\theta _{0}^{2}(t)+1}-\ln (\theta _0(t)+\sqrt{(\theta _0(t))^2+1}) =\theta _0\sqrt{\theta _{0}^{2}+1}+\ln (\theta _0+\sqrt{\theta _{0}^{2}+1}) -\frac{4\pi}{d_0}v_0t .
 \end{align}
 根据上式,利用Python求解得到当\(t\in \{ 1,2,\cdots ,300 \}\)时,\(P_0(t)\)的极角\(\theta _0(t)\),再将其代入\eqref{0.1}式得到,\(P_0(t)\)的极坐标\((\rho _0(t),\theta _0(t))\)见表1.再利用
 \begin{align}
@@ -192,7 +192,7 @@ v_i(t) = \sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\frac{|\theta _
 
 \section{计算各节板凳四个顶点的坐标}
 
-$\forall t\in \mathbb{N}$,根据\textbf{问题1}求解得到龙头前把手中心、第$i(i=1,2,\cdots,223)$节板凳后把手中心在第$t$秒的直角坐标分别为$(x_0(t),y_0(t))$,$(x_i(t),y_i(t))$.设所有板凳的板宽均为$w$,板凳把手中心离最近的板头距离为$h$,则由条件可知$w=0.3m,h=0.275m$.当第$i(i=1,2,\cdots,223)$节板凳后把手刚盘入螺线(即后把手恰好在初始位置)时,记离原点较远且离$P_i$较近的顶点为$A_i$,再按顺时针方向分别记其余顶点为$B_i,C_i,D_i$.记$A_i,B_i,C_i,D_i$在第$i$秒时的位置分别为$A_i(t),B_i(t),C_i(t),D_i(t)$,其直角坐标分别为$(x_{A_i}(t),y_{A_i}(t)),(x_{B_i}(t),y_{B_i}(t)),(x_{C_i}(t),y_{C_i}(t)),(x_{D_i}(t),y_{D_i}(t))$.于是根据向量垂直坐标变换公式可得,对$\forall i\in {0,1,2,\cdots,222}$,都有
+$\forall t\in \mathbb{N}$,根据\textbf{问题1}求解得到龙头前把手中心、第$i(i=1,2,\cdots,223)$节板凳后把手中心在第$t$秒的直角坐标分别为$(x_0(t),y_0(t))$,$(x_i(t),y_i(t))$.设所有板凳的板宽均为$w$,板凳把手中心离最近的板头距离为$h$,则由条件可知$w=0.3m,h=0.275m$.当第$i(i=1,2,\cdots,223)$节板凳后把手刚盘入螺线(即后把手恰好在初始位置)时,记离原点较远且离$P_i$较近的顶点为$A_i$,再按顺时针方向分别记其余顶点为$B_i,C_i,D_i$.记$A_i,B_i,C_i,D_i$在第$t$秒时的位置分别为$A_i(t),B_i(t),C_i(t),D_i(t)$,其直角坐标分别为$(x_{A_i}(t),y_{A_i}(t)),(x_{B_i}(t),y_{B_i}(t)),(x_{C_i}(t),y_{C_i}(t)),(x_{D_i}(t),y_{D_i}(t))$.于是根据向量垂直坐标变换公式可得,对$\forall i\in {0,1,2,\cdots,222}$,都有
 \begin{gather}
 \overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) }=\left( x_i\left( t \right) -x_{i+1}\left( t \right) ,y_i\left( t \right) -y_{i+1}\left( t \right) \right) ,\label{problem-2.1}
 \\
@@ -226,7 +226,7 @@ F_i(t)=(x_{F_i}(t),y_{F_i}(t)).
 \begin{gather}
 \overrightarrow{P_{i+1}\left( t \right) E_i\left( t \right) }=-\frac{\overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) }}{\left| \overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) } \right|}\cdot \left| \overrightarrow{P_{i+1}\left( t \right) E_i\left( t \right) } \right|,\label{problem-2.7}
 \\
-\overrightarrow{P_i\left( t \right) F_i\left( t \right) }=-\frac{\overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) }}{\left| \overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) } \right|}\cdot \left| \overrightarrow{P_{i+1}\left( t \right) E_i\left( t \right) } \right|.\label{problem-2.8}
+\overrightarrow{P_i\left( t \right) F_i\left( t \right) }=\frac{\overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) }}{\left| \overrightarrow{P_{i+1}\left( t \right) P_i\left( t \right) } \right|}\cdot \left| \overrightarrow{P_{i+1}\left( t \right) E_i\left( t \right) } \right|.\label{problem-2.8}
 \end{gather}
 联立\eqref{problem-2.1}\eqref{problem-2.4}\eqref{problem-2.5}\eqref{problem-2.6}\eqref{problem-2.7}\eqref{problem-2.8}式可得
 \begin{gather}
