@@ -289,9 +289,20 @@ y_{D_i}\left( t \right) =y_i\left( t \right) +\frac{h}{l_{i+1}}\left( y_i\left( 
 \end{align}
 将矩形$A_i(t)B_i(t)C_i(t)D_i(t)$和矩形$A_j(t)B_j(t)C_j(t)D_j(t)$的每一条边都代入上式,若所有边代入后都不相交,则这两个矩形无交点,否则有交点.
 
+
+\subsection{证明板凳龙首次发生碰撞一定是第1节板凳或第2节板凳与其他板凳碰撞}
+
+设板凳龙在第$t$秒首次发生碰撞,假设在第$t$秒第$i(3\leq i\leq 223)$节板凳发生碰撞,不妨设其与第$j(2\leq j<i)$板凳发生碰撞,再设在第$t_1$秒第$j-1$节板凳的前把手中心运动到第$t$秒第$j$节板凳的前把手中心所在位置,注意到$t_1<t$且$1\leq j-1\leq i-1$.若$j-1=1$,则结论显然成立.从而不妨设$2\leq j-1\leq i-1$,则
+由于除第1节板凳外,其他板凳的长度都相同,并且每节板凳各把手中心始终沿着螺线$\varGamma$移动,因此由几何关系不难得到,在第$t_1$秒时第$j-1$节板凳的前后把手中心位置与在第$t$秒时第$j$节板凳的前后把手中心位置相同,否则在第$t_1$秒时第$j-1$节板凳必然发生碰撞,这与板凳龙在第$t$秒首次发生碰撞矛盾!同理可得,在第$t_1$秒时第$m$节板凳前后把手中心的位置一定与在第$t$秒时第$m+1$节板凳前后把手中心的位置相同,其中$m=j-1,j-2,\cdots,2$.即
+\begin{align}
+P_m\left( t \right) =P_{m-1}\left( t_1 \right) ,m=2,3,\cdots ,j.
+\end{align}
+故第$j-1$节板凳在第$t_1$秒的位置和第$j$节板凳在第$t$秒的位置相同,第$i-1$节板凳在第$t_1$秒的位置和第$i$节板凳在第$t$秒的位置相同.由假设可知第$j-1$节板凳和第$i-1$节板凳在第$t_1$秒一定发生碰撞,这与板凳龙在第$t$秒首次发生碰撞矛盾!故结论成立.
+
+
 \subsection{判断板凳龙是否发生碰撞}\label{判断板凳龙是否发生碰撞}
 
-在第$t$秒时,若对$\forall i,j\in\{1,2,\cdots,223\}$,将矩形$A_i(t)B_i(t)C_i(t)D_i(t)$和矩形$A_j(t)B_j(t)C_j(t)D_j(t)$代入\eqref{判断矩形相交的算法}后,结果都不相交.则板凳龙在第$t$秒不发生碰撞,否则发生碰撞.
+在第$t$秒时,若对$\forall i\in\{1,2,\cdots,223\}$,将矩形$A_i(t)B_i(t)C_i(t)D_i(t)$和矩形$A_1(t)B_1(t)C_1(t)D_1(t)$代入\eqref{判断矩形相交的算法}后,结果都不相交.则板凳龙在第$t$秒不发生碰撞,否则发生碰撞.
 
 \subsection{计算板凳龙发生碰撞的时间及此时板凳龙各把手的位置和速度}
 
@@ -301,9 +312,121 @@ y_{D_i}\left( t \right) =y_i\left( t \right) +\frac{h}{l_{i+1}}\left( y_i\left( 
 
 \chapter{问题3}
 
+根据问题1和问题2,建立优化模型易得.
+
+\chapter{问题4}
+
+\section{证明不可通过改变前后两段调头圆弧半径比例减小调头曲线长度}
+根据题意,设盘入螺线与盘出螺线与调头区域边界交点分别为$M$和$N$,前一段、后一段调头圆弧圆心分别为$O_1、O_2$.两段圆弧切点为$G$.过点$M$与盘入螺线相切的直线为$l_M$,过点$N$与盘出螺线相切的直线为$l_N$,连接$NG$,$MG$,$O_1M$,$O_1G$,$O_2G$,$O_2N$.
+画出板凳龙调头曲线的几何示意图如下:
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.2]{调头曲线示意图.jpg}
+\caption{板凳龙调头曲线的几何示意图}
+\label{figure1}
+\end{figure}
+由题可知$O_1,G,O_2$三点共线,从而$\angle MGO_2+\angle O_1GM=\pi .$又注意到$\angle O_1GM=\angle O_2GN$.于是
+\begin{align}
+\angle MGO_2+\angle O_2GN=\angle MGO_2+\angle O_1GM=\pi .
+\end{align}
+因此$M,G,N$三点共线.
+因为盘入螺线$\varGamma$与盘出螺线$\varGamma'$中心对称,所以$MN$一定过原点$O$且$l_M \varparallel  l_N$.又由$\overgroup{MG}$与$\varGamma$相切,$\overgroup{GN}$与$\varGamma'$相切,可得$O_1M\bot l_M,$ $O_2N\bot l_N$.故$O_1M \varparallel O_2N$.设$\angle MO_1G=\theta$,$\angle O_1MN=\alpha$,则由几何关系易得
+\begin{gather}
+\angle MO_1G=\angle NO_2G=\theta,
+\\
+\angle O_1MN=\angle O_1GMN=\angle O_2GN=\angle O_2NG=\alpha .
+\end{gather}
+设调头区域半径为$R$,则$\left| \overrightarrow{OM} \right|=\left| \overrightarrow{ON} \right|=R$. 设前后两段调头圆弧半径比例为$a:1$,后一段调头圆弧的半径为$r$,则前一段调头圆弧的半径为$ar$,其中$a$为任意常数.则
+\begin{align}
+\left| \overrightarrow{O_1M} \right|=\left| \overrightarrow{O_1G} \right|=ar,\left| \overrightarrow{O_2N} \right|=\left| \overrightarrow{O_2G} \right|=r.    
+\end{align}
+设直线$l_M,$ $l_N,$ $O_1M,$ $MN$的斜率分别为$k_{l_M},$ $k_{l_N},$ $k_{O_1M},$ $k_{MN}$.于是根据两直线夹角斜率公式可得
+\begin{align}
+\tan \alpha =\tan \angle NMO_1=\frac{k_{MN}-k_{l_M}}{1+k_{MN}k_{l_M}}.
+\end{align}
+从而
+\begin{align}
+\alpha =\left| \mathrm{arc}\tan \frac{k_{MN}-k_{l_M}}{1+k_{MN}k_{l_M}} \right|.
+\end{align}
+由$\vartriangle MO_1G\cong \vartriangle NO_2G$可得
+\begin{align}
+\left| \overrightarrow{NG} \right|=\frac{\left| \overrightarrow{MN} \right|}{1+a}=\frac{2R}{1+a}.
+\end{align}
+又由几何关系易得
+\begin{align}
+\theta =\pi -2\alpha ,\quad \cos \alpha =\frac{\frac{1}{2}\left| \overrightarrow{NG} \right|}{\left| \overrightarrow{O_2N} \right|}=\frac{R}{\left( 1+a \right) r}.
+\end{align}
+因此
+\begin{align}
+r=\frac{R}{\left( 1+a \right) \cos \alpha}.
+\end{align}
+设$\overgroup{MG}$的长度为$L_1$,$\overgroup{GN}$的长度为$L_2$,记$L=L_1+L_2$.于是根据圆弧长度计算公式可得
+\begin{align}\label{equation-1}
+L=L_1+L_2=\theta r+\theta ar=\left( 1+a \right) \theta r=\frac{\left( \pi -2\alpha \right) R}{\cos \alpha}=\frac{\left( \pi -2\left| \mathrm{arc}\tan \frac{k_{MN}-k_{l_M}}{1+k_{MN}k_{l_M}} \right| \right) R}{\cos \left| \mathrm{arc}\tan \frac{k_{MN}-k_{l_M}}{1+k_{MN}k_{l_M}} \right|}.
+\end{align}
+由上式可知$L$与$a$无关,因此不可通过改变前后两段调头圆弧半径比例减小调头曲线长度.
+
+
+\section{计算调头曲线长度}
+
+根据题意可知,调头区域边界曲线$S$,盘入螺线$\varGamma$,盘出螺线$\varGamma'$的极坐标方程分别为
+\begin{gather}
+S:\rho =R,\label{q1}
+\\
+\varGamma:\rho =\frac{d_0}{2\pi}\theta ,\label{q2}
+\\
+\varGamma':\rho =\frac{d_0}{2\pi}\left( \theta +\pi \right) .\label{q3}
+\end{gather}
+于是分别联立\eqref{q1}\eqref{q2}式与\eqref{q1}\eqref{q3}式可分别解出$M,N$的极坐标,分别记为$(\rho_M,\theta_M)$和$(\rho_N,\theta_N)$,则有
+\begin{gather}
+\begin{cases}
+\rho _M=\\
+\theta _M=\\
+\end{cases}
+\quad,
+\begin{cases}
+\rho _M=\\
+\theta _M=\\
+\end{cases}.
+\end{gather}
+于是就有
+\begin{align}
+k_{MN}=k_{OM}=\tan \theta _M=.\label{c1}
+\end{align}
+又因为$\varGamma$与$\varGamma'$的直角坐标方程分别为
+\begin{align}
+\varGamma :\begin{cases}
+x=\frac{d_0}{2\pi}\theta \cos \theta\\
+y=\frac{d_0}{2\pi}\theta \sin \theta\\
+\end{cases},\quad \varGamma ' :\begin{cases}
+x=\frac{d_0}{2\pi}\left( \theta +\pi \right) \cos \theta\\
+y=\frac{d_0}{2\pi}\left( \theta +\pi \right) \sin \theta\\
+\end{cases}
+\end{align}
+因此我们就有
+\begin{gather}
+k_{l_M}=\frac{\mathrm{d}y}{dx}\mid_{M}^{}=\frac{\mathrm{d}y/\mathrm{d}\theta}{dx/\mathrm{d}\theta}\mid_{M}^{}=\frac{\sin \theta +\theta \cos \theta}{\cos \theta -\theta \sin \theta}\mid_{\theta =\theta _M}^{}=,\label{c2}
+\\
+k_{l_N}=\frac{\mathrm{d}y}{dx}\mid_{N}^{}=\frac{\mathrm{d}y/\mathrm{d}\theta}{dx/\mathrm{d}\theta}\mid_{M}^{}=\frac{\sin \theta +\left( \theta +\pi \right) \cos \theta}{\cos \theta -\left( \theta +\pi \right) \sin \theta}\mid_{\theta =\theta _N}^{}=.\label{c3}
+\end{gather}
+故将\eqref{c1}\eqref{c2}\eqref{c3}代入\eqref{equation-1}计算可得板凳龙的调头曲线长度为
+\begin{align}
+L=.
+\end{align}
+
+
+\section{计算板凳龙从-100s到100s各把手的位置}
 
 
 
 
+\section{计算板凳龙从-100s到100s各把手的速度}
+
+
+
+
+\chapter{问题5}
+
+根据前四问,建立优化模型易得.
 
 \end{document}
