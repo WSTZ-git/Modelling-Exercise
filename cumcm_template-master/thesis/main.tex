@@ -27,9 +27,12 @@
 
 % 导入符号
 \input{sections/symbols_def}
-
+\usepackage{float}
 \usepackage{../../Styles/mystyle-cumcmthesis}
 \usepackage{subfiles}  % Best loaded last in the preamble
+\usepackage{yhmath}
+\usepackage{graphicx}
+\usepackage{amssymb}
 \begin{document}
 
 % TODO 提交最终版论文时别忘了选择 7,8行版本
@@ -63,12 +66,17 @@
     \subfile{sections/q3_build}
   \subsubsection{模型求解}
     \subfile{sections/q3_solution}
-\subsection{问题四}
-\subsubsection{模型建立}
-\subfile{sections/q4_build}
-\subsubsection{模型求解}
-\subfile{sections/q4_solution}
-
+    \subsection{问题四}
+    \subsubsection{模型建立}
+    \subfile{sections/q4_build}
+    \subsubsection{模型求解}
+    \subfile{sections/q4_solution}
+    \subsection{问题五}
+    \subsubsection{模型建立}
+    \subfile{sections/q5_build}
+    \subsubsection{模型求解}
+    \subfile{sections/q5_solution}
+     
 \section{模型的评价}
   \subfile{sections/model_review}
 
