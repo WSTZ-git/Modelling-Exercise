@@ -7,7 +7,7 @@
         "**/*.log": true,
         "**/*.out": true,
         "**/*.toc": true,
-        "**/*.txt": true,
+        // "**/*.txt": true,
         "**/*.xml": true,
         "**/*.gitignore": true,
     }
