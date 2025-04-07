@@ -1,0 +1,28 @@
+# latex
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+**/*.log
+*.gz
+*.toc
+*.out
+*.xdv
+*.tdo
+
+# python and jupyter notebook
+**/.ipynb_checkpoints
+**/__pycache__
+
+# vocode
+.vscode
+
+# sections pdf
+**/sections/*.pdf
+
+# build file
+**/build
+
+# tree
+thesis/sections/tree.txt
