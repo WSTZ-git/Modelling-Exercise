@@ -2,11 +2,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%文档宏包%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{lipsum}% 生成随机文本
 \usepackage{enumitem}% 插入有序列表
 \usepackage{rotating}% 符号旋转
 \usepackage{graphicx}% 插入图片
 \usepackage{epstopdf}% 插入图片
+\usepackage{float}% 调整图片位置 固定图片位置[H]
 \usepackage{bm}
 \usepackage{ulem}
 \usepackage{xeCJKfntef}% 下划线可换行
@@ -23,6 +23,9 @@
 \usepackage{xr-hyper}% 不同文档之间交叉引用
 \usepackage{hyperref}%  LaTex超链接
 \usepackage{pifont}%  圆圈数字、圆圈序号
+\let\widering\relax% 清除旧的\widering的定义(因为yhmath宏包中新定义了\widering这个命令,否则会冲突报错)
+\usepackage{yhmath}% 用\wideparen{}画出来的圆弧上标更美观
+\usepackage{amssymb}% 扩展数学符号
 
 %%%%%%%%%%%%%%%%%%%%%%%%%文档宏包%%%%%%%%%%%%%%%%%%%%%%%%%
 
