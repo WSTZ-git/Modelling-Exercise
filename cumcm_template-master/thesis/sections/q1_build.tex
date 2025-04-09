@@ -125,7 +125,7 @@
   \par 记第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心在第\(t\)秒时的速度为\(v_i(t)\).
   设第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心在充分短的时间\(\mathrm{d}t\)内经过的路程微分为\(\mathrm{d}s_i\),因为各节板凳把手中心始终在螺线\(\varGamma\)上,所以各节板凳把手中心经过的路程微分\(\mathrm{d}s_i\)就是螺线\(\varGamma\)的弧微分,因此利用\eqref{0.1}式及弧微分的计算公式可得
   \begin{align}\label{1.........12}
-  \mathrm{d}s_i=\sqrt{[\rho (\theta _i)]^2+[\rho \prime (\theta _i)]^2}\mathrm{d}\theta  _i=\frac{d_0}{2\pi}\sqrt{{\theta _i}^2+1}\mathrm{d}\theta _i,i\in \{ 1,2,\cdots ,223 \}  
+  \mathrm{d}s_i=\sqrt{[\rho (\theta _i)]^2+[\frac{d\rho(\theta_i)}{d\theta_i}]^2}\mathrm{d}\theta  _i=\frac{d_0}{2\pi}\sqrt{{\theta _i}^2+1}\mathrm{d}\theta _i,i\in \{ 1,2,\cdots ,223 \}  
   \end{align}
   故当\(t\in \{ 1,2,\cdots ,300 \}\)时,由瞬时速度的定义可得
   \begin{align}
@@ -134,24 +134,28 @@
   \par 在公式中，我们可以看到极角对于各板凳后把手速度的重要影响。因此，我们需要求取各节板凳后把手在$t$时刻下的极角递推出上一节板凳后把手在$t$时刻下的极角的递推公式，从而建立相邻两节板凳后把手中心在$t$时刻下速度的递推公式，得到任一把手在任一时刻下的速度。
   \par 当\(i\in \{ 1,2,\cdots ,223 \}\)时,将\eqref{2.0}\eqref{2.0.0}式两边同时对\(t\)求导：
   \begin{align}
-      \theta_{1}'(t)&=\frac{\theta_{0}'(t)[\theta_{0}(t)-\theta_{1}(t)\cos(\theta_{0}(t)-\theta_{1}(t))+\theta_{1}(t)\theta_{0}(t)\sin(\theta_{0}(t)-\theta_{1}(t))]}{\theta_{1}(t)-\theta_{0}(t)\cos(\theta_{0}(t)-\theta_{1}(t))-\theta_{1}(t)\theta_{0}(t)\sin(\theta_{0}(t)-\theta_{1}(t))} \label{3.1.2.3}
-  \\
-  \theta_{i}'(t)&=\frac{\theta_{i - 1}'(t)[\theta_{i - 1}(t)-\theta_{i}(t)\cos(\theta_{i - 1}(t)-\theta_{i}(t))+\theta_{i}(t)\theta_{i - 1}(t)\sin(\theta_{i - 1}(t)-\theta_{i}(t))]}{\theta_{i}(t)-\theta_{i - 1}(t)\cos(\theta_{i - 1}(t)-\theta_{i}(t))-\theta_{i}(t)\theta_{i - 1}(t)\sin(\theta_{i - 1}(t)-\theta_{i}(t))}\label{3.1.1.3}
-  \end{align}
+    \frac{d\theta_1(t)}{dt} &= \frac{\frac{d\theta_0(t)}{dt} [\theta_0(t) - \theta_1(t) \cos(\theta_0(t) - \theta_1(t)) + \theta_1(t) \theta_0(t) \sin(\theta_0(t) - \theta_1(t))]}{\theta_1(t) - \theta_0(t) \cos(\theta_0(t) - \theta_1(t)) - \theta_1(t) \theta_0(t) \sin(\theta_0(t) - \theta_1(t))}  \label{3.123}\\
+    \frac{d\theta_i(t)}{dt}& = \frac{\frac{d\theta_{i - 1}(t)}{dt} [\theta_{i - 1}(t) - \theta_i(t) \cos(\theta_{i - 1}(t) - \theta_i(t)) + \theta_i(t) \theta_{i - 1}(t) \sin(\theta_{i - 1}(t) - \theta_i(t))]}{\theta_i(t) - \theta_{i - 1}(t) \cos(\theta_{i - 1}(t) - \theta_i(t)) - \theta_i(t) \theta_{i - 1}(t) \sin(\theta_{i - 1}(t) - \theta_i(t))}\label{3.1456}
+ \end{align}
   \par 为使等式简洁，设\(\theta _i = \theta _i(t)\),\(\theta _{i - 1} = \theta _{i - 1}(t)\) ，两式相除并化简:
       \begin{align}
   \frac{\mathrm{d}\theta _i}{\mathrm{d}t}=\frac{-\theta _{i - 1}+\theta _i\cos(\theta _{i }-\theta _{i-1})+\theta _i\theta _{i - 1}\sin(\theta _{i }-\theta _{i-1})}{\theta _i+\theta _i\theta _{i - 1}\sin(\theta _i -\theta _{i-1})-\theta _{i - 1}\cos(\theta _i -\theta _{i-1})}\cdot \frac{\mathrm{d}\theta _{i - 1}}{\mathrm{d}t}.\label{3.0}
   \end{align}
   \par 联立\eqref{3.1}\eqref{3.0}式得到
+\begin{small}
   \begin{align}
-  |v_i(t)| &= \left|\frac{d_0}{2\pi}\frac{\sqrt{{\theta _i}^2 + 1}\mathrm{d}\theta _i}{\mathrm{d}t}\right| 
-  = \frac{|-\theta _{i - 1}+\theta _i\cos(\theta _{i }-\theta _{i-1})+\theta _i\theta _{i - 1}\sin(\theta _{i }-\theta _{i-1})|}{|\theta _i+\theta _i\theta _{i - 1}\sin(\theta _i -\theta _{i-1})-\theta _{i - 1}\cos(\theta _i -\theta _{i-1})|}\sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\left|\frac{\mathrm{d}\theta _{i - 1}}{\mathrm{d}t}\right| \label{1.........15}\\
+ |v_i(t)| &= \left|\frac{d_0}{2\pi}\frac{\sqrt{{\theta _i}^2 + 1}\mathrm{d}\theta _i}{\mathrm{d}t}\right| 
+  = \frac{|-\theta _{i - 1}+\theta _i\cos(\theta _{i }-\theta _{i-1})+\theta _i\theta _{i - 1}\sin(\theta _{i }-\theta _{i-1})|}{|\theta _i+\theta _i\theta _{i - 1}\sin(\theta _i -\theta _{i-1})-\theta _{i - 1}\cos(\theta _i -\theta _{i-1})|}\sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\left|\frac{\mathrm{d}\theta _{i - 1}}{\mathrm{d}t}\right| \\
   &= \frac{|-\theta _{i - 1}+\theta _i\cos(\theta _{i }-\theta _{i-1})+\theta _i\theta _{i - 1}\sin(\theta _{i }-\theta _{i-1})|}{|\theta _i+\theta _i\theta _{i - 1}\sin(\theta _i -\theta _{i-1})-\theta _{i - 1}\cos(\theta _i -\theta _{i-1})|}\sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}|v_{i - 1}(t)|, i\in \{1, 2, \cdots, 223\}.\label{1.........16}
   \end{align}
+\end{small}
+
   \par 因为\(v_i(t) (1\leqslant i\leqslant 223)\)均大于\(0\),所以上式可化为
+  \begin{small}
   \begin{align}\label{1.........17}
   v_i(t) = \sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\frac{|-\theta _{i - 1}+\theta _i\cos(\theta _{i }-\theta _{i-1})+\theta _i\theta _{i - 1}\sin(\theta _{i }-\theta _{i-1})|}{|\theta _i+\theta _i\theta _{i - 1}\sin(\theta _i -\theta _{i-1})-\theta _{i - 1}\cos(\theta _i -\theta _{i-1})|}v_{i - 1}(t), i\in \{1, 2, \cdots, 223\},
   \end{align}
+\end{small}
   \par 据Step 1,Step 2,我们已知第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心第\(t\)秒时的位置\(P_{i}(t)\)的极坐标\((\rho _{i}(t),\theta _{i}(t))\)，第一节板凳前把手中心在各时刻的速度，因此，令\(i\)依次取\(1, 2, \cdots, 223\),再利用Python进行迭代计算,就能得到板凳龙的第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心在第\(t\)秒时的速度\(v_i(t)\).
   再令\(t\)依次取\(1, 2, \cdots, 300\),反复进行上述操作,就能得到当\(t\in \{1, 2, \cdots, 300\}\)时,板凳龙的第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心每秒的速度，从而得到板凳龙任一把手的速度。
   
