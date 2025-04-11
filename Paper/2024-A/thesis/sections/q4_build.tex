@@ -6,7 +6,7 @@
 \par 根据题目要求，舞龙队在调头空间内的运动轨迹大致如下：
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.6\textwidth]{woshiren}
+    \includegraphics[width=.6\textwidth]{4}
     \caption{调头空间示意图}
   \label{2.2.2.2.2.2} 
 \end{figure}
@@ -198,10 +198,11 @@ L=L_1+L_2=\theta r+\theta ar=\left( 1+a \right) \theta r=\frac{\left( \pi -2\alp
        
         
         \par 通过求解，可以得到龙头前把手某一时间点与其极角之间的关系
+        \begin{small}
         \begin{align}\label{1.........55}
             (-t)v_0=\frac{d_0}{4\pi}\left[\theta_{P_0(t)}\sqrt{\theta_{P_0(t)}^2 + 1}+\ln(\theta_{P_0(t)}+\sqrt{\theta_{P_0(t)}^2 + 1})-\theta_M\sqrt{\theta_M^2 + 1}-\ln(\theta_M+\sqrt{\theta_M^2 + 1})\right]
         \end{align}
-        
+    \end{small}
         由上式解得$P_0$的极角，再通过\eqref{0.1}可以求得$P_0$的极坐标，通过坐标转化方程\eqref{0.0}求得$P_0$在直角坐标系下的坐标.
 
         \textbf{
@@ -307,7 +308,7 @@ L=L_1+L_2=\theta r+\theta ar=\left( 1+a \right) \theta r=\frac{\left( \pi -2\alp
 \par 当第$t$秒$P_i(0\leq i\leq 222)$在$\wideparen{MG}$上时,引入判断角.若$P_{i+1}$与$M$点重合,则定义此时$\angle P_iO_1P_{i+1}=\beta_1$,称$\beta_1$为$\wideparen{MG}$判断角. 几何示意图如下:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.6\textwidth]{几何示意图1}
+    \includegraphics[width=.6\textwidth]{3}
     \caption{几何示意图1}
 \end{figure}
 \par 在由点 \(P_{i}\)、\(O_{1}\) 和 \(P_{i + 1}\) 构成的三角形中，根据余弦定理有
@@ -360,7 +361,7 @@ k_{O_1M}=\frac{y_M-y_{O_1}}{x_M-x_{O_1}},k_{O_1P_i\left( t \right)}=\frac{y_{P_i
 \par 当第$t$秒$P_i(0\leq i\leq 222)$在$\wideparen{GN}$上时,引入判断角.若$P_{i+1}$与$G$点重合,则定义此时$\angle P_iO_1P_{i+1}=\beta_2$,称$\beta_2$为$\wideparen{GN}$判断角. 几何示意图如下:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.6\textwidth]{几何示意图2}
+    \includegraphics[width=.6\textwidth]{1}
     \caption{几何示意图2}
 \end{figure}
 \par 在由点$ P_{i}、O_{1} $和 $P_{i + 1} $构成的三角形中，根据余弦定理有
@@ -414,7 +415,7 @@ k_{O_1O_2}=\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}},k_{O_2P_i\left( t \right)}=\f
 \par 当第$t$秒$P_i(0\leq i\leq 222)$在$、\varGamma'$上时,引入判断角.若$P_{i+1}$与$N$点重合,则定义此时$\angle P_iO_2N=\beta_3$,称$\beta_3$为$\varGamma'$判断角. 几何示意图如下:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=.6\textwidth]{几何示意图3}
+    \includegraphics[width=.6\textwidth]{2}
     \caption{几何示意图3}
 \end{figure}
 \par 在由点 \(P_{i}\)、\(O_{2}\) 和 \(P_{i + 1}\) 构成的三角形中，根据余弦定理有
@@ -463,7 +464,7 @@ A_i = \{ \alpha _{j}^{i}(t) |\alpha _{j}^{i}(t) <\theta _{i-1}(t),j = 1,2,\cdots
 \begin{align}\label{1.........460}
 \theta _{i+1}(t)=\underset{\alpha _{j}^{i}(t)\in A_i}{\min}\left[ \alpha _{j}^{i}\left( t \right) -\theta _i\left( t \right) \right] +\theta _i\left( t \right) .
 \end{align}
-\par 将上述求得的\(\theta _{i+1}(t)\)代入盘入螺线$\varGamma'$方程就能得到此时\(P_{i+1}(t)\)的极坐标\((\rho _{i+1}(t),\theta _{i+1}(t))\).再利用极坐标与直角坐标之间的转化公式
+\par 将上述求得的\(\theta _{i+1}(t)\)代入盘入螺线$\varGamma'$得到此时\(P_{i+1}(t)\)的极坐标\((\rho _{i+1}(t),\theta _{i+1}(t))\).再利用极坐标与直角坐标之间的转化公式
 \begin{align}\label{1.........461}
 \begin{cases}
 x_{i+1}(t)=\rho _{i+1}(t)\cos \theta _{i+1}(t)\\
@@ -477,9 +478,11 @@ y_{i+1}(t)=\rho _{i+1}(t)\sin \theta _{i+1}(t)\\
 \par 综上,将$P_0$在不同时刻的坐标代入上述四种情形,不断递推就能得到所有把手的位置坐标.
 \\\noindent\textbf{Step 7 计算板凳龙从-100s到100s各把手的速度} 
  \par 由Step 5,Step 6,我们可以得到板凳龙各把手不同时刻在极坐标系下的的位置坐标，因此利用问题一中求得的速度迭代公式
+ \begin{small}
  \begin{align}
     v_i(t) = \sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\frac{|-\theta _{i - 1}+\theta _i\cos(\theta _{i }-\theta _{i-1})+\theta _i\theta _{i - 1}\sin(\theta _{i }-\theta _{i-1})|}{|\theta _i+\theta _i\theta _{i - 1}\sin(\theta _i -\theta _{i-1})-\theta _{i - 1}\cos(\theta _i -\theta _{i-1})|} v_{i - 1}(t), i\in \{1, 2, \cdots, 223\},
     \end{align}
+\end{small}
    \par  因此，令\(i\)依次取\(1, 2, \cdots, 223\),利用Python进行迭代计算,就能得到板凳龙的第\(i(1\leqslant i\leqslant 223)\)节板凳的后把手中心在第\(t\)秒时的速度\(v_i(t)\).
 再令\(t\)依次取$(-100, -99, \cdots, 100)$,反复进行上述操作,就能得到板凳龙板凳龙从-100s到100s各把手的速度.  
 
