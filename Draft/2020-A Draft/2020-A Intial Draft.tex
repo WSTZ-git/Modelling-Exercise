@@ -1,0 +1,154 @@
+\documentclass[lang=cn,newtx,10pt,scheme=chinese]{../../Template/elegantbook}
+
+\title{Intial Draft}
+\subtitle{空}
+
+\author{邹文杰}
+\institute{无}
+\date{2024/10/25}
+\version{ElegantBook-4.5}
+\bioinfo{自定义}{信息}
+
+\extrainfo{宠辱不惊,闲看庭前花开花落；\\去留无意,漫随天外云卷云舒。}
+
+\setcounter{tocdepth}{3}
+
+\logo{logo-blue.png}
+\cover{cover.png}
+
+% 本文档额外使用的宏包和命令
+\usepackage{../../Styles/mystyle-cumcmthesis}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{问题一}
+
+常物体、无内热源、稳态、一维导热问题。由于温区之间的间隙只考虑与之相邻的温区对其的影响，因此可以建立一维热传导方程：$\frac{\mathrm{d}^2T}{\mathrm{d}x^2}=0$（实际上，就是一维Laplace方程）。两次积分后解得：$T(x)=C_1x+C_2$。再将各个温区的初值条件代入即得：
+\begin{align*}
+T(x) &\equiv T_{1\sim 5}, &x &\in [0,5l_0 + 4d_0]\\
+T(x) &= \frac{T_6 - T_{1\sim 5}}{d_0}x + T_{1\sim 5} - \frac{5l_0 + 4d_0}{d_0}(T_6 - T_{1\sim 5}), &x &\in [5l_0 + 4d_0,5l_0 + 5d_0]\\
+T(x) &\equiv T_6, &x &\in [5l_0 + 5d_0,6l_0 + 5d_0]\\
+T(x) &= \frac{T_7 - T_6}{d_0}x + T_6 - \frac{6l_0 + 5d_0}{d_0}(T_7 - T_6), &x &\in [6l_0 + 5d_0,6l_0 + 6d_0]\\
+T(x) &\equiv T_7, &x &\in [6l_0 + 6d_0,7l_0 + 6d_0]\\
+T(x) &= \frac{T_{8\sim 9} - T_7}{d_0}x + T_7 - \frac{7l_0 + 6d_0}{d_0}(T_{8\sim 9} - T_7), &x &\in [7l_0 + 6d_0,7l_0 + 7d_0]\\
+T(x) &\equiv T_{8\sim 9}, &x &\in [7l_0 + 7d_0,9l_0 + 8d_0]\\
+T(x) &= \frac{T_{10\sim 11} - T_{8\sim 9}}{d_0}x + T_{8\sim 9} - \frac{9l_0 + 8d_0}{d_0}(T_{10\sim 11} - T_{8\sim 9}), &x &\in [9l_0 + 8d_0,9l_0 + 9d_0]\\
+T(x) &\equiv T_{10\sim 11}, &x &\in [9l_0 + 9d_0,11l_0 + 10d_0]
+\end{align*}
+由此可得传送带各位置达到稳态时的温度分布$T_{\infty}(x)=T_{\infty}(v_0t)$。
+
+因为金属板与空气的传热(对流)系数$h$一般在$5\sim 500\mathrm{W}/(\mathrm{m}^2\cdot\mathrm{K})$内，金属的导热系数$\lambda$一般在$100\mathrm{W}/(\mathrm{m}^2\cdot\mathrm{K})$左右，而厚度$2\delta$很小，所以$Bi=\frac{\delta h}{\lambda}\ll 0.1$，因此可以用集中参数法（即可以将物体内部温度分布始终看作均匀）。
+
+因为题目只给了金属板厚度$2\delta$，所以我们忽略水平方向的热对流，只考虑垂直于金属板方向的热对流对金属板温度的影响。根据对称性，我们只须考虑金属板上半部分的热对流即可。
+
+垂直于金属板建立一维坐标系,垂直金属板向上为正方向.
+
+建立PDE：
+\begin{align*}
+\frac{\partial T(x,t)}{\partial t}=a\frac{\partial ^2T(x,t)}{\partial x^2}(0<x<\delta,t>0)
+\end{align*}
+其中$a=\frac{\lambda}{\rho c}$.$\rho$为金属板密度,$c$为金属板热容.记$A=\rho c$,则$a=\frac{\lambda}{A}.$
+边界(初值)条件（热传导方程第三边界条件）:
+\begin{align*}
+&T(x,0)=T_0(=25^{\circ}\mathrm{C})(0\leqslant x\leqslant \delta)
+\\
+&\text{对称边界条件：}\frac{\partial T(x,t)}{\partial x}\Big|_{x = 0}=0
+\\
+&\text{对流边界条件：}h(T(\delta,t) - T_{\infty}(v_0t)) = -\lambda\frac{\partial T(x,t)}{\partial x}\Big|_{x = \delta}
+\end{align*}
+引入过余温度：
+$\theta(x,t)=T(x,t)-T_{\infty}(v_0t)$
+原方程可化为：
+\begin{align*}
+&\frac{\partial \theta(x,t)}{\partial t}=a\frac{\partial ^2\theta(x,t)}{\partial x^2}(0<x<\delta,t>0)\\
+&\theta_0(t)=\theta(x,0)=T(x,0)-T_{\infty}(v_0t)=T_0-T_{\infty}(v_0t)\\
+&\frac{\partial \theta(x,t)}{\partial x}\Big|_{x = 0}=0\\
+&h\theta(\delta,t)=-\lambda\frac{\partial \theta(x,t)}{\partial x}\Big|_{x = \delta}
+\end{align*}
+于是利用PDE理论可得到解析解：
+\begin{align}\label{1.1}
+\frac{\theta(\eta,t)}{\theta_0(t)}=\sum_{n = 1}^{\infty}{C_n\exp(-\mu_{n}^{2}F_O)\cos(\mu_n\eta)}
+\end{align}
+其中各变量和参数如下：
+\begin{align*}
+&\theta(x,t)=T(x,t)-T_{\infty}(v_0t)\\
+&\theta_0(t)=\theta(x,0)=T(x,0)-T_{\infty}(v_0t)=T_0-T_{\infty}(v_0t)\\
+&C_n=\frac{2\sin(\mu_n)}{\mu_n+\cos(\mu_n)\sin(\mu_n)}\\
+&\tan(\mu_n)=\frac{Bi}{\mu_n},n = 1,2,\cdots\\
+&\eta=\frac{x}{\delta},F_O=\frac{at}{\delta ^2},Bi=\frac{h\delta}{\lambda}
+\end{align*}
+
+因此只需用最小二乘法估计参数$a,\lambda,h$即可.
+\begin{align*}
+\left( \widehat{A},\widehat{\lambda },\widehat{h} \right) =\underset{A,\lambda ,h}{\mathrm{arg}\min}\left( T\left( A,\lambda ,h,\delta,t \right) -T\left( \delta,t \right) \right) 
+\end{align*}
+
+假设空气是低速(静止)空气,则实际上,空气与金属板的对流系数$h$会只随着温差的改变而改变.
+根据传热学公式可知,当我们只考虑热对流时,根据自然对流系数的经验公式就有
+\begin{align*}
+&h=\frac{\lambda \cdot Nu}{\delta}
+\\
+&Nu=B \cdot \left( Gr\cdot Pr \right) ^{m},B=1.076,m=\frac{1}{6}
+\\
+&Gr=\frac{g\left| T\left( \delta,t \right) -T_{\infty}\left( t \right) \right|\delta ^4}{T_fv^2}
+\\
+&T_f=\frac{T\left( \delta,t \right) +T_{\infty}\left( t \right)}{2}
+\\
+&10^4<Gr\cdot Pr<10^9
+\end{align*}
+其中$v,Pr$均为常数.从而$h$实际上是一个随时间变化的变量.将上式代入\eqref{1.1}式得
+\begin{align*}
+&\frac{T(\eta ,t)-T_{\infty}\left( v_0t \right)}{T_0-T_{\infty}\left( v_0t \right)}=\sum_{n=1}^{\infty}{C_n\exp\mathrm{(}-\mu _{n}^{2}F_O)\cos\mathrm{(}\mu _n\eta )}
+\\
+&\Rightarrow T(\eta ,t)=T_{\infty}\left( v_0t \right) +\left( T_0-T_{\infty}\left( v_0t \right) \right) \sum_{n=1}^{\infty}{C_n\exp\mathrm{(}-\mu _{n}^{2}F_O)\cos\mathrm{(}\mu _n\eta )}
+\end{align*}
+其中各变量和参数如下:
+\begin{align*}
+&C_n=\frac{2\sin\mathrm{(}\mu _n)}{\mu _n+\cos\mathrm{(}\mu _n)\sin\mathrm{(}\mu _n)}
+\\
+&\tan\mathrm{(}\mu _n)=\frac{Bi}{\mu _n},n=1,2,\cdots 
+\\
+&\eta =\frac{x}{\delta},F_O=\frac{at}{\delta ^2},Bi=\frac{h\delta}{\lambda}=Nu
+\\
+&Nu=B \cdot \left( Gr\cdot Pr \right) ^{m},B=1.076,m=\frac{1}{6}
+\\
+&Gr=\frac{g\left| T\left( \delta,t \right) -T_{\infty}\left( t \right) \right|\delta ^4}{T_fv^2}
+\\
+&T_f=\frac{T\left( \delta,t \right) +T_{\infty}\left( t \right)}{2}
+\\
+&10^4<Gr\cdot Pr<10^9
+\end{align*}
+
+于是我们根据题目给的一组数据,利用最小二乘法估计的参数应该为$a,\lambda,v,Pr$,故
+\begin{align*}
+&\left( \widehat{a},\widehat{\lambda },\widehat{v},\widehat{Pr} \right) =\underset{a,\lambda ,v,Pr}{\mathrm{arg}\min}\left( T\left( a,\lambda ,v,Pr,\delta,t \right) -T\left( \delta,t \right) \right) 
+\\
+&10^4<Gr\cdot Pr<10^9
+\end{align*}
+计算得到参数$a,\lambda,v,Pr$的最优值,即拟合优度$R^2$最接近1的取值.再将最优参数代入\eqref{1.1}得到炉温曲线.
+
+后续三问就是分别做单目标优化而已,后续的模型建立不难,重点是模型求解的算法.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
