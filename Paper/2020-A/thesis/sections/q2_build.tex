@@ -4,6 +4,68 @@
 \begin{document}
   \todo[color=green!30]{完成问题二模型的建立(sections/q2\_build)}
  
- 
+\noindent \textbf{step 1 目标函数}
+ \par 根据题目要求，我们需要找到传送带的最大过炉速度，因此我们令速度最大作为目标函数
+ \begin{align}\label{6.1}
+  \max\text{\ }v
+ \end{align}
 
+ \noindent \textbf{step 2 约束条件}
+    \par  由题目给定的制程条件，可以得知：
+  \begin{itemize}
+    \item 温度曲线斜率的绝对值最高为$3°\text{C/}s$，最低为$0°\text{C/}s$，即
+    \begin{align}\label{6.2}
+      0\leq\left|\frac{\mathrm{d}T(0,t)}{\mathrm{d}t}\right|\leq 3
+    \end{align}
+    \item 温度上升过程中，在$150^{\circ}C\sim190^{\circ}C$的时间最高值为$120s$，最低值为$60s$，即
+   \begin{align}\label{6.3}
+    60\leq\Delta t\{ 150^{\circ}C\leq T\leq190^{\circ}C\}\leq120
+   \end{align}
+   \item 温度大于$217^{\circ}C$的时间最大为$120s$，最小为$60s$，即
+   \begin{align}\label{6.5}
+    40\leq\Delta t\{T > 217^{\circ}C\}\leq90 
+   \end{align}
+    \item 峰值温度最高值为$250^{\circ}C$，最低值为$240^{\circ}C$，即
+    \begin{align}\label{6.4}
+      240\leq\max T(0,t)\leq250
+    \end{align}
+    \item 传送带的过炉速度调节范围为$65\sim100 cm/min$，即
+    \begin{align}\label{6.6}
+      65\leq v\leq100
+    \end{align}
+  \end{itemize}
+  \par 综上所述，约束条件方程组为
+  \begin{align}\label{6.7}
+    \left\{\begin{array}{l}
+      0\leq\left|\frac{\mathrm{d}T(0,t)}{\mathrm{d}t}\right|\leq 3
+    \\ 
+      60\leq\Delta t\{ 150^{\circ}C\leq T(0，t)\leq190^{\circ}C\}\leq120
+    \\
+      40\leq\Delta t\{T(0，t) > 217^{\circ}C\}\leq90 
+    \\
+      240\leq\max T(0，t)\leq250
+    \\
+      65\leq v\leq100
+    \end{array} \right.      
+  \end{align}
+  \noindent \textbf{step 3 模型建立}
+  \par 根据以上讨论的目标函数与约束条件，可以建立模型为
+  \begin{align}
+\begin{array}{c}
+	\max\text{\ }v\\
+	\left\{ \begin{array}{l}
+	0\leq \left| \frac{\text{d}T\left( 0,t \right)}{\text{d}t} \right|\leq 3\\
+	60\leq \Delta t\{150^{\circ}C\leq T\left( 0，t \right) \leq 190^{\circ}C\}\leq 120\\
+	40\leq \Delta t\{T\left( 0，t \right) >217^{\circ}C\}\leq 90\\
+	240\leq \max T\left( 0，t \right) \leq 250\\
+	65\leq v\leq 100\\
+	h\theta \left( \delta ,t \right) =-\lambda \left. \frac{\partial \theta \left( y,t \right)}{\partial y} \right|_{y=\delta}\\
+	\left. \frac{\partial \theta \left( y,t \right)}{\partial y} \right|_{y=0}=0\\
+	T\left( y,0 \right) =25^{\circ}\text{C\,\,}\left( 0\leq y\leq \delta \right)\\
+	\frac{\partial \theta \left( y,t \right)}{\partial t}=a\frac{\partial ^2\theta \left( y,t \right)}{\partial y^2}\,\,\left( 0<y<\delta ,t>0 \right)\\
+\end{array} \right.\\
+\end{array}
+  \end{align}
+  \par 我们可以根据上述模型确定传送带过炉速度的范围，取范围的最大值，即传送带的最大过炉速度。
+ 
 \end{document}

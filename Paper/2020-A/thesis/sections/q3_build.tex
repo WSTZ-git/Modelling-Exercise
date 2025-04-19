@@ -3,6 +3,77 @@
 
 \begin{document}
   \todo[color=green!40]{完成问题三模型的建立(sections/q3\_build)}
-  
-
+  \noindent \textbf{step 1 目标函数}
+  \par 根据题目给定的条件，即理想的炉温曲线应使超过\(217^{\circ}C\)到峰值温度所覆盖的面积最小。 因此，我们定义目标函数为超过$217^{\circ}C$到峰值温度所覆盖的面积$S$，通过积分计算该面积，即
+  \begin{align}\label{8.1}
+    S=\int_{t_1}^{t_2}(T(0,t)-217)dt 
+  \end{align}
+ \par 其中,$t_1$为温度超过$217^{\circ}C$的时刻即$\min \left\{ t|T\ge 217 \right\} $，$t_2$为达到峰值温度的时刻即$max T(0，t)$，$T(0,t)$为焊接区域中心温度随时间的变化函数。
+ \par 因为根据题意设定目标是通过变化各温区的设定温度和传送带的过炉速度，而冷却区温度恒定，因此使该面积最小化，即
+ \begin{align}\label{8.2}
+  \underset{T_1,T_2,T_3,T_4,v}{min}\,\,S
+ \end{align}
+ \noindent \textbf{step 2 约束条件}
+\par 通过变化$T_1,T_2,T_3,T_4,v$,即可变化回焊炉内的空气温度，从而改变炉温曲线，因此
+\begin{align}
+  \min\text{\,\,}S=S\left( T_1,T_2,T_3,T_4,v \right)  
+\end{align}
+\par  根据题目给定条件，可以得知：
+  \begin{itemize}
+    \item  各小温区设定温度可以进行$\pm10^{\circ}C$范围内的调整。调整时要求小温区$1\sim5$中的温度保持一致，小温区$8\sim9$中的温度保持一致,即
+    \begin{align}
+      165 &\leq T_1 \leq 185 \label{8.3} \\
+      185 &\leq T_2 \leq 205  \label{8.4}\\
+      225 &\leq T_3 \leq 245 \label{8.5}\\
+      245 &\leq T_4 \leq 265 \label{8.6}
+      \end{align}
+    \item 由于传送带的过炉速度调节范围为$65 \sim 100 cm/min$,则
+    \begin{align}\label{8.7}
+      65\leq v\leq100
+    \end{align}
+  \end{itemize}
+  \par 又因为约束条件满足制程界限，因此约束条件方程组为
+  \begin{align}\label{8.8}
+    \left\{\begin{array}{l}
+      165 \leq T_1 \leq 185 
+      \\
+      185 \leq T_2 \leq 205
+      \\
+      225 \leq T_3 \leq 245   
+    \\
+    245 \leq T_4 \leq 265
+    \\
+      0\leq\left|\frac{\mathrm{d}T(0,t)}{\mathrm{d}t}\right|\leq 3
+    \\ 
+      60\leq\Delta t\{ 150^{\circ}C\leq T(0,t)\leq190^{\circ}C\}\leq120
+    \\
+      40\leq\Delta t\{T(0,t) > 217^{\circ}C\}\leq90 
+    \\
+      240\leq\max T(0，t)\leq250
+    \\
+      65\leq v\leq100
+    \end{array} \right.      
+  \end{align}
+  \noindent \textbf{step 3 模型建立}
+  \par 根据以上讨论的目标函数与约束条件，可以建立模型为
+ \begin{align}
+  \begin{array}{c}
+    \underset{T_1,T_2,T_3,T_4,v}{min}\,\,S\\
+    \left\{ \begin{array}{l}
+    S=\int_{t_1}^{t_2}{\left( T\left( 0,t \right) -217 \right)}dt\\
+    t_1=\min \left\{ t|T\ge 217 \right\}\\
+    t_2=maxT\left( 0，t \right)\\
+    165\leq T_1\leq 185\\
+    185\leq T_2\leq 205\\
+    225\leq T_3\leq 245\\
+    245\leq T_4\leq 265\\
+    0\leq \left| \frac{\text{d}T\left( 0,t \right)}{\text{d}t} \right|\leq 3\\
+    60\leq \Delta t\{150^{\circ}C\leq T\left( 0,t \right) \leq 190^{\circ}C\}\leq 120\\
+    40\leq \Delta t\{T\left( 0,t \right) >217^{\circ}C\}\leq 90\\
+    240\leq \max T\left( 0，t \right) \leq 250\\
+    65\leq v\leq 100\\
+  \end{array} \right.\\
+  \end{array}
+ \end{align} 
+ \par 我们可以根据上述模型确定面积$S$的范围，取范围的最小值，即可确定各温区的设定温度和传送带的锅炉速度以及相应的面积。
   \end{document}

@@ -2,13 +2,26 @@
 \graphicspath{{figures/}{../figures/}}
 
 \begin{document}
-% \todo[inline,color=green!40]{完成符号说明
-%   (filename: sections/notations)}
-
-
-\todo[color=green!30]{引用符号可以直接\gls{e},点击会跳转到符号表,定义在section/notations.tex 中}
-
-% 符号表
-
+\begin{table}[H]
+    \centering·
+    \renewcommand{\arrayrulewidth}{2.0pt}
+    \begin{tabular}{ccc}
+   \hline
+    符号 & 说明 & 单位  \\ 
+    \hline
+      $x$                 & 回焊炉内的点与炉前区域左边边缘之间的距离                   & $ cm$                      \\
+    $T$                   & 在回焊炉内$x$点处的空气温度                  &  $°\text{C}$                   \\
+    $v_0$                    & 传送带过炉速度          & $cm/min$                      \\
+$t$      & 传送带过炉时间                  & $min $                     \\
+ $\delta$                      & 焊接区域一半厚度                     & $mm $              \\
+ $h$                  & 电路板表面传热系数           & $W/\left( m^2\cdot K \right) $                     \\
+$a$             &   热扩散率     & $m^2/s$                     \\
+$\lambda$                    & 导热系数        & $W/\left( m\cdot K \right) $                     \\
+$S$                   & 炉温曲线中超过$217^{\circ}C$到峰值温度所覆盖的面积$S$                     & $°\text{C}\cdot s$                      \\
+  $R$                     & 调头区域半径                     & m                      \\
+    $r$                      & 后一段调头圆弧半径                      & m                       \\
+   \hline
+    \end{tabular}
+    \end{table}
 
 \end{document}
