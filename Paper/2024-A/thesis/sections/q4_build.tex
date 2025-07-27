@@ -56,7 +56,7 @@ L=L_1+L_2=\theta r+\theta ar=\left( 1+a \right) \theta r=\frac{\left( \pi -2\alp
 \par 由上式可知$L$与$a$无关,因此不可通过改变前后两段调头圆弧半径比例减小调头曲线长度.
 
 \noindent\textbf{Step 3 调头曲线长度} 
-\par 由Step 2可知调头曲线长度与$MN$以及盘入螺线在M处的斜率$l_M$有关，因此我们需要确定$M$,$N$的位置，记它们的极坐标分别为$(\rho_M,\theta_M)$和$(\rho_N,\theta_N)$。由图2可知，$M$与$N$分别为盘入螺线，盘出螺线与调头空间的交点。
+\par 由Step 2可知调头曲线长度与$MN$以及盘入螺线在M处的斜率$k_{l_M}$有关，因此我们需要确定$M$,$N$的位置，记它们的极坐标分别为$(\rho_M,\theta_M)$和$(\rho_N,\theta_N)$。由图2可知，$M$与$N$分别为盘入螺线，盘出螺线与调头空间的交点。
 \par 其中， 盘入螺线\(\varGamma\)的极坐标方程和直角坐标方程分别为
 \begin{gather}
     \varGamma :\rho =\frac{d_0}{2\pi}\theta.\label{7.3.1}
@@ -118,9 +118,9 @@ L=L_1+L_2=\theta r+\theta ar=\left( 1+a \right) \theta r=\frac{\left( \pi -2\alp
 \]
 \par 于是就有
 \begin{align}\label{1.........45}
-    \k_{l_M}=\frac{\mathrm{d}y}{dx}\mid_{M}^{}=\frac{\mathrm{d}y/\mathrm{d}\theta}{dx/\mathrm{d}\theta}\mid_{M}^{}=\frac{\sin \theta +\theta \cos \theta}{\cos \theta -\theta \sin \theta}\mid_{\theta =\theta _M}^{}=\frac{\sin\frac{2\pi R}{d_0}+\frac{2\pi R}{d_0}\cos\frac{2\pi R}{d_0}}{\cos\frac{2\pi R}{d_0}-\frac{2\pi R}{d_0}\sin\frac{2\pi R}{d_0}}
+    \text{k}_{l_M}=\frac{\text{d}y}{dx}\mid _{M}^{}=\frac{\text{d}y/\text{d}\theta}{dx/\text{d}\theta}\mid _{M}^{}=\frac{\sin \theta +\theta \cos \theta}{\cos \theta -\theta \sin \theta}\mid _{\theta =\theta _M}^{}=\frac{\sin \frac{2\pi R}{d_0}+\frac{2\pi R}{d_0}\cos \frac{2\pi R}{d_0}}{\cos \frac{2\pi R}{d_0}-\frac{2\pi R}{d_0}\sin \frac{2\pi R}{d_0}}
 \end{align}
-\par 所以将\eqref{7.3.4}\eqref{7.4.3}代入可得
+\par 所以将\eqref{7.3.4} \eqref{1.........45}代入可得
 \begin{align}\label{1.........46}
  L=.
     \end{align}
@@ -285,26 +285,41 @@ L=L_1+L_2=\theta r+\theta ar=\left( 1+a \right) \theta r=\frac{\left( \pi -2\alp
 
 \par 当$t\in[-100,100]$时,板凳龙部分把手位于调头曲线上,此时需要对板凳龙的运动轨迹分段处理,我们将板凳龙的运动轨迹分为盘入螺线$\varGamma$、前一段调头曲线$\wideparen{MG}$、后一段调头曲线$\wideparen{GN}$、盘出螺线$\varGamma'$四段.
 然后我们需要根据前一个把手的位置判断与其相邻的后一个把手所在的轨迹曲线,进而递推解出后一个把手的位置.
+
+\par 已知 \( O_1(x_{O_1}, y_{O_1}) \) 与 \( M(x_M, y_M) \) 的直角坐标，依据直线的两点式方程公式
+\begin{align}
+  \frac{y - y_1}{y_2 - y_1} = \frac{x - x_1}{x_2 - x_1}
+\end{align}
+\par 联立公式\eqref{1.........42}\eqref{1.........52}，得到 \( O_1M \) 直线方程 ：  
+\begin{align}
+    (y - y_{0_1})(x_M - x_{0_1}) - (y_M - y_{0_1})(x - x_{0_1}) = 0
+\end{align}
+
 \textbf{
 \begin{enumerate}
-   \item  情形1：板凳龙在盘入螺线$\varGamma$上
-\end{enumerate}
+    \item  判断$P_i$在直线$MO_1$的上侧还是下侧
+ \end{enumerate}
 }
-\par 当第$t$秒,$P_i(0\leq i\leq 222)$在盘入螺线$\varGamma$上时,利用问题1的模型求解$P_{i+1}$的直角坐标即可.
+
+\par (1)当第 $t$ 秒,满足
+\begin{align}
+(y_{Pi} - y_0)(x_M - x_0) - (y_M - y_0)(x_{Pi} - x_0) \leq 0\
+\end{align}
+\par 则\(P_i\)在直线\(OM\)的下侧或直线上，即$P_i(0\leq i\leq 222)$在盘入螺线$\varGamma$上时,利用问题1的模型求解$P_{i+1}$的直角坐标即可.
+
+\par (2)当第$t$秒,若
+\begin{align}
+(y_{Pi} - y_0)(x_M - x_0) - (y_M - y_0)(x_{Pi} - x_0)>0\
+\end{align}
+\par 则\(P_i\)在直线\(OM\)的上侧,进行下一步2.
 \textbf{
 \begin{enumerate}[start=2]
-    \item  情形2：板凳龙在调头曲线$\wideparen{MG}$上 \label{7.6.1}
+    \item  判断\(\angle P_{i}(t)O_{1}M\)大小
  \end{enumerate}
 }
 \begin{itemize}
 \item \textbf{引入判断角$\beta_1$}
 \end{itemize}
-
-
-
-
-
-
 \par 当第$t$秒$P_i(0\leq i\leq 222)$在$\wideparen{MG}$上时,引入判断角.若$P_{i+1}$与$M$点重合,则定义此时$\angle P_iO_1P_{i+1}=\beta_1$,称$\beta_1$为$\wideparen{MG}$判断角. 几何示意图如下:
 \begin{figure}[H]
     \centering
@@ -332,13 +347,13 @@ k_{O_1M}=\frac{y_M-y_{O_1}}{x_M-x_{O_1}},k_{O_1P_i\left( t \right)}=\frac{y_{P_i
 \end{gather}
 \par 从而
 \begin{align}\label{1.........445}
-\angle P_i(t)O_1M= \mathrm{arc}\tan \frac{\frac{y_M-y_{O_1}}{x_M-x_{O_1}}-\frac{y_{P_i\left( t \right)}-y_{O_1}}{x_{P_i\left( t \right)}-x_{O_1}}}{1+\frac{y_M-y_{O_1}}{x_M-x_{O_1}}\cdot \frac{y_{P_i\left( t \right)}-y_{O_1}}{x_{P_i\left( t \right)}-x_{O_1}}}\in[0,\pi].
+\angle P_i(t)O_1M= \mathrm{arc}\tan \frac{\frac{y_M-y_{O_1}}{x_M-x_{O_1}}-\frac{y_{P_i\left( t \right)}-y_{O_1}}{x_{P_i\left( t \right)}-x_{O_1}}}{1+\frac{y_M-y_{O_1}}{x_M-x_{O_1}}\cdot \frac{y_{P_i\left( t \right)}-y_{O_1}}{x_{P_i\left( t \right)}-x_{O_1}}}.
 \end{align}
 \begin{itemize}
     \item \textbf{判断并计算$P_{i+1}$的位置}\label{subsubsection4.4.1.2}
 \end{itemize}
-    \par 在得到\(\angle P_{i}(t)O_{1}M\) 和\(\beta_{1}\) 后，我们通过比较它们的大小来判断 \(P_{i + 1}\) 的位置.
-    \par 若\(\angle P_{i}(t)O_{1}M \geq \beta_{1}\) ，根据几何关系可知，\(P_{i + 1}\) 一定位于圆弧\(\wideparen{MG}\) 上。此时，我们可以根据以下两个方程来确定 \(P_{i + 1}\) 的坐标：
+    \par \(P_i\)在直线\(OM\)的上侧时，在得到\(\angle P_{i}(t)O_{1}M\) 和\(\beta_{1}\) 后，我们通过比较它们的大小来判断 \(P_{i + 1}\) 的位置.
+    \par (1) 若$ \angle P_i(t)O_1M\in \left[ \beta _1,\theta \right]$ ,则\(P_{i + 1}\) 一定位于圆弧\(\wideparen{MG}\) 上.此时，我们可以根据以下两个方程来确定 \(P_{i + 1}\) 的坐标：
     \begin{align}\label{1.........446}
         \left\{ \begin{array}{c}
         \left( x_{i+1}-x_i \right) ^2+\left( y_{i+1}-y_i \right) ^2=l_{i+1}^{2}\\
@@ -346,25 +361,25 @@ k_{O_1M}=\frac{y_M-y_{O_1}}{x_M-x_{O_1}},k_{O_1P_i\left( t \right)}=\frac{y_{P_i
         \end{array} \right. .
         \end{align}
 \par 联立这两个方程求解，会得到\((x_{i + 1}, y_{i + 1})\) 的多个可能解。但结合题意可知，在这些解中，\(x_{i + 1}\) 的真实解是其中最小的一个，由此我们就能确定 \(P_{i + 1}\) 的直角坐标\((x_{i + 1}, y_{i + 1})\) .
-\par 若$\angle P_i(t)O_1M< \beta_1$,则$P_{i+1}$一定位于盘入螺线$\varGamma$上.此时，我们利用问题1中建立的模型，按照相应的计算方法解出\((x_{i + 1}, y_{i + 1})\) 即可.
-
+\par (2)若$\angle P_i(t)O_1M< \beta_1$,则$P_{i+1}$一定位于盘入螺线$\varGamma$上.此时，我们利用问题1中建立的模型，按照相应的计算方法解出\((x_{i + 1}, y_{i + 1})\) 即可.
+\par (3)若$\angle P_i(t)O_1M>\theta $,则进行下一步3  .
 
 \textbf{
-\begin{enumerate}[start=2]
-    \item  情形3：板凳龙在调头曲线$\wideparen{GN}$上
+\begin{enumerate}[start=3]
+    \item  判断$\angle P_{i}(t)O_2G$大小
  \end{enumerate}
 }
 \begin{itemize}
 \item \textbf{引入判断角$\beta_2$}
 \end{itemize}
 
-\par 当第$t$秒$P_i(0\leq i\leq 222)$在$\wideparen{GN}$上时,引入判断角.若$P_{i+1}$与$G$点重合,则定义此时$\angle P_iO_1P_{i+1}=\beta_2$,称$\beta_2$为$\wideparen{GN}$判断角. 几何示意图如下:
+\par 当第$t$秒$P_i(0\leq i\leq 222)$在$\wideparen{GN}$上时,引入判断角.若$P_{i+1}$与$G$点重合,则定义此时$\angle P_iO_2P_{i+1}=\beta_2$,称$\beta_2$为$\wideparen{GN}$判断角. 几何示意图如下:
 \begin{figure}[H]
     \centering
     \includegraphics[width=.6\textwidth]{1}
     \caption{几何示意图2}
 \end{figure}
-\par 在由点$ P_{i}、O_{1} $和 $P_{i + 1} $构成的三角形中，根据余弦定理有
+\par 在由点$ P_{i}$、$O_{2} $和 $P_{i + 1} $构成的三角形中，根据余弦定理有
 \begin{align}\label{1.........448}
 l_{i+1}^{2}=\left| \overrightarrow{P_iP_{i+1}} \right|^2=2r^2-2r^2\cos \beta _2.
 \end{align}
@@ -385,14 +400,14 @@ k_{O_1O_2}=\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}},k_{O_2P_i\left( t \right)}=\f
 \end{gather}
 \par 从而
 \begin{align}\label{1.........451}
-\angle P_i(t)O_2G=\mathrm{arc}\tan \frac{\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}}-\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}{1+\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}}\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}\in[0,\pi].
+\angle P_i(t)O_2G=\mathrm{arc}\tan \frac{\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}}-\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}{1+\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}}\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}.
 \end{align}
 \begin{itemize}
-    \item \textbf{判断并计算$P_{i+1}$的位置}
+    \item \textbf{判断$\angle P_{i}(t)O_{2}G $并计算$P_{i+1}$的位置}
 \end{itemize}
 \par 在得到$\angle P_{i}(t)O_{2}G $和$\beta_{2} $后，通过比较它们的大小来判断 $P_{i + 1} $的位置。
- 
-\par 若$\angle P_{i}(t)O_{2}G \geq \beta_{2}$ ，根据几何关系可知，$P_{i + 1}$ 一定位于圆弧$\wideparen{GN} $上。此时，我们可以根据以下两个方程来确定 $P_{i + 1} $的坐标
+ \par (1)若$\angle P_{i}(t)O_{2}G \in \left[ \beta _2,\theta \right]$ ,
+根据几何关系可知，$P_{i + 1}$ 一定位于圆弧$\wideparen{GN} $上。此时，我们可以根据以下两个方程来确定 $P_{i + 1} $的坐标
 \begin{align}\label{1.........452}
 \left\{ \begin{array}{c}
 \left( x_{i+1}-x_i \right) ^2+\left( y_{i+1}-y_i \right) ^2=l_{i+1}^{2}\\
@@ -401,18 +416,18 @@ k_{O_1O_2}=\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}},k_{O_2P_i\left( t \right)}=\f
 \end{align}
  
 \par 联立这两个方程求解，会得到$(x_{i + 1}, y_{i + 1}) $的多个可能解。由题意可知，$x_{i + 1} $的真实解是其中最小的一个。通过这种方式，我们确定了$P_{i + 1} $的直角坐标$(x_{i + 1}, y_{i + 1})$ 。
-\par 若$\angle P_i(t)O_2G< \beta_2$,则$P_{i+1}$一定位于圆弧$\wideparen{MG}$上.从而利用情形二解出$(x_{i+1},y_{i+1})$即可.
-
+\par (2)若$\angle P_i(t)O_2G< \beta_2$,则$P_{i+1}$一定位于圆弧$\wideparen{MG}$上.从而根据2中的情形(1)解出$(x_{i+1},y_{i+1})$即可.
+\par (3) 若$\angle P_i(t)O_2G>\theta$ ,则进行下一步 4 .
 \textbf{
-\begin{enumerate}[start=2]
-    \item  情形3：板凳龙在盘出螺线$\varGamma'$上
+\begin{enumerate}[start=4]
+    \item  判断$\angle P_{i}(t)O_2N$大小
  \end{enumerate}
 }
 \begin{itemize}
     \item \textbf{引入判断角$\beta_3$}
     \end{itemize}
 
-\par 当第$t$秒$P_i(0\leq i\leq 222)$在$、\varGamma'$上时,引入判断角.若$P_{i+1}$与$N$点重合,则定义此时$\angle P_iO_2N=\beta_3$,称$\beta_3$为$\varGamma'$判断角. 几何示意图如下:
+\par 当第$t$秒$P_i(0\leq i\leq 222)$在$\varGamma'$上时,引入判断角.若$P_{i+1}$与$N$点重合,则定义此时$\angle P_iO_2N=\beta_3$,称$\beta_3$为$\varGamma'$判断角. 几何示意图如下:
 \begin{figure}[H]
     \centering
     \includegraphics[width=.6\textwidth]{2}
@@ -442,14 +457,14 @@ k_{O_2N}=\frac{y_{O_2}-y_N}{x_{O_2}-x_N},k_{O_2P_i\left( t \right)}=\frac{y_{P_i
 \end{gather}
 从而
 \begin{align}\label{1.........457}
-\angle P_i(t)O_2N=\mathrm{arc}\tan \frac{\frac{y_{O_2}-y_N}{x_{O_2}-x_N}-\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}{1+\frac{y_{O_2}-y_N}{x_{O_2}-x_N}\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}\in \left[ 0,\pi \right] .
+\angle P_i(t)O_2N=\mathrm{arc}\tan \frac{\frac{y_{O_2}-y_N}{x_{O_2}-x_N}-\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}{1+\frac{y_{O_2}-y_N}{x_{O_2}-x_N}\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}} .
 \end{align}
 \begin{itemize}
     \item \textbf{判断并计算$P_{i+1}$的位置}
     \end{itemize}
     \par 在得到$\angle P_{i}(t)O_{2}N$和$\beta_{3}$后，通过比较它们的大小来判断 $P_{i + 1} $的位置。
  
-    \par 若$\angle P_{i}(t)O_{2}N \geq \beta_{3}$，根据几何关系可知，$P_{i + 1}$一定位于盘出螺线$\Gamma'$上。此时，根据盘出螺线的性质以及两把手之间的距离关系，我们可以列出以下方程来确定$ P_{i + 1} $的坐标
+    \par （1）若$\angle P_{i}(t)O_{2}N \geq \beta_{3}$，根据几何关系可知，$P_{i + 1}$一定位于盘出螺线$\Gamma'$上。此时，根据盘出螺线的性质以及两把手之间的距离关系，我们可以列出以下方程来确定$ P_{i + 1} $的坐标
 
     \begin{gather}\label{1.........458}
 l_{i+1}^{2}=|P_i(t)P_{i+1}(t)|^2=(\rho _i(t))^2+(\rho _{i+1}(t))^2-2\rho _i(t)\rho _{i+1}(t)\cos\mathrm{(}\theta _i(t)-\theta _{i+1}(t)),
@@ -473,9 +488,9 @@ y_{i+1}(t)=\rho _{i+1}(t)\sin \theta _{i+1}(t)\\
 \end{align}
 \par 就能得到\(P_{i+1}(t)\)的直角坐标\((x_{i+1}(t),y_{i+1}(t))\).
 
-\par 若$\angle P_i(t)O_2N< \beta_3$,则$P_{i+1}$一定位于圆弧$\wideparen{GN}$上.从而利用情形三解出$(x_{i+1},y_{i+1})$即可.
+\par （2）若$\angle P_i(t)O_2N< \beta_3$,则$P_{i+1}$一定位于圆弧$\wideparen{GN}$上.从而利用3的情形（1）解出$(x_{i+1},y_{i+1})$即可.
 
-\par 综上,将$P_0$在不同时刻的坐标代入上述四种情形,不断递推就能得到所有把手的位置坐标.
+\par 综上,将$P_0$在不同时刻的坐标代入上述四个步骤,不断递推就能得到所有把手的位置坐标.
 \\\noindent\textbf{Step 7 计算板凳龙从-100s到100s各把手的速度} 
  \par 由Step 5,Step 6,我们可以得到板凳龙各把手不同时刻在极坐标系下的的位置坐标，因此利用问题一中求得的速度迭代公式
  \begin{small}
