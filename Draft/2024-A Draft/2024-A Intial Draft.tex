@@ -376,39 +376,37 @@ S:\rho =R,\label{q1}
 \\
 \varGamma:\rho =\frac{d_0}{2\pi}\theta ,\label{q2}
 \\
-\varGamma':\rho =\frac{d_0}{2\pi}\left( \theta +\pi \right) .\label{q3}
+\varGamma':\rho =-\frac{d_0}{2\pi}\theta.\label{q3}
 \end{gather}
 于是分别联立\eqref{q1}\eqref{q2}式与\eqref{q1}\eqref{q3}式可分别解出$M,N$的极坐标,分别记为$(\rho_M,\theta_M)$和$(\rho_N,\theta_N)$,则有
 \begin{gather}\label{14564}
 \begin{cases}
-\rho _M=\\
-\theta _M=\\
-\end{cases}
-\quad,
-\begin{cases}
-\rho _M=\\
-\theta _M=\\
+\rho _M=R\\
+\theta _M=\frac{2\pi R}{d_0}\\
+\end{cases}\quad ,\begin{cases}
+\rho _N=R\\
+\theta _N=-\frac{2\pi R}{d_0}\\
 \end{cases}.
 \end{gather}
 于是就有
 \begin{align}
-k_{MN}=k_{OM}=\tan \theta _M=.\label{c1}
+k_{MN}=k_{OM}=\tan \theta _M=\tan\frac{2\pi R}{d_0}.\label{c1}
 \end{align}
 又因为$\varGamma$与$\varGamma'$的直角坐标方程分别为
 \begin{align}
 \varGamma :\begin{cases}
 x=\frac{d_0}{2\pi}\theta \cos \theta\\
 y=\frac{d_0}{2\pi}\theta \sin \theta\\
-\end{cases},\quad \varGamma ' :\begin{cases}
-x=\frac{d_0}{2\pi}\left( \theta +\pi \right) \cos \theta\\
-y=\frac{d_0}{2\pi}\left( \theta +\pi \right) \sin \theta\\
+\end{cases},\quad \varGamma \prime :\begin{cases}
+x=-\frac{d_0}{2\pi}\theta \cos \theta\\
+y=-\frac{d_0}{2\pi}\theta \sin \theta\\
 \end{cases}
 \end{align}
 因此我们就有
 \begin{gather}
-k_{l_M}=\frac{\mathrm{d}y}{dx}\Big |_{M}^{}=\frac{\mathrm{d}y/\mathrm{d}\theta}{dx/\mathrm{d}\theta}\Big |_{M}^{}=\frac{\sin \theta +\theta \cos \theta}{\cos \theta -\theta \sin \theta}\Big |_{\theta =\theta _M}^{}=,\label{c2}
+k_{l_M}=\frac{\mathrm{d}y}{dx}\Big |_{M}^{}=\frac{\mathrm{d}y/\mathrm{d}\theta}{dx/\mathrm{d}\theta}\Big |_{M}^{}=\frac{\sin \theta +\theta \cos \theta}{\cos \theta -\theta \sin \theta}\Big |_{\theta =\theta _M}^{},\label{c2}
 \\
-k_{l_N}=\frac{\mathrm{d}y}{dx}\Big |_{N}^{}=\frac{\mathrm{d}y/\mathrm{d}\theta}{dx/\mathrm{d}\theta}\Big |_{M}^{}=\frac{\sin \theta +\left( \theta +\pi \right) \cos \theta}{\cos \theta -\left( \theta +\pi \right) \sin \theta}\Big |_{\theta =\theta _N}^{}=.\label{c3}
+k_{l_N}=\frac{\mathrm{d}y}{dx}\Big |_{N}^{}=\frac{\mathrm{d}y/\mathrm{d}\theta}{dx/\mathrm{d}\theta}\Big |_{M}^{}=\frac{\sin \theta +\theta \cos \theta}{\cos \theta -\theta \sin \theta}\Big |_{\theta =\theta _M}^{}=\frac{\sin \theta +\theta \cos \theta}{\cos \theta -\theta \sin \theta}\Big | _{\theta =\theta _N}^{}.\label{c3}
 \end{gather}
 故将\eqref{c1}\eqref{c2}\eqref{c3}代入\eqref{equation-1}计算可得板凳龙的调头曲线长度为
 \begin{align}
@@ -449,13 +447,13 @@ y_G=\frac{y_M+2y_N}{3}=\\
 2R=\left| \overrightarrow{MN} \right|=\left| \overrightarrow{MG} \right|+\left| \overrightarrow{GN} \right|=6r \cos \alpha,
 \\
 \begin{cases}
-\left( x_M-x_{O_1} \right) ^2+\left( y_M-y_{O_1} \right) ^2=2r\\
-\left( x_G-x_{O_1} \right) ^2+\left( y_G-y_{O_1} \right) ^2=2r\\
+\left( x_M-x_{O_1} \right) ^2+\left( y_M-y_{O_1} \right) ^2=4r^2\\
+\left( x_G-x_{O_1} \right) ^2+\left( y_G-y_{O_1} \right) ^2=4r^2\\
 \end{cases},
 \\
 \begin{cases}
-\left( x_N-x_{O_2} \right) ^2+\left( y_N-y_{O_2} \right) ^2=r\\
-\left( x_G-x_{O_2} \right) ^2+\left( y_G-y_{O_2} \right) ^2=r\\
+\left( x_N-x_{O_2} \right) ^2+\left( y_N-y_{O_2} \right) ^2=r^2\\
+\left( x_G-x_{O_2} \right) ^2+\left( y_G-y_{O_2} \right) ^2=r^2\\
 \end{cases}.
 \end{align}
 由上式解得
@@ -533,8 +531,12 @@ v_0\left( t-\frac{L_1}{v_0} \right) =\angle P_0\left( t \right) O_2G\cdot r,
 
 当$t\in[\frac{L}{v_0},100]$时,$P_0$位于盘出螺线$\varGamma'$上时,我们有
 \begin{align}
-v_0\left( t-\frac{L}{v_0} \right) =\int_{P_0\left( t \right) N}{\mathrm{d}s}=\int_{\theta _N}^{\theta _{P_0\left( t \right)}}{\sqrt{\left[ \rho _{\varGamma \prime}\left( \theta \right) \right] ^2+\left[ \rho _{\varGamma \prime}^{\prime}\left( \theta \right) \right] ^2}\mathrm{d}\theta}=\frac{d_0}{2\pi}\int_{\theta _N}^{\theta _{P_0\left( t \right)}}{\sqrt{\left( \theta +\pi \right) ^2+1}\mathrm{d}\theta }.
+v_0\left( t-\frac{L}{v_0} \right) =\int_{P_0\left( t \right) N}{\mathrm{d}s}=\int_{\theta _N}^{\theta _{P_0\left( t \right)}}{\sqrt{\left[ \rho _{\varGamma \prime}\left( \theta \right) \right] ^2+\left[ \rho _{\varGamma \prime}^{\prime}\left( \theta \right) \right] ^2}\mathrm{d}\theta}=\frac{d_0}{2\pi}\int_{\theta _N}^{\theta _{P_0\left( t \right)}}{\sqrt{\left( \theta +1 \right) ^2+1}\mathrm{d}\theta }.
 \end{align}
+即
+\begin{align*}
+v_0\left( t-\frac{L}{v_0} \right) =\frac{d_0}{4\pi}\left[ \theta _{P_0}(t)\sqrt{\left( \theta _{P_0}(t) \right) ^2+1}-\theta _N\sqrt{\theta _{N}^{2}+1}+\ln \frac{\theta _{P_0}(t)+\sqrt{\left( \theta _{P_0}(t) \right) ^2+1}}{\theta _N+\sqrt{\theta _{N}^{2}+1}} \right].
+\end{align*}
 由上式解得$P_0$的位置坐标.
 
 \section{计算板凳龙从-100s到100s各把手的位置}
