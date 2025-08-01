@@ -2,6 +2,7 @@
 \graphicspath{{figures/}{../figures/}}
 
 \begin{document}
+
 \noindent\textbf{Step 1 分析调头区域}
 \par 根据题目要求，舞龙队在调头空间内的运动轨迹大致如下：
 \begin{figure}[H]
@@ -31,11 +32,11 @@
 \end{align}
 \par 设直线$l_M,$ $l_N,$ $O_1M,$ $MN$的斜率分别为$k_{l_M},$ $k_{l_N},$ $k_{O_1M},$ $k_{MN}$,根据两直线夹角斜率公式可得
 \begin{align}\label{1.........36}
-\tan \alpha =\tan \angle NMO_1=\frac{k_{MN}-k_{l_M}}{1+k_{MN}k_{l_M}}.
+\tan \alpha =\tan \angle NMO_1=\frac{k_{MN}-k_{l_{O_1M}}}{1+k_{MN}k_{l_{O_1M}}}.
 \end{align}
 \par 从而
 \begin{align}\label{1.........37}
-\alpha =\left| \mathrm{arc}\tan \frac{k_{MN}-k_{l_M}}{1+k_{MN}k_{l_M}} \right|.
+\alpha =\left| \arctan \frac{k_{MN}-k_{l_{O_1M}}}{1+k_{MN}k_{l_{O_1M}}} \right|.
 \end{align}
 \par 由\(O_1M\parallel O_2N\)，\(\angle MO_1G=\angle NO_2G\) ，\(\angle O_1MG=\angle O_2NG\) ，且\(\vert\overrightarrow{O_1M}\vert = 2\vert\overrightarrow{O_2N}\vert\) ，根据角角边定理可得$\vartriangle MO_1G\cong \vartriangle NO_2G$，由此可得下述线段比例关系
 \begin{align}\label{1.........38}
@@ -51,12 +52,12 @@ r=\frac{R}{\left( 1+a \right) \cos \alpha}.
 \end{align}
 \par 设$\wideparen{MG}$的长度为$L_1$,$\wideparen{GN}$的长度为$L_2$,记$L=L_1+L_2$.于是根据圆弧长度计算公式可得
 \begin{align}\label{equation-1}
-L=L_1+L_2=\theta r+\theta ar=\left( 1+a \right) \theta r=\frac{\left( \pi -2\alpha \right) R}{\cos \alpha}=\frac{\left( \pi -2\left| \mathrm{arc}\tan \frac{k_{MN}-k_{l_M}}{1+k_{MN}k_{l_M}} \right| \right) R}{\cos \left| \mathrm{arc}\tan \frac{k_{MN}-k_{l_M}}{1+k_{MN}k_{l_M}} \right|}.
+L=L_1+L_2=\theta r+\theta ar=\left( 1+a \right) \theta r=\frac{\left( \pi -2\alpha \right) R}{\cos \alpha}=\frac{\left( \pi -2\left| \arctan \frac{k_{MN}-k_{l_{O_1M}}}{1+k_{MN}k_{l_{O_1M}}} \right| \right) R}{\cos \left| \arctan \frac{k_{MN}-k_{l_{O_1M}}}{1+k_{MN}k_{l_{O_1M}}} \right|}.
 \end{align}
 \par 由上式可知$L$与$a$无关,因此不可通过改变前后两段调头圆弧半径比例减小调头曲线长度.
 
 \noindent\textbf{Step 3 调头曲线长度} 
-\par 由Step 2可知调头曲线长度与$MN$以及盘入螺线在M处的斜率$k_{l_M}$有关，因此我们需要确定$M$,$N$的位置，记它们的极坐标分别为$(\rho_M,\theta_M)$和$(\rho_N,\theta_N)$。由图2可知，$M$与$N$分别为盘入螺线，盘出螺线与调头空间的交点。
+\par 由Step 2可知调头曲线长度与$MN$以及盘入螺线在M处的斜率$k_{l_{O_1M}}$有关，因此我们需要确定$M$,$N$的位置，记它们的极坐标分别为$(\rho_M,\theta_M)$和$(\rho_N,\theta_N)$。由图2可知，$M$与$N$分别为盘入螺线，盘出螺线与调头空间的交点。
 \par 其中， 盘入螺线\(\varGamma\)的极坐标方程和直角坐标方程分别为
 \begin{gather}
 \varGamma :\rho =\frac{d_0}{2\pi}\theta.\label{7.3.1}
@@ -81,7 +82,7 @@ y=\frac{d_0}{2\pi}\left( -\theta \right) \sin \theta\\
 S:\rho =R. \label{7.3.3} 
 \end{align}
 \par 因此，将\eqref{7.3.3}式分别与\eqref{7.3.1}式，\eqref{7.3.2}式联立得到$M$,$N$的极坐标
-\begin{gather}\label{1.........40}
+\begin{gather}\label{1.........41}
 \begin{cases}
 \rho _M=R\\
 \theta _M=\frac{2\pi R}{d_0}\\
@@ -122,7 +123,7 @@ k_{MN}=\tan\frac{2\pi R}{d_0}.\label{7.3.4}
 \end{align}
 \par 所以将\eqref{7.3.4} \eqref{1.........45}代入可得
 \begin{align}\label{1.........46}
-L=.
+L =
 \end{align}
 \noindent\textbf{Step 4 计算圆心和切点的坐标}     
 \begin{enumerate}
@@ -178,10 +179,10 @@ y_{O_2}=\\
 \begin{gather}\label{1.........53}
 \begin{cases}
 \rho _{O_1}=\sqrt{x_{O_1}^{2}+y_{O_1}^{2}}=\\
-\theta _{O_1}=\mathrm{arc}\tan \frac{y_{O_1}}{x_{O_1}}=\\
+\theta _{O_1}=\arctan \frac{y_{O_1}}{x_{O_1}}=\\
 \end{cases},\quad \begin{cases}
 \rho _{O_2}=\sqrt{x_{O_2}^{2}+y_{O_2}^{2}}=\\
-\theta _{O_2}=\mathrm{arc}\tan \frac{y_{O_2}}{x_{O_2}}=\\
+\theta _{O_2}=\arctan \frac{y_{O_2}}{x_{O_2}}=\\
 \end{cases}.
 \end{gather}
 \noindent\textbf{Step 5 计算龙头前把手在各时刻的位置} 
@@ -246,7 +247,7 @@ v_0\left( t-\frac{L_1}{v_0} \right) =\angle P_0\left( t \right) O_2G\cdot r,\lab
 \par 根据直线斜率的定义，直线\(O_{2}G\)的斜率\(k_{O_{2}G}\),\(O_{2}P_{0}(t)\)的斜率\(k_{O_{2}P_{0}(t)}\)为
 
 \begin{align}
-    k_{O_2G}=\frac{y_{O_2}-y_G}{x_{O_2}-x_G},k_{O_2P_0\left( t \right)}=\frac{y_{O_2}-y_{P_0\left( t \right)}}{x_{O_2}-x_{P_0\left( t \right)}},\label{7.5.6}
+    k_{O_2G}=\frac{y_{O_2}-y_G}{x_{O_2}-x_G},k_{O_2P_0\left( t \right)}=\frac{y_{O_2}-y_{P_0\left( t \right)}}{x_{O_2}-x_{P_0\left( t \right)}},\label{7.5...7}
 \end{align}
 \par 依据两直线夹角的正切公式，\(\angle P_{0}(t)O_{2}G\)的正切值为
 \begin{align}
@@ -332,7 +333,7 @@ l_{i+1}^{2}=\left| \overrightarrow{P_iP_{i+1}} \right|^2=4r^2-4r^2\cos \beta _1.
 \end{align}
 由上式解得
 \begin{align}\label{1.........443}
-\beta _1=\left| \mathrm{arc}\cos \left( 1-\frac{l_{i+1}^{2}}{4r^2} \right) \right|=.
+\beta _1=\left| \arccos \left( 1-\frac{l_{i+1}^{2}}{4r^2} \right) \right| = 
 \end{align}
 \begin{itemize}
 \item \textbf{计算$\angle P_{i}(t)O_1M$}
@@ -347,7 +348,7 @@ k_{O_1M}=\frac{y_M-y_{O_1}}{x_M-x_{O_1}},k_{O_1P_i\left( t \right)}=\frac{y_{P_i
 \end{gather}
 \par 从而
 \begin{align}\label{1.........445}
-\angle P_i(t)O_1M= \mathrm{arc}\tan \frac{\frac{y_M-y_{O_1}}{x_M-x_{O_1}}-\frac{y_{P_i\left( t \right)}-y_{O_1}}{x_{P_i\left( t \right)}-x_{O_1}}}{1+\frac{y_M-y_{O_1}}{x_M-x_{O_1}}\cdot \frac{y_{P_i\left( t \right)}-y_{O_1}}{x_{P_i\left( t \right)}-x_{O_1}}}.
+\angle P_i(t)O_1M= \arctan \frac{\frac{y_M-y_{O_1}}{x_M-x_{O_1}}-\frac{y_{P_i\left( t \right)}-y_{O_1}}{x_{P_i\left( t \right)}-x_{O_1}}}{1+\frac{y_M-y_{O_1}}{x_M-x_{O_1}}\cdot \frac{y_{P_i\left( t \right)}-y_{O_1}}{x_{P_i\left( t \right)}-x_{O_1}}}.
 \end{align}
 \begin{itemize}
 \item \textbf{判断并计算$P_{i+1}$的位置}\label{subsubsection4.4.1.2}
@@ -385,7 +386,7 @@ l_{i+1}^{2}=\left| \overrightarrow{P_iP_{i+1}} \right|^2=2r^2-2r^2\cos \beta _2.
 \end{align}
 由上式解得
 \begin{align}\label{1.........449}
-\beta _2=\left| \mathrm{arc}\cos \left( 1-\frac{l_{i+1}^{2}}{2R^2} \right) \right|=.
+\beta _2=\left| \arccos \left( 1-\frac{l_{i+1}^{2}}{2R^2} \right) \right| = 
 \end{align}
 
 \begin{itemize}
@@ -400,7 +401,7 @@ k_{O_1O_2}=\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}},k_{O_2P_i\left( t \right)}=\f
 \end{gather}
 \par 从而
 \begin{align}\label{1.........451}
-\angle P_i(t)O_2G=\mathrm{arc}\tan \frac{\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}}-\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}{1+\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}}\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}.
+\angle P_i(t)O_2G=\arctan \frac{\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}}-\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}{1+\frac{y_{O_2}-y_{O_1}}{x_{O_2}-x_{O_1}}\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}.
 \end{align}
 \begin{itemize}
     \item \textbf{判断$\angle P_{i}(t)O_{2}G $并计算$P_{i+1}$的位置}
@@ -442,7 +443,7 @@ l_{i+1}^{2}=\left| \overrightarrow{P_iP_{i+1}} \right|^2=\left| \overrightarrow{
 \end{gather}
 由上式解得
 \begin{align}\label{1.........455}
-\beta _3=\left| \mathrm{arc}\cos \frac{r^2+\left( x_{P_i}-x_{O_2} \right) ^2+\left( y_{P_i}-y_{O_2} \right) ^2-l_{i+1}^{2}}{2r\sqrt{\left( x_{P_i}-x_{O_2} \right) ^2+\left( y_{P_i}-y_{O_2} \right) ^2}} \right|=.
+\beta _3=\left| \arccos \frac{r^2+\left( x_{P_i}-x_{O_2} \right) ^2+\left( y_{P_i}-y_{O_2} \right) ^2-l_{i+1}^{2}}{2r\sqrt{\left( x_{P_i}-x_{O_2} \right) ^2+\left( y_{P_i}-y_{O_2} \right) ^2}} \right| =
 \end{align}
 
 \begin{itemize}
@@ -457,7 +458,7 @@ k_{O_2N}=\frac{y_{O_2}-y_N}{x_{O_2}-x_N},k_{O_2P_i\left( t \right)}=\frac{y_{P_i
 \end{gather}
 从而
 \begin{align}\label{1.........457}
-\angle P_i(t)O_2N=\mathrm{arc}\tan \frac{\frac{y_{O_2}-y_N}{x_{O_2}-x_N}-\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}{1+\frac{y_{O_2}-y_N}{x_{O_2}-x_N}\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}} .
+\angle P_i(t)O_2N=\arctan \frac{\frac{y_{O_2}-y_N}{x_{O_2}-x_N}-\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}}{1+\frac{y_{O_2}-y_N}{x_{O_2}-x_N}\frac{y_{P_i\left( t \right)}-y_{O_2}}{x_{P_i\left( t \right)}-x_{O_2}}} .
 \end{align}
 \begin{itemize}
     \item \textbf{判断并计算$P_{i+1}$的位置}

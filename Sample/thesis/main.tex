@@ -1,7 +1,9 @@
-\documentclass{../../../Template/cumcmthesis} % 带封面的版本
-% \documentclass[withoutpreface,bwprint,ebook]{../../../Template/cumcmthesis} % 普通草稿
-% \documentclass[draft,ebook]{../../../Template/cumcmthesis} % 电子书草稿
-% \documentclass[withoutpreface,bwprint]{../../../Template/cumcmthesis} %去掉封面与编号页
+% 注意开始书写之前一定要先调整本文件第3行和第35行的文件路径!!!!!!!!!!
+% 注意这里引用的模板路径需要根据main.tex文件的具体位置确定(文件位置不同路径中的"../"的个数不同)!!!
+\documentclass{../../Template/cumcmthesis} % 带封面的版本
+% \documentclass[withoutpreface,bwprint,ebook]{../../Template/cumcmthesis} % 普通草稿
+% \documentclass[draft,ebook]{../../Template/cumcmthesis} % 电子书草稿
+% \documentclass[withoutpreface,bwprint]{../../Template/cumcmthesis} %去掉封面与编号页
 
 % !Mode:: "TeX:UTF-8"
 % !BIB program = bibtex
@@ -30,7 +32,8 @@
 % \input{sections/symbols_def}
 
 % 额外引用的宏包
-\usepackage{../../../Styles/mystyle-cumcmthesis}
+\usepackage{../../Styles/mystyle-cumcmthesis}
+% 注意这里引用的宏包路径需要根据main.tex文件的具体位置确定(文件位置不同路径中的"../"的个数不同)!!!
 \usepackage{subfiles}
 % 主文件额外引用宏包 尽量置于导言区的最后
 

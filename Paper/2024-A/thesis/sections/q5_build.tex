@@ -2,26 +2,26 @@
 \graphicspath{{figures/}{../figures/}}
 
 \begin{document}
+
 \par 题目要求过程中，舞龙队所有把手的速度不超过$2m/s$,求解龙头的最大速度$v_{\max}$。
 基于问题一构建的速度迭代公式
 \begin{align}\label{1.........666}
-    v_i(t) = \sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\frac{|-\theta _{i - 1}+\theta _i\cos(\theta _{i }-\theta _{i-1})+\theta _i\theta _{i - 1}\sin(\theta _{i }-\theta _{i-1})|}{|\theta _i+\theta _i\theta _{i - 1}\sin(\theta _i -\theta _{i-1})-\theta _{i - 1}\cos(\theta _i -\theta _{i-1})|}v_{i - 1}(t), i\in \{1, 2, \cdots, 223\},
-    \end{align}
-    \par 可知，所有把手的速度都与龙头前进速度成一定比例关系，且与把手的位置相关。在问题四中，已经描述出在不同阶段各把手位置和速度随时间的变化公式。因此，我们需要借助问题四的模型来求解龙头的最大速度$v_{\max}$。
+v_i(t) = \sqrt{\frac{1 + {\theta _i}^2}{1 + {\theta _{i - 1}}^2}}\frac{|-\theta _{i - 1}+\theta _i\cos(\theta _{i }-\theta _{i-1})+\theta _i\theta _{i - 1}\sin(\theta _{i }-\theta _{i-1})|}{|\theta _i+\theta _i\theta _{i - 1}\sin(\theta _i -\theta _{i-1})-\theta _{i - 1}\cos(\theta _i -\theta _{i-1})|}v_{i - 1}(t), i\in \{1, 2, \cdots, 223\},
+\end{align}
+\par 可知，所有把手的速度都与龙头前进速度成一定比例关系，且与把手的位置相关。在问题四中，已经描述出在不同阶段各把手位置和速度随时间的变化公式。因此，我们需要借助问题四的模型来求解龙头的最大速度$v_{\max}$。
 \\\noindent\textbf{ 约束模型构建：}
 \par \textbf{Step 1 目标函数}
 \par 我们需要寻找到满足把手速度限制的最大龙头速度。因此我们令龙头速度$v_0$最大作为目标函数
 \begin{align}\label{1...23.3.4}
-    \max\text{\ }v_0
+\max\text{\ }v_0
 \end{align}
 \par \textbf{Step 2 约束变量}
-    \par 根据题目要求，我们可以建立最大一个以龙头前把手速度$v_0$为变量，各把手速度$v_i\left( t \right) \left( 1\le i\le 223 \right) $为因变量的约束模型。
- \par \textbf{Step 3 约束条件} 
+\par 根据题目要求，我们可以建立最大一个以龙头前把手速度$v_0$为变量，各把手速度$v_i\left( t \right) \left( 1\le i\le 223 \right) $为因变量的约束模型。
+\par \textbf{Step 3 约束条件} 
 \par 由题意可知，板凳龙各把手的速度均不超过2m/s这一约束条件，即 
 \begin{align}\label{1.........462}
-    v_i\left( t \right) \le 2m/s,\left(  \right. i=1,2,3,4,\cdots ,233\left.  \right) 
+v_i\left( t \right) \le 2m/s,\left(  \right. i=1,2,3,4,\cdots ,233\left.  \right) 
 \end{align}
 \par 根据以上讨论的目标函数与约束条件，我们可以确定龙头把手速度的范围，取范围的最大值，即龙头的最大行进速度。
- 
 
 \end{document}
