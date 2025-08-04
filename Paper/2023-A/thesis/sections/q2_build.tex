@@ -1,0 +1,107 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{figures/}{../figures/}}
+
+\begin{document}
+  \todo[color=green!30]{完成问题二模型的建立(sections/q2\_build)}
+  \noindent \textbf{Step 1 目标函数}
+  \par 本题目标是通过设计相应参数，使得定日境场在达到额定功率的条件下，单位镜面面积年平均输出热功率尽量大，因此目标函数为
+  \begin{align}\label{2.1}
+    \max \bar{E}_i = \max\left( \frac{\sum_{i=1}^{M} \sum_{j=1}^{12} \sum_{k=1}^{5} \text{DNI}_{ijk} \cdot \eta_{ijk}}{60M} \right)
+  \end{align}
+  \noindent \textbf{Step 2 决策变量}
+   \begin{itemize}
+  \item \textbf{吸收塔的位置坐标}：设吸收塔的位置坐标为 \((X_0, Y_0)\)，当吸收塔位置发生改变时，由问题 1 可知，其对应的集热器截断效率和阴影遮挡效率求解过程中的横截面方程被改变，改变后的横截面方程为：
+  \begin{align}\label{2.2}
+    (x - X_0)^2 + (y - Y_0)^2 = R^2
+  \end{align}
+  \item \textbf{定日镜的尺寸}：定日镜的尺寸由定日镜的高度\(lx\)与定日镜的宽度\(ly\)决定,所有定日镜尺寸相同.
+  \item \textbf{安装高度}：安装高度即定日镜中心距地面的高度，设其为 \(h\)，所有定日镜安装高度相同。
+  \item \textbf{定日镜数目}：记定日镜的数目为M.
+  \item \textbf{定日镜位置}：设第i个定日镜中心位置为$P_{i}(x_i,y_i,z_i)$，其中$z_i=h$.
+  \end{itemize}
+\noindent \textbf{Step 3 约束条件}
+\begin{itemize}
+    \item 题目要求在半径为$350m$的圆形区域内建设一个圆形定日镜场，因此：
+  \begin{align}\label{2.3}
+x_i^2 + y_i^2 \leq 350^2
+  \end{align}
+    \item 题目要求吸收塔周围 100m 范围内不安装定日镜，因此:
+      \begin{align}\label{2.4}
+(x_i - X_0)^2 + (y_i - Y_0)^2 \geq 100^2
+  \end{align}
+    \item 题目要求定日镜的镜面宽度不小于镜面高度，镜边长在$2m$至$8m$之间，因此：
+      \begin{align}\label{2.5}
+ly \geq lx, \quad 2 \leq ly \leq 8, \quad 2 \leq lx \leq 8
+  \end{align}
+    \item 题目要求安装高度在 2m 至 6m 之间，安装高度必须保证镜面在绕水平转轴翻转时不会触及地面，因此：     
+     \begin{align}\label{2.6}
+2 \leq h \leq 6, \quad \frac{lx}{2} < h
+  \end{align}
+    \item 题目要求相邻定日镜底座中心之间的距离比镜面宽度多$5m$以上，用$i$,$j$表示两个相邻定日镜，因此：     
+      \begin{align}\label{2.7}
+\sqrt{(x_i - x_j)^2 + (y_i - y_j)^2} > ly + 5
+  \end{align}
+\item 题目要求定日镜场达到额定光学功率（额定年平均输出热功率）60MW，因此：       
+ \begin{align}\label{2.8}
+\bar{E}_{\text{field}} = \frac{\sum_{i=1}^{m} \sum_{j=1}^{12} \sum_{k=1}^{5} \text{DNI}_{ijk} \cdot A_i \cdot \eta_{ijk}}{60} \geq 60\ \text{MW}
+  \end{align}
+ 
+\end{itemize}
+\noindent \textbf{Step 4 优化模型}
+\par 综上所述，单位镜面面积年平均输出热功率单一目标优化模型为：
+  \begin{align}\label{2.9}
+\begin{array}{c}
+	\max \bar{E}_i = \max\left( \frac{\sum_{i=1}^{M} \sum_{j=1}^{12} \sum_{k=1}^{5} \text{DNI}_{ijk} \cdot \eta_{ijk}}{60M} \right)
+\\
+	\left\{ \begin{array}{l}
+    x_i^2 + y_i^2 \leq 350^2\\
+	(x_i - X_0)^2 + (y_i - Y_0)^2 \geq 100^2\\
+	ly \geq lx, \quad 2 \leq ly \leq 8, \quad 2 \leq lx \leq 8\\
+	2 \leq h \leq 6, \quad \frac{lx}{2} < h\\
+	\sqrt{(x_i - x_j)^2 + (y_i - y_j)^2} > ly + 5\\
+	\bar{E}_{\text{field}} = \frac{\sum_{i=1}^{m} \sum_{j=1}^{12} \sum_{k=1}^{5} \text{DNI}_{ijk} \cdot A_i \cdot \eta_{ijk}}{60} \geq 60\ \text{MW}\\
+\end{array} \right.\\
+\end{array}
+  \end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
