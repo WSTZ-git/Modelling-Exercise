@@ -220,20 +220,18 @@ v_{0}t = \angle P_{0}(t)O_{1}M \cdot 2r \label{7.5.1}
 \begin{align}\label{1.........57}
 k_{O_1M}=\frac{y_{O_1}-y_M}{x_{O_1}-x_M},k_{O_1P_0\left( t \right)}=\frac{y_{O_1}-y_{P_0\left( t \right)}}{x_{O_1}-x_{P_0\left( t \right)}},
 \end{align}
-\par 依据两直线夹角的正切公式，\(\angle P_{0}(t)O_{1}M\)的正切值为
+于是
+\begin{gather}
+\theta _M=\mathrm{arc}\tan \frac{y_M}{x_M},
+\\
+\tan \frac{v_0t}{2r}=2r\left( \theta _{P_0\left( t \right)}-\theta _M \right) .
+\end{gather}
+解出$\theta _{P_0\left( t \right)}$代入$\wideparen{MG}$的极坐标方程得
 \begin{align}
-\tan\angle P_{0}(t)O_{1}M = \frac{k_{O_{1}M} - k_{O_{1}P_{0}(t)}}{1 + k_{O_{1}M}k_{O_{1}P_{0}(t)}} \in [0, \pi] \label{7.5.2}
+x_{\theta _{P_0\left( t \right)}}=x_{O_1}+2r\cos \theta _{P_0\left( t \right)},
+\\
+y_{\theta _{P_0\left( t \right)}}=y_{O_1}+2r\sin \theta _{P_0\left( t \right)}.
 \end{align}
-\par 联立\eqref{7.5.1}\eqref{7.5.2},得到
-\begin{align}
-\tan \frac{v_0t}{2r}=\tan \angle P_0\left( t \right) O_1M=\frac{k_{O_1M}-k_{O_1P_0\left( t \right)}}{1+k_{O_1M}k_{O_1P_0\left( t \right)}}=\frac{\frac{y_{O_1}-y_M}{x_{O_1}-x_M}-\frac{y_{O_1}-y_{P_0\left( t \right)}}{x_{O_1}-x_{P_0\left( t \right)}}}{1+\frac{y_{O_1}-y_M}{x_{O_1}-x_M}\frac{y_{O_1}-y_{P_0\left( t \right)}}{x_{O_1}-x_{P_0\left( t \right)}}},\label{7.5.3}
-    \end{align}
-\par 由于$P_{0}(t)$到圆心$O_{1}$的距离始终等于圆弧半径\(2r\)，根据两点间距离公式，可得
-\begin{align}
-(x_{O_{1}} - x_{P_{0}(t)})^{2} + (y_{O_{1}} - y_{P_{0}(t)})^{2} = 4r^{2} \label{7.5.4}
-\end{align} 
-
-\par 因此，通过\eqref{7.5.3}\eqref{7.5.4}解得$P_0$的位置坐标.
 
 \textbf{
 \begin{enumerate}[start=3]
@@ -244,25 +242,18 @@ k_{O_1M}=\frac{y_{O_1}-y_M}{x_{O_1}-x_M},k_{O_1P_0\left( t \right)}=\frac{y_{O_1
 \begin{align}
 v_0\left( t-\frac{L_1}{v_0} \right) =\angle P_0\left( t \right) O_2G\cdot r,\label{7.5.5}
 \end{align} 
-\par 根据直线斜率的定义，直线\(O_{2}G\)的斜率\(k_{O_{2}G}\),\(O_{2}P_{0}(t)\)的斜率\(k_{O_{2}P_{0}(t)}\)为
-
+于是
+\begin{gather}
+\theta _G=\mathrm{arc}\tan \frac{y_G}{x_G},
+\\
+\tan v_0\left( t-\frac{L_1}{v_0} \right) =r\left( \theta _{P_0\left( t \right)}-\theta _G \right) .
+\end{gather}
+解出$\theta _{P_0\left( t \right)}$代入$\wideparen{GN}$的极坐标方程得
 \begin{align}
-    k_{O_2G}=\frac{y_{O_2}-y_G}{x_{O_2}-x_G},k_{O_2P_0\left( t \right)}=\frac{y_{O_2}-y_{P_0\left( t \right)}}{x_{O_2}-x_{P_0\left( t \right)}},\label{7.5...7}
+x_{\theta _{P_0\left( t \right)}}=x_{O_2}+r\cos \theta _{P_0\left( t \right)},
+\\
+y_{\theta _{P_0\left( t \right)}}=y_{O_2}+r\sin \theta _{P_0\left( t \right)}.
 \end{align}
-\par 依据两直线夹角的正切公式，\(\angle P_{0}(t)O_{2}G\)的正切值为
-\begin{align}
-\tan \angle P_0\left( t \right) O_2G=\frac{k_{O_2G}-k_{O_2P_0\left( t \right)}}{1+k_{O_2G}k_{O_2P_0\left( t \right)}}\in \left[ 0,\pi \right] ,\label{7.5.6}
-\end{align}
-\par 联立\eqref{7.5.5}\eqref{7.5.6},得到
-\begin{align}
-    \tan \frac{v_0\left( t-\frac{L_1}{v_0} \right)}{r}=\tan \angle P_0\left( t \right) O_2G=\frac{k_{O_2G}-k_{O_2P_0\left( t \right)}}{1+k_{O_2G}k_{O_2P_0\left( t \right)}}=\frac{\frac{y_{O_2}-y_G}{x_{O_2}-x_G}-\frac{y_{O_2}-y_{P_0\left( t \right)}}{x_{O_2}-x_{P_0\left( t \right)}}}{1+\frac{y_{O_2}-y_G}{x_{O_2}-x_G}\frac{y_{O_2}-y_{P_0\left( t \right)}}{x_{O_2}-x_{P_0\left( t \right)}}},\label{7.5.7}
-\end{align}
-\par 由于$P_{0}(t)$到圆心$O_{2}$的距离始终等于圆弧半径\(r\)，根据两点间距离公式，可得
-\begin{align}
-\left( x_{O_2}-x_{P_0\left( t \right)} \right) ^2+\left( y_{O_2}-y_{P_0\left( t \right)} \right) ^2=r^2.\label{7.5.8}
-\end{align} 
-
-\par 因此，通过\eqref{7.5.7}\eqref{7.5.8}解得$P_0$的位置坐标.  
 
 \begin{enumerate}[start=4]
 \item \textbf{$P_0$位于盘出螺线$\varGamma'$上}
@@ -276,7 +267,7 @@ S=v_0\left( t-\frac{L}{v_0} \right) =\int_{P_0\left( t \right) N}{\mathrm{d}s}=\
 \par 通过求解，可以得到龙头前把手某一时间点与其极角之间的关系
 \begin{small}
 \begin{align*}\label{1.........442}
-v_0\left( t-\frac{L}{v_0} \right) =\frac{d_0}{4\pi}\left[( \theta_{P_0}(t)+\pi)\sqrt{(\theta_{P_0}(t)+\pi)^{2}+1}-(\theta_N+\pi)\sqrt{(\theta_N+\pi)^{2}+1}+\ln\frac{\theta_{P_0}(t)+\pi+\sqrt{(\theta_{P_0}(t)+\pi)^{2}+1}}{\theta_N+\pi+\sqrt{(\theta_N+\pi)^{2}+1}}\right]
+v_0\left( t-\frac{L}{v_0} \right) =\frac{d_0}{4\pi}\left[ \theta _{P_0}(t)\sqrt{\left( \theta _{P_0}(t) \right) ^2+1}-\theta _N\sqrt{\theta _{N}^{2}+1}+\ln \left( \theta _{P_0}(t)+\sqrt{\left( \theta _{P_0}(t) \right) ^2+1} \right) -\ln \left( \theta _N+\sqrt{\theta _{N}^{2}+1} \right) \right] .
 \end{align*}
 \end{small}
 

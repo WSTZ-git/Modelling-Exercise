@@ -21,9 +21,9 @@
 \dayinput{}
 
 % 载入路径
-% 让主文件或子文件在引用图片、输入其他 tex 文件时，不用写完整路径，LaTeX 会自动在这些路径下查找目标文件，方便管理和引用。
 \makeatletter
-\def\input@path{{sections/}{figures/}{../../figures/}}
+\def\input@path{{sections/}{figures/}{../../figures/}}% 让主文件或子文件在引用图片、输入其他 tex 文件时，不用写完整路径，LaTeX 会自动在这些路径下查找目标文件，方便管理和引用。
+\renewcommand{\maketag@@@}[1]{\hbox{\m@th\normalsize\normalfont#1}}% 让公式序号始终不变
 \makeatother
 
 % 导入符号
