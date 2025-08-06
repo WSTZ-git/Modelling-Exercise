@@ -14,10 +14,10 @@
   \begin{align}\label{2.2}
     (x - X_0)^2 + (y - Y_0)^2 = R^2
   \end{align}
-  \item \textbf{定日镜的尺寸}：定日镜的尺寸由定日镜的高度\(lx\)与定日镜的宽度\(ly\)决定,所有定日镜尺寸相同.
-  \item \textbf{安装高度}：安装高度即定日镜中心距地面的高度，设其为 \(h\)，所有定日镜安装高度相同。
+  \item \textbf{定日镜的尺寸}：定日镜的尺寸由定日镜的高度\(ly\)与定日镜的宽度\(lx\)决定,所有定日镜尺寸相同.
+  \item \textbf{安装高度}：安装高度即定日镜中心距地面的高度，设其为 \(v\)，所有定日镜安装高度相同。
   \item \textbf{定日镜数目}：记定日镜的数目为M.
-  \item \textbf{定日镜位置}：设第i个定日镜中心位置为$P_{i}(x_i,y_i,z_i)$，其中$z_i=h$.
+  \item \textbf{定日镜位置}：设第i个定日镜中心位置为$O_{i}(x_i,y_i,z_i)$，其中$z_i=v$.
   \end{itemize}
 \noindent \textbf{Step 3 约束条件}
 \begin{itemize}
@@ -31,15 +31,15 @@ x_i^2 + y_i^2 \leq 350^2
   \end{align}
     \item 题目要求定日镜的镜面宽度不小于镜面高度，镜边长在$2m$至$8m$之间，因此：
       \begin{align}\label{2.5}
-ly \geq lx, \quad 2 \leq ly \leq 8, \quad 2 \leq lx \leq 8
+lx \geq ly, \quad 2 \leq lx \leq 8, \quad 2 \leq ly \leq 8
   \end{align}
     \item 题目要求安装高度在 2m 至 6m 之间，安装高度必须保证镜面在绕水平转轴翻转时不会触及地面，因此：     
      \begin{align}\label{2.6}
-2 \leq h \leq 6, \quad \frac{lx}{2} < h
+2 \leq v \leq 6, \quad \frac{ly}{2} < v
   \end{align}
     \item 题目要求相邻定日镜底座中心之间的距离比镜面宽度多$5m$以上，用$i$,$j$表示两个相邻定日镜，因此：     
       \begin{align}\label{2.7}
-\sqrt{(x_i - x_j)^2 + (y_i - y_j)^2} > ly + 5
+\sqrt{(x_i - x_j)^2 + (y_i - y_j)^2} > lx + 5
   \end{align}
 \item 题目要求定日镜场达到额定光学功率（额定年平均输出热功率）60MW，因此：       
  \begin{align}\label{2.8}
@@ -56,9 +56,9 @@ ly \geq lx, \quad 2 \leq ly \leq 8, \quad 2 \leq lx \leq 8
 	\left\{ \begin{array}{l}
     x_i^2 + y_i^2 \leq 350^2\\
 	(x_i - X_0)^2 + (y_i - Y_0)^2 \geq 100^2\\
-	ly \geq lx, \quad 2 \leq ly \leq 8, \quad 2 \leq lx \leq 8\\
-	2 \leq h \leq 6, \quad \frac{lx}{2} < h\\
-	\sqrt{(x_i - x_j)^2 + (y_i - y_j)^2} > ly + 5\\
+	lx \geq ly, \quad 2 \leq lx \leq 8, \quad 2 \leq ly \leq 8\\
+	2 \leq v \leq 6, \quad \frac{ly}{2} < v\\
+	\sqrt{(x_i - x_j)^2 + (y_i - y_j)^2} > lx + 5\\
 	\bar{E}_{\text{field}} = \frac{\sum_{i=1}^{m} \sum_{j=1}^{12} \sum_{k=1}^{5} \text{DNI}_{ijk} \cdot A_i \cdot \eta_{ijk}}{60} \geq 60\ \text{MW}\\
 \end{array} \right.\\
 \end{array}
