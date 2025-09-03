@@ -6,9 +6,8 @@
         "**/*.gz": true,
         "**/*.log": true,
         "**/*.out": true,
+        "**/*.pdf": true,
         "**/*.toc": true,
-        // "**/*.txt": true,
-        "**/*.xml": true,
-        "**/*.gitignore": true,
+        "**/*.xml": true
     }
 }
