@@ -4,7 +4,7 @@
 
 % \documentclass[withoutpreface,bwprint,ebook]{../../../Template/cumcmthesis} % 普通草稿
 % \documentclass[draft,ebook]{../../../Template/cumcmthesis} % 电子书草稿
-\documentclass{../../../Template/cumcmthesis} % 带封面的版本
+\documentclass{../../../Template/cumcmthesis-2025} % 带封面的版本
 % \documentclass[withoutpreface,bwprint]{../../../Template/cumcmthesis} %去掉封面与编号页
 
 % 基本信息
@@ -35,39 +35,68 @@
 \begin{document}
 
 % TODO 提交最终版论文时别忘了选择 7,8行版本
-\listoftodos
+% \listoftodos
 \maketitle
 
 \subfile{sections/abstract}
 
 \section{问题重述}
-  \subfile{sections/question_review}
+
+\subfile{sections/question_review}
+
+
+
 \section{问题的分析}
-  \subfile{sections/analyse}
+
+\subfile{sections/analyse}
+
+
+
 \section{模型的假设}
-  \subfile{sections/assumptions}
+
+\subfile{sections/assumptions}
+
+
+
 \section{符号说明}
-  \subfile{sections/notations}
+
+\subfile{sections/notations}
 \section{模型的建立与求解}
 
 \subsection{问题一}
-  \subsubsection{问题一的模型建立}
-    \subfile{sections/q1_build}
-  \subsubsection{问题一的模型求解}
-    \subfile{sections/q1_solution}
+
+\subsubsection{问题一的模型建立}
+
+\subfile{sections/q1_build}
+
+\subsubsection{问题一的模型求解}
+
+\subfile{sections/q1_solution}
+
 \subsection{问题二}
-  \subsubsection{模型建立}
-    \subfile{sections/q2_build}
-  \subsubsection{模型求解}
-    \subfile{sections/q2_solution}
+
+\subsubsection{模型建立}
+
+\subfile{sections/q2_build}
+
+\subsubsection{模型求解}
+
+\subfile{sections/q2_solution}
+
 \subsection{问题三}
-  \subsubsection{模型建立}
-    \subfile{sections/q3_build}
-  \subsubsection{模型求解}
-    \subfile{sections/q3_solution}
-     
+
+\subsubsection{模型建立}
+
+\subfile{sections/q3_build}
+
+\subsubsection{模型求解}
+\subfile{sections/q3_solution}
+    
+
+
 \section{模型的评价}
-  \subfile{sections/model_review}
+
+\subfile{sections/model_review}
 
   \section{参考文献}
   \subfile{sections/literature _cited}
@@ -81,12 +110,12 @@
 
 \newpage
 \begin{appendices} % 附录
-  \section{支撑材料目录与代码环境依赖}
-    本文支撑材料目录结构如下
-    \lstinputlisting{sections/tree.txt}
+\section{支撑材料目录与代码环境依赖}
+本文支撑材料目录结构如下
+\lstinputlisting{sections/tree.txt}
 
-  \section{导入其他代码的测试}
-  \lstinputlisting[language=python]{../src/test.py}
+\section{导入其他代码的测试}
+\lstinputlisting[language=python]{../src/test.py}
 
 \end{appendices}
 
