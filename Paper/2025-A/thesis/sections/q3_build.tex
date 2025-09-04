@@ -2,26 +2,37 @@
 \graphicspath{{figures/}{../figures/}}
 
 \begin{document}
-  % \todo[color=green!40]{完成问题三模型的建立(sections/q3\_build)}
+% \todo[color=green!40]{完成问题三模型的建立(sections/q3\_build)}
 \noindent \textbf{Step 1 }
 \begin{itemize}
-\item \textbf{}
+\item \textbf{目标函数}
 \end{itemize}
-\par \textbf{(1) }
-\par \textbf{(2) }
-\par \textbf{(3) }
+根据题意,以无人机FY1的飞行方向与$x$轴正向的夹角$\alpha$,飞行速度$v_{FY1}$,三枚烟幕干扰弹的投放时间$t_{11}$、$t_{21}$、$t_{31}$,三枚烟幕干扰弹的起爆时间$t_{12}$、$t_{22}$、$t_{32}$为变量.建立单目标优化模型,目标函数为
+\begin{align}
+\underset{\alpha ,v_{FY1},t_{11},t_{12},t_{21},t_{22},t_{31},t_{32}}{\mathrm{Arg}\max}\Delta t=.
+\end{align}
 \\
 \noindent \textbf{Step 2 }
 \begin{itemize}
-\item \textbf{}
+\item \textbf{计算有效遮挡时间}
 \end{itemize}
 \par \textbf{(1) }
+由问题1同理可得,无人机FY1第$i(i=1,2,3)$个投放的烟雾干扰弹在投放时的在$t$时刻的位置坐标
+\begin{align}
+\begin{cases}
+x_{FY1,t_{i1}}=x_{FY1,0}-v_{FY1}t_{i1}\cos \alpha\\
+y_{FY1,t_{i1}}=y_{FY1,0}-v_{FY1}t_{i1}\sin \alpha\\
+z_{FY1,t_{i1}}=z_{FY1,0}\\
+\end{cases}
+\end{align}
+以及无人机FY1
+
 \par \textbf{(2) }
 \par \textbf{(3) }
 \\
 \noindent \textbf{Step 3 }
 \begin{itemize}
-\item \textbf{}
+\item \textbf{约束条件}
 \end{itemize}
 \par \textbf{(1) }
 \par \textbf{(2) }
