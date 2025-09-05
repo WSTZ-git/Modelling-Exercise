@@ -1,0 +1,132 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{figures/}{../figures/}}
+
+\begin{document}
+% \todo[color=green!40]{完成问题四模型的建立(sections/q4\_build)}
+\noindent \textbf{Step 1 目标函数}
+\par 在本问中，我们的目标是通过设计3架无人机$FY1$，$FY2$，$FY3$与其分别投放的1枚烟幕干扰弹相关参数，使得这3枚烟幕干扰弹对导弹$M1$的有效遮蔽总时间尽可能长,因此目标函数为：
+\begin{align}\label{19.1}
+  \max \Delta t
+\end{align}
+\noindent \textbf{Step 2 决策变量}
+
+\begin{itemize}
+\item \textbf{无人机$FYj$的方向}:设$\alpha_j$为无人机$FYj$与$x$轴正方向的夹角,从而确定无人机$FYi$的飞行方向.
+\item \textbf{烟幕干扰弹投放点}:设无人机$FYj$在受领任务 \( t_{FYj,11} \) s 后投放1枚烟幕干扰弹.
+\item  \textbf{无人机$FYj$的飞行速度} :设无人机的飞行速度为 \( v_{FYj} \)，无人机受领任务后，保持等高度匀速直线运动。由第二问可知 \( t \) 时刻无人机 \( FYj \) 的位置坐标为：
+\begin{align}\label{19.3}
+  \begin{cases}
+x_{FYj,t} = x_{FYj,0} + v_{FYj} t \cos\alpha \\
+y_{FYj,t} = y_{FYj,0} + v_{FYj} t \sin\alpha \\
+z_{FYi,t} = z_{FYj,0}
+\end{cases}
+\end{align}
+\item \textbf{烟幕干扰弹起爆点}:设无人机 FYj 投放一枚烟幕干扰弹在无人机受领任务 \( t_{FYj,12} \) s 后起爆，因此由问题1可得3架无人机投放的烟雾干扰弹在$t_{FYj,12}$时刻即其起爆时的位置坐标$\left( x_{FYj,t_{FYj,12}},y_{FYj,t_{FYj,12}},z_{FYj,t_{FYj,12}} \right)$满足：
+\begin{align}\label{19.4}
+\left\{ \begin{array}{l}
+	x_{FYj,t_{FYj,12}}=x_{FYj,t_{FYj,11}}+v_{FYj}\left( t_{FYj,12}-t_{FYj,11} \right) \cos \alpha\\
+	y_{FYj,t_{FYj,12}}=y_{FYj,t_{FYj,11}}+v_{FYj}\left( t_{FYj,12}-t_{FYj,11} \right) \sin \alpha\\
+	z_{FYj,t_{FYj,12}}=z_{FYj,t_{FYj,11}}-\frac{g\left( t_{FYj,12}-t_{FYj,11} \right) ^2}{2}\\
+\end{array} \right. 
+\end{align}
+\par 无人机 FYj 投放1枚烟幕干扰弹在起爆之后$t$时刻的位置坐标满足：
+\begin{align}\label{11.9}
+	\left\{ \begin{array}{l}
+	x_{FYj1,t}=x_{FYj,t_{FYj,12}}\\
+	y_{FYj1,t}=y_{FYj,t_{FYj,12}}\\
+	z_{FYj1,t}=z_{FYj,t_{FYj,12}}-v_1\left( t-t_{FYj,12} \right)\\
+	t\in \left[ t_{FYj,12},t_{FYj,12}+\Delta t_0 \right]
+\end{array} \right.
+\end{align}
+\par 因此，无人机 FYj 投放的烟幕干扰弹在起爆之后形成的烟雾有效遮挡范围的云团球体球面方程为：
+\begin{align}
+	O_{FYj1,t}:\left( x-x_{FYj1,t} \right) ^2+\left( y-y_{FYj1,t} \right) ^2+\left( z-z_{FYj1,t} \right) ^2=r^2\left( 3.5 \right) 
+\end{align}
+\par 代入问题1中，得到 $t$ 时刻无人机FYj投放的一枚烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FYj1}\left( x_1,y_1,z_1 \right) $.将真目标所在圆柱侧面上任一点坐标$(x_1, y_1, z_1)$ 带入，当 $\Delta _{FYj1} \geq 0$ 时，无人机FYj投放的烟幕干扰弹形成的烟幕云团对目标进行遮挡，当 $\Delta _{FYj1} < 0$ 时，无人机FYj投放的烟幕干扰弹形成的烟幕云团未对目标形成遮挡。并规定： 
+\begin{align}\label{14.9}
+	\Delta _{FYj1}\left( x_1,y_1,z_1 \right) =\left\{ \begin{array}{l}
+	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FY1,12}+\Delta t_0\\
+	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FY2,12}+\Delta t_0\\
+\end{array} \right.
+\end{align}
+我们记无人机$FYj$投放的烟幕干扰弹形成的烟幕云团对目标形成遮挡为$a_{1}^{j}$，其为0,1向量，则
+\begin{align}
+a_{1}^{j}=\begin{cases}
+	0\ \ \ \Delta _{FYj1}\geq 0&		\text{未遮挡}\\
+	1\ \ \ \Delta _{FYj1}<0&		\text{遮挡}\\
+\end{cases}
+\end{align}\label{19.7}
+\par 对于无人机 FY1 投放的3枚烟幕干扰弹只要有一枚形成的烟幕云团对目标进行遮挡即可，因此
+\begin{align}
+\sum_{j=1}^{3} a_{1}^{j} = 
+\begin{cases} 
+0 & \text{未遮挡} \\
+\text{else} & \text{遮挡}
+\end{cases}
+\end{align}
+
+
+
+
+\end{itemize}
+
+
+
+
+\textbf{Step 3 约束条件}
+\begin{itemize}
+\item \textbf{无人机的飞行速度}：由于无人机受领任务后，可根据需要瞬时调整飞行方向，然后以70-140m/s的速度等高度匀速直线飞行。因此：
+\begin{align}\label{11.8}
+  70 \leq v_{\text{FY1}} \leq 140
+\end{align}
+\end{itemize}
+\textbf{Step 4 优化模型}
+\par 综上所述，有效遮蔽时间单一目标优化模型为：
+\begin{align}
+  \begin{array}{c}
+	 \max \Delta t
+  \\
+\left\{ \begin{array}{l}
+	t\text{时刻无人机的位置坐标:}\\
+	\left\{ \begin{array}{l}
+x_{FYj,t} = x_{FYj,0} + v_{FYj} t \cos\alpha \\
+y_{FYj,t} = y_{FYj,0} + v_{FYj} t \sin\alpha \\
+z_{FYi,t} = z_{FYj,0}\\
+\end{array} \right.\\
+	0\leq \alpha \leq 2\pi \\
+  70 \leq v_{\text{FY1}} \leq 140\\
+	\text{无人机FYj投放的烟雾干扰弹起爆时的位置坐标:}\\
+	\left\{ \begin{array}{l}
+	x_{FYj,t_{FYj,12}}=x_{FYj,t_{FYj,11}}+v_{FYj}\left( t_{FYj,12}-t_{FYj,11} \right) \cos \alpha\\
+	y_{FYj,t_{FYj,12}}=y_{FYj,t_{FYj,11}}+v_{FYj}\left( t_{FYj,12}-t_{FYj,11} \right) \sin \alpha\\
+	z_{FYj,t_{FYj,12}}=z_{FYj,t_{FYj,11}}-\frac{g\left( t_{FYj,12}-t_{FYj,11} \right) ^2}{2}\\
+\end{array} \right. \\
+	t\text{时刻无人机FYj投放的烟幕干扰弹形成的云团中心坐标:}\\
+	\left\{ \begin{array}{l}
+	x_{FYj1,t}=x_{FYj,t_{FYj,12}}\\
+	y_{FYj1,t}=y_{FYj,t_{FYj,12}}\\
+	z_{FYj1,t}=z_{FYj,t_{FYj,12}}-v_1\left( t-t_{FYj,12} \right)\\
+	t\in \left[ t_{FYj,12},t_{FYj,12}+\Delta t_0 \right]
+\end{array} \right.\\
+	\text{无人机FYj投放的烟幕干扰弹形成的云团球体球面方程:}\\
+	O_{FYj1,t}:\left( x-x_{FYj1,t} \right) ^2+\left( y-y_{FYj1,t} \right) ^2+\left( z-z_{FYj1,t} \right) ^2=r^2\left( 3.5 \right) 
+\\
+	\text{圆柱面上点坐标:}\\
+	\left\{ \begin{array}{c}
+	\begin{array}{l}
+	x_{1}^{2}+\left( y_{1}^{2}-y_0 \right) ^2=r_{0}^{2}\\
+	z_1\in \left[ 0,h_0 \right]\\
+\end{array}\\
+\end{array} \right.\\
+	\text{烟幕云团遮挡判断条件:}\\
+	\sum_{j=1}^{3} a_{1}^{j} = 
+\begin{cases} 
+0 & \text{未遮挡} \\
+\text{else} & \text{遮挡}
+\end{cases}
+\\
+\end{array} \right.  
+\end{array}
+\end{align}
+
+  \end{document}

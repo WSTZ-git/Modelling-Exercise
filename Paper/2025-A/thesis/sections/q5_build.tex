@@ -2,10 +2,10 @@
 \graphicspath{{figures/}{../figures/}}
 
 \begin{document}
-% \todo[color=green!40]{完成问题三模型的建立(sections/q3\_build)}
+% \todo[color=green!40]{完成问题三模型的建立(sections/q5\_build)}
 \noindent \textbf{Step 1 目标函数}
-\par 在本问中，我们的目标是通过设计无人机$FY1$与其投放的3枚烟幕干扰弹相关参数，使得3枚烟幕干扰弹对导弹$M1$的有效遮蔽总时间尽可能长,因此目标函数为：
-\begin{align}\label{12.1}
+\par 在本问中，我们的目标是通过设计5架无人机$FY1$，$FY2$，$FY3$与其分别投放的烟幕干扰弹相关参数，使得烟幕干扰弹对导弹$M1$，$M2$，$M3$的有效遮蔽总时间尽可能长,因此目标函数为：
+\begin{align}\label{11.1}
   \max \Delta t
 \end{align}
 \noindent \textbf{Step 2 决策变量}
@@ -14,15 +14,16 @@
 \item \textbf{无人机$FY1$的方向}:设$\alpha $为无人机$FY1$与$x$轴正方向的夹角,从而确定无人机$FY1$的飞行方向.
 \item \textbf{烟幕干扰弹投放点}:设无人机$FY1$在受领任务 \( t_{FY1,11} \) s 后投放第1枚烟幕干扰弹，\( t_{FY1,21} \) s 后投放第2枚烟幕干扰弹，\( t_{FY1,31} \) s 后投放第3枚烟幕干扰弹.
 \item  \textbf{无人机$FY1$的飞行速度} :设无人机的飞行速度为 \( v_{FY1} \)，无人机受领任务后，保持等高度匀速直线运动。由第二问可知 \( t \) 时刻无人机 \( FY1 \) 的位置坐标为：
-\begin{align}\label{12.3}
+\begin{align}\label{11.3}
   \begin{cases}
-x_{FY1,t} = x_{FY1,0} + v_{FY1} t \cos\alpha \\
-y_{FY1,t} = y_{FY1,0} + v_{FY1} t \sin\alpha \\
+x_{FY1,t} = x_{FY1,0} - v_{FY1} t \cos\alpha \\
+y_{FY1,t} = y_{FY1,0} - v_{FY1} t \sin\alpha \\
 z_{FY1,t} = z_{FY1,0}
 \end{cases}
+\quad 0 \leq t \leq t_1
 \end{align}
 \item \textbf{烟幕干扰弹起爆点}:设无人机 FY1 投放的第一枚烟幕干扰弹在无人机受领任务 \( t_{FY1,12} \) s 后起爆，第二枚烟幕干扰弹在无人机受领任务 \( t_{FY1,22} \) s 后起爆，第三枚烟幕干扰弹在无人机受领任务 \( t_{FY1,32} \) s 后起爆，因此由问题1可得投放的第$i$枚烟雾干扰弹在$t_{FY1,i2}$时刻即其起爆时的位置坐标$\left( x_{FY1i,t_{FY1,i2}},y_{FY1i,t_{FY1,i2}},z_{FY1i,t_{FY1,i2}} \right)$满足：
-\begin{align}\label{12.4}
+\begin{align}\label{11.4}
 \left\{ \begin{array}{l}
 	x_{FY1i,t_{FY1,i2}}=x_{FY1,t_{FY1,i1}}+v_{FY1}\left( t_{FY1,i2}-t_{FY1,i1} \right) \cos \alpha\\
 	y_{FY1i,t_{FY1,i2}}=y_{FY1,t_{FY1,i1}}+v_{FY1}\left( t_{FY1,i2}-t_{FY1,i1} \right) \sin \alpha\\
@@ -30,7 +31,7 @@ z_{FY1,t} = z_{FY1,0}
 \end{array} \right. 
 \end{align}
 \par 无人机 FY1 投放的第$i$枚烟幕干扰弹在起爆之后$t$时刻的位置坐标满足：
-\begin{align}\label{12.9}
+\begin{align}\label{11.9}
 	\left\{ \begin{array}{l}
 	x_{FY11,t}=x_{FY11,t_{FY1,i2}}\\
 	y_{FY11,t}=y_{FY11,t_{FY1,i2}}\\
@@ -39,22 +40,10 @@ z_{FY1,t} = z_{FY1,0}
 \end{array} \right.
 \end{align}
 \par 因此，无人机 FY1 投放的第$i$枚烟幕干扰弹在起爆之后形成的烟雾有效遮挡范围的云团球体球面方程为：
-\begin{align}\label{13.9}
+\begin{align}
 	O_{FY1i,t}:\left( x-x_{FY1i,t} \right) ^2+\left( y-y_{FY1i,t} \right) ^2+\left( z-z_{FY1i,t} \right) ^2=r^2\left( 3.5 \right) 
 \end{align}
-\par 代入问题1中，得到 $t$ 时刻第$i$枚烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FY1i}\left( x_1,y_1,z_1 \right) $.将真目标所在圆柱侧面上任一点坐标$(x_1, y_1, z_1)$ 带入，当 $\Delta _{FY1i} \geq 0$ 时，第$i$枚烟幕干扰弹形成的烟幕云团对目标进行遮挡，当 $\Delta _{FY1i} < 0$ 时，第$i$枚烟幕干扰弹形成的烟幕云团未对目标形成遮挡。并规定： 
-\begin{align}\label{14.9}
-	\Delta _{FY1i}\left( x_1,y_1,z_1 \right) =\left\{ \begin{array}{l}
-	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{12}+\Delta t_0\\
-	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{22}+\Delta t_0\\
-\end{array} \right.
-\end{align}
-
-
-
-
-
-我们记无人机$FY1$投放的第$i$枚烟幕干扰弹形成的烟幕云团对目标形成遮挡为$a_{i}^{1}$，其为0,1向量，则
+\par 代入问题1中，得到 $t$ 时刻第$i$枚烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FY1i}\left( x_1,y_1,z_1 \right) $.将真目标所在圆柱侧面上任一点坐标$(x_1, y_1, z_1)$ 带入，当 $\Delta _{FY1i} \geq 0$ 时，第$i$枚烟幕干扰弹形成的烟幕云团对目标进行遮挡，当 $\Delta _{FY1i} < 0$ 时，第$i$枚烟幕干扰弹形成的烟幕云团未对目标形成遮挡。 我们记无人机$FY1$投放的第$i$枚烟幕干扰弹形成的烟幕云团对目标形成遮挡为$a_{i}^{1}$，其为0,1向量，则
 \begin{align}
 a_{i}^{1}=\begin{cases}
 	0\ \ \ \Delta _{FY1i}\geq 0&		\text{未遮挡}\\
@@ -63,7 +52,7 @@ a_{i}^{1}=\begin{cases}
 \end{align}\label{11.7}
 \par 对于无人机 FY1 投放的3枚烟幕干扰弹只要有一枚形成的烟幕云团对目标进行遮挡即可，因此
 \begin{align}
-\sum_{i=1}^{3} a_{i}^{1} = 
+\sum_{i=1}^{3} a_i = 
 \begin{cases} 
 0 & \text{未遮挡} \\
 \text{else} & \text{遮挡}
@@ -114,12 +103,13 @@ a_{i}^{1}=\begin{cases}
 \left\{ \begin{array}{l}
 	t\text{时刻无人机的位置坐标:}\\
 	\left\{ \begin{array}{l}
-	x_{FY1,t}=x_{FY1,0}+v_{FY1}t\cos \alpha \\
-	y_{FY1,t}=y_{FY1,0}+v_{FY1}t\sin \alpha \\
+	x_{FY1,t}=x_{FY1,0}-v_{FY1}t\cos \alpha \\
+	y_{FY1,t}=y_{FY1,0}-v_{FY1}t\sin \alpha \\
 	z_{FY1,t}=z_{FY1,0}\\
+  0\leq t\leq t_1\\
 \end{array} \right.\\
-	0\leq \alpha \leq 2\pi \\
-  70 \leq v_{\text{FY1}} \leq 140\\
+	-\frac{\pi}{2}\leq \alpha  \leq \frac{\pi}{2}\\
+  70 \leq V_{\text{FY1}} \leq 140\\
 	\text{第$i$枚烟雾干扰弹起爆时的位置坐标:}\\
 	\left\{ \begin{array}{l}
 	x_{FY1i,t_{FY1,i2}}=x_{FY1,t_{FY1,i1}}+v_{FY1}\left( t_{FY1,i2}-t_{FY1,i1} \right) \cos \alpha\\
@@ -144,7 +134,7 @@ a_{i}^{1}=\begin{cases}
 \end{array}\\
 \end{array} \right.\\
 	\text{烟幕云团遮挡判断条件:}\\
-	\sum_{i=1}^{3} a_{i}^{1} = 
+	\sum_{i=1}^{3} a_i = 
 \begin{cases} 
 0 & \text{未遮挡} \\
 \text{else} & \text{遮挡}
