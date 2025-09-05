@@ -81,27 +81,30 @@ a_{i}^{1}=\begin{cases}
 \textbf{Step 3 约束条件}
 \begin{itemize}
 \item \textbf{无人机的飞行速度}：由于无人机受领任务后，可根据需要瞬时调整飞行方向，然后以70-140m/s的速度等高度匀速直线飞行。因此：
-\begin{align}\label{11.8}
+\begin{align}\label{15.8}
   70 \leq v_{\text{FY1}} \leq 140
 \end{align}
-\item \textbf{无人机投放的烟幕干扰弹的时间}：我们假定当导弹 \( M_1 \) 匀速飞行至假目标正上空时，发现该目标为假目标。已知该导弹飞行速度 \( V_0 \)，以及初始坐标 \( M_{1,0}(x_{m1,0}, y_{m1,0}, z_{m1,0}) \) 和假目标位置坐标 \( Q \)（即原点 \( O \)）。因此警戒雷达发现导弹后 \( t \) 时刻满足范围为：
+\item \textbf{无人机投放的烟幕干扰弹的时间}：我们假定当导弹 \( M_1 \) 匀速飞行至假目标时，发现该目标为假目标。已知该导弹飞行速度 \( v_0 \)，以及初始坐标 \( M_{1,0}(x_{m1,0}, y_{m1,0}, z_{m1,0}) \) 和假目标位置坐标（即原点 \( O \)）。因此警戒雷达发现导弹后 \( t \) 时刻满足范围为：
 \begin{align}
-0 \leq t \leq \frac{x_{m1,0}}{v_0}
+\begin{cases}
+d_{m1,0} = \sqrt{(x_{m1,0})^2 + (z_{m1,0})^2} \\
+0 \leq t \leq \frac{d_{m1,0}}{v_0}
+\end{cases}
 \end{align}
 \par 由于题目要求每架无人机投放两枚烟幕干扰弹至少间隔1s，且据试验数据知，云团中心10m范围内的烟幕浓度在起爆20s内可为目标提供有效遮蔽。因此：
 \begin{align}
 \left\{ \begin{array}{l}
 	t_{FY1,11}\in \left[ 0, \frac{x_{m1,0}}{v_0} \right]
 	\\\\
-	t_{FY1,12}\in \left[ t_{FY1,11}, \frac{x_{m1,0}}{v_0} \right]
+	t_{FY1,12}\in \left[ t_{FY1,11}, \frac{d_{m1,0}}{v_0} \right]
 	\\\\
-	t_{FY1,21}\in \left[ t_{FY1,11}+1, \frac{x_{m1,0}}{v_0} \right]
+	t_{FY1,21}\in \left[ t_{FY1,11}+1, \frac{dx_{m1,0}}{v_0} \right]
 	\\\\
-	t_{FY1,22}\in \left[ t_{FY1,21}, \frac{x_{m1,0}}{v_0} \right]
+	t_{FY1,22}\in \left[ t_{FY1,21}, \frac{d_{m1,0}}{v_0} \right]
 	\\\\
-	t_{FY1,31}\in \left[ t_{FY1,21}+1, \frac{x_{m1,0}}{v_0} \right]
+	t_{FY1,31}\in \left[ t_{FY1,21}+1, \frac{d_{m1,0}}{v_0} \right]
 	\\\\
-	t_{FY1,32}\in \left[ t_{FY1,21}, \frac{x_{m1,0}}{v_0} \right]
+	t_{FY1,32}\in \left[ t_{FY1,21}, \frac{d_{m1,0}}{v_0} \right]
 \end{array} \right. 
 \end{align}
 \end{itemize}
@@ -134,7 +137,7 @@ a_{i}^{1}=\begin{cases}
 	t\in \left[ t_{FY1,i2},t_{FY1,i2}+\Delta t_0 \right]
 \end{array} \right.\\
 	\text{第$i$枚烟幕干扰弹形成的云团球体球面方程:}\\
-	O_{FY1i,t}:\left( x-x_{FY1i,t} \right) ^2+\left( y-y_{FY1i,t} \right) ^2+\left( z-z_{FY1i,t} \right) ^2=r^2\left( 3.5 \right) 
+	O_{FY1i,t}:\left( x-x_{FY1i,t} \right) ^2+\left( y-y_{FY1i,t} \right) ^2+\left( z-z_{FY1i,t} \right) ^2=r^2
 	\\
 	\text{圆柱面上点坐标:}\\
 	\left\{ \begin{array}{c}
@@ -150,6 +153,14 @@ a_{i}^{1}=\begin{cases}
 \text{else} & \text{遮挡}
 \end{cases}
 \\
+\left\{ \begin{array}{l}
+	t_{FY1,11}\in \left[ 0, \frac{x_{m1,0}}{v_0} \right]
+	\\t_{FY1,12}\in \left[ t_{FY1,11}, \frac{d_{m1,0}}{v_0} \right]
+	\\t_{FY1,21}\in \left[ t_{FY1,11}+1, \frac{dx_{m1,0}}{v_0} \right]
+	\\t_{FY1,22}\in \left[ t_{FY1,21}, \frac{d_{m1,0}}{v_0} \right]
+	\\t_{FY1,31}\in \left[ t_{FY1,21}+1, \frac{d_{m1,0}}{v_0} \right]
+	\\t_{FY1,32}\in \left[ t_{FY1,21}, \frac{d_{m1,0}}{v_0} \right]
+\end{array} \right. 
 \end{array} \right.  
 \end{array}
 \end{align}
