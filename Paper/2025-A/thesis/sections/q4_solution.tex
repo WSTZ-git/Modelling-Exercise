@@ -4,27 +4,73 @@
 \begin{document}
 % \todo[color=green!40]{完成问题四模型的求解(sections/q4\_solution)}
 
-\begin{table}[H]
-\caption{标准三线表格}
-\label{tab:001} 
-\centering
-\begin{tabular}{ccccc}
-\toprule[1.5pt]
-$D$(in) & $P_u$(lbs) & $u_u$(in) & $\beta$ & $G_f$(psi.in)\\
-\midrule[1pt]
-5 & 269.8 & 0.000674 & 1.79 & 0.04089\\
-10 & 421.0 & 0.001035 & 3.59 & 0.04089\\
-20 & 640.2 & 0.001565 & 7.18 & 0.04089\\
-\bottomrule[1.5pt]
-\end{tabular}
-\end{table}
+通过模拟物理退火过程的随机搜索与概率接受机制，在决策变量的可行域内寻找使有效遮蔽时间$\Delta t$最大化的最优解，具体步骤如下：
 
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=.6\textwidth]{}
-% \caption{}
-% \label{}
-% \end{figure}
+\noindent\textbf{步骤1 初始化参数}
+\begin{itemize}
+    \item \textbf{初始解生成}：在决策变量可行域内随机生成初始解$S_0=(\alpha_0, v_{\text{FY1},0})$，其中$\alpha_0 \in [0,2\pi]$，$v_{\text{FY1},0} \in [70,140]$；
+    \item \textbf{初始温度$T_0$}：设定较高的初始温度（如$T_0=100$），确保算法初期能接受较差解，扩大搜索范围；
+    \item \textbf{降温系数$k$}：设定降温速率（如$k=0.95$），控制温度随迭代逐步降低；
+    \item \textbf{终止温度$T_{\text{end}}$}：设定停止阈值（如$T_{\text{end}}=10^{-5}$），当温度低于此值时终止迭代；
+    \item \textbf{迭代次数$L$}：每轮温度下的迭代步数（如$L=50$），确保在当前温度下充分搜索邻域。
+\end{itemize}
+
+\noindent\textbf{步骤2 目标函数计算（核心步骤）}
+对任意解$S=(\alpha, v_{\text{FY1}})$，计算其对应的有效遮蔽时间$\Delta t$，步骤如下：
+\begin{itemize}
+    \item \textbf{无人机运动模拟}：根据$\alpha$和$v_{\text{FY1}}$，计算无人机在投放时刻$t_1$的位置$(x_{\text{FY1},t_1}, y_{\text{FY1},t_1}, z_{\text{FY1},t_1})$；
+    \item \textbf{烟幕弹起爆位置计算}：基于$t_2 = t_1 + \Delta t_{\text{delay}}$（$\Delta t_{\text{delay}}$为烟幕弹飞行时间，固定参数），计算起爆位置$(x_{\text{FY11},t_2}, y_{\text{FY11},t_2}, z_{\text{FY11},t_2})$，其中$x$、$y$方向按无人机速度惯性运动（$\lambda=\alpha$，与无人机同方向），$z$方向受重力下落；
+    \item \textbf{烟幕云团位置随时间变化}：对$t \in [t_2, t_2+\Delta t_0]$，计算云团中心坐标$(x_{\text{FY11},t}, y_{\text{FY11},t}, z_{\text{FY11},t})$，其中$z$方向以$v_1$下沉；
+    \item \textbf{真目标采样}：在圆柱面（真目标）上均匀采样若干点（如不同角度和高度），覆盖目标关键区域；
+    \item \textbf{遮挡时间判定}：对每个采样点，结合导弹飞行轨迹（预设参数），通过判别式$\Delta \geq 0$判断$t$时刻是否遮挡，记录所有有效遮挡的时间区间，总时长即为$\Delta t$。
+\end{itemize}
+
+\noindent\textbf{步骤3 邻域解生成}
+
+为当前解$S=(\alpha, v_{\text{FY1}})$生成邻域解$S'=(\alpha', v_{\text{FY1}}')$，确保新解在可行域内：
+\begin{itemize}
+    \item $\alpha' = \alpha + \Delta\alpha$，其中$\Delta\alpha$为随机扰动（如$\pm0.1$弧度），若$\alpha'$超出$[0,2\pi]$则取模调整；
+    \item $v_{\text{FY1}}' = v_{\text{FY1}} + \Delta v$，其中$\Delta v$为随机扰动（如$\pm5$ m/s），若$v_{\text{FY1}}'$超出$[70,140]$则截断至边界。
+\end{itemize}
+
+\noindent\textbf{步骤4 判断准则（接受/拒绝新解）}
+\begin{itemize}
+    \item 计算新解与当前解的目标函数差值：$\Delta E = \Delta t(S') - \Delta t(S)$；
+    \item 若$\Delta E > 0$（新解更优）：直接接受$S'$作为当前解；
+    \item 若$\Delta E \leq 0$（新解较差）：以概率$P = \exp\left(\frac{\Delta E}{T}\right)$接受$S'$，其中$T$为当前温度。温度越高，接受较差解的概率越大，利于跳出局部最优。
+\end{itemize}
+
+\noindent\textbf{步骤5 降温与迭代}
+\begin{itemize}
+    \item 每完成$L$次迭代后，按$T = k \cdot T$降低温度；
+    \item 重复“邻域搜索→接受准则→降温”过程，直至温度$T \leq T_{\text{end}}$。
+\end{itemize}
+
+\noindent\textbf{步骤6 终止与最优解输出}
+
+迭代终止后，输出历史最优解$S^*=(\alpha^*, v_{\text{FY1}}^*)$及其对应的最大有效遮蔽时间$\Delta t^*$。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
