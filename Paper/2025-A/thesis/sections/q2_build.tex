@@ -4,7 +4,7 @@
 \begin{document}
 % \todo[color=green!30]{完成问题二模型的建立(sections/q2\_build)}
 \noindent \textbf{Step 1 目标函数}
-\par 在第一问中，我们给出了无人机$FY1$投放的烟幕干扰弹对M1的有效遮蔽时长的$\Delta t_{11}$ 的计算公式。在本问中，我们的目标是通过设计无人机$FY1$与其投放的1枚烟幕干扰弹相关参数，使得烟幕干扰弹对导弹$M1$的有效遮蔽时间尽可能长,因此目标函数为：
+\par 在问题一中，我们给出了无人机$FY1$投放的烟幕干扰弹对M1的有效遮蔽时长的$\Delta t_{11}$ 的计算公式。但在本问中，我们的目标是寻找无人机$FY1$与其投放的1枚烟幕干扰弹相关参数，使得烟幕干扰弹对导弹$M1$的有效遮蔽时间尽可能长,因此目标函数为：
 \begin{align}\label{10.1}
   \underset{\alpha ,t_1,v_{FY1},t_2}{\max}\Delta t_{11}
 \end{align}
@@ -14,9 +14,9 @@
 \noindent \textbf{Step 2 决策变量}
 
 \begin{itemize}
-\item \textbf{无人机$FY1$的方向}:设$\alpha $为无人机$FY1$与$x$轴正方向的夹角，范围为$\left[ 0,2\pi \right] $，从而确定了无人机$FY1$的飞行方向。
+\item \textbf{无人机$FY1$的方向}:设$\alpha $为无人机$FY1$与$x$轴正方向的夹角，范围为$\left[ 0,2\pi \right] $。
 \item \textbf{烟幕干扰弹投放点}:设无人机$FY1$在受领任务 \( t_1 \) s 后投放1枚烟幕干扰弹。
-\item  \textbf{无人机$FY1$的飞行速度} :设无人机的飞行速度为 \( v_{FY1} \)，根据问题一求得的\eqref{1.8}可以得到 \( t \) 时刻无人机 \( FY1 \) 的位置坐标：
+\item  \textbf{无人机$FY1$的飞行速度} :设无人机的飞行速度为 \( v_{FY1} \)，根据问题一求得的\eqref{1.8}可得到 \( t \) 时刻无人机 \( FY1 \) 的位置坐标：
 \begin{align}\label{10.3}
 \begin{cases}
 x_{FY1,t} = x_{FY1,0} + v_{FY1} t \cos\alpha \\
@@ -31,22 +31,19 @@ z_{FY1,t} = z_{FY1,0}
 	y_{FY11,t_2}=y_{FY1,t_1}\\
 	z_{FY11,t_2}=z_{FY1,t_1}-\frac{g\left( t_2-t_1 \right) ^2}{2}\\
 \end{array} \right. 
-g\end{align}
+\end{align}
 \end{itemize}
-
-
 
 \noindent \textbf{Step 3 约束条件}
 \begin{itemize}
 \item \textbf{无人机的飞行速度}：由于无人机受领任务后，可根据需要瞬时调整飞行方向，然后以70-140m/s的速度等高度匀速直线飞行。因此：
 \begin{align}\label{10.8}
-  70 \leq v_{\text{FY1}} \leq 140
+  70 \leq v_{FY1} \leq 140
 \end{align}
 \end{itemize}
 
-
-\textbf{Step 4 优化模型}
-\par 综上所述，烟幕干扰弹对导弹$M1$的有效遮蔽时间单一目标优化模型为：
+\noindent \textbf{Step 4 优化模型}
+\par 综上所述，烟幕干扰弹对导弹$M1$的有效遮蔽时间单目标优化模型为：
 \begin{align}
   \begin{array}{c}
 	\underset{\alpha ,t_1,v_{FY1},t_2}{\max}\Delta t_{11}
@@ -65,7 +62,7 @@ g\end{align}
 	y_{FY11,t_2}=y_{FY1,t_1}-v_{FY1}\left( t_2-t_1 \right) \sin \lambda\\
 	z_{FY11,t_2}=z_{FY1,t_1}-\frac{g\left( t_2-t_1 \right) ^2}{2}\\
 \end{array} \right.\\
-  70 \leq v_{\text{FY1}} \leq 140\\
+  70 \leq v_{FY1} \leq 140\\
 \end{array} \right.  
 \end{array}
 \end{align}

@@ -2,82 +2,27 @@
 \graphicspath{{figures/}{../figures/}}
 
 \begin{document}
-<<<<<<< HEAD
-  % % \todo[color=green!30]{完成问题二模型的求解(sections/q2\_solution)}
-=======
 % \todo[color=green!30]{完成问题二模型的求解(sections/q2\_solution)}
 
-遍历算法通过对决策变量可行域网格化离散，枚举所有离散解并计算有效遮蔽时间$\Delta t$，最终筛选最优解，核心步骤如下：
+利用模拟退火算法进行求解，最终筛选最优解，核心步骤如下：
 
-\noindent\textbf{步骤1 明确优化模型核心要素}
-\begin{itemize}
-    \item \textbf{目标函数}：$\max \Delta t$（导弹路径与烟幕有效球形区域（$r=2.5$m）的交集时长）；
-    \item \textbf{决策变量}：
-          \begin{itemize}
-              \item 飞行方向角$\alpha \in [0,2\pi]$；
-              \item 飞行速度$v_{\text{FY1}} \in [70,140]$ m/s；
-              \item 投放时刻$t_1 \in [0,10]$ s；
-              \item 弹飞行时间$\Delta t_{\text{delay}}=t_2-t_1 \in [1,5]$ s。
-          \end{itemize}
-    \item \textbf{关键约束}：
-          \begin{itemize}
-              \item 无人机位置：$x_{\text{FY1},t}=x_{\text{FY1},0}+v_{\text{FY1}}t\cos\alpha$，$y_{\text{FY1},t}=y_{\text{FY1},0}+v_{\text{FY1}}t\sin\alpha$，$z_{\text{FY1},t}=z_{\text{FY1},0}$；
-              \item 烟幕起爆位置：$x_{\text{FY11},t_2}=x_{\text{FY1},t_1}-v_{\text{FY1}}\Delta t_{\text{delay}}\cos\lambda$，$y_{\text{FY11},t_2}=y_{\text{FY1},t_1}-v_{\text{FY1}}\Delta t_{\text{delay}}\sin\lambda$，$z_{\text{FY11},t_2}=z_{\text{FY1},t_1}-\frac{1}{2}g\Delta t_{\text{delay}}^2$；
-              \item 烟幕云团位置：$x_{\text{FY11},t}=x_{\text{FY11},t_2}$，$y_{\text{FY11},t}=y_{\text{FY11},t_2}$，$z_{\text{FY11},t}=z_{\text{FY11},t_2}-v_1(t-t_2)$（$t \in [t_2,t_2+20]$s）；
-              \item 真目标圆柱面：$x_1^2+(y_1-y_0)^2=r_0^2$，$z_1 \in [0,h_0]$（$y_0=200$，$r_0=7$，$h_0=10$）；
-              \item 遮挡判断：$\Delta \geq 0$为遮挡，$\Delta <0$为未遮挡。
-          \end{itemize}
-\end{itemize}
 
-\noindent\textbf{步骤2 决策变量网格化离散}
 
-对连续变量按固定步长离散，生成网格点：
-\begin{itemize}
-    \item $\alpha$：步长$\Delta\alpha=\pi/20$，离散为$\alpha_k=k\cdot\Delta\alpha$（$k=0,1,\dots,39$）；
-    \item $v_{\text{FY1}}$：步长$\Delta v=5$m/s，离散为$v_m=70+m\cdot\Delta v$（$m=0,1,\dots,14$）；
-    \item $t_1$：步长$\Delta t_1=0.5$s，离散为$t_{1,n}=0+n\cdot\Delta t_1$（$n=0,1,\dots,20$）；
-    \item $\Delta t_{\text{delay}}$：步长$\Delta t_d=0.5$s，离散为$\Delta t_{d,p}=1+p\cdot\Delta t_d$（$p=0,1,\dots,8$）。
-\end{itemize}
 
-\noindent\textbf{步骤3 枚举所有离散解}
+按照上述算法思路，利用Python求解得
 
-构建所有决策变量网格点的组合，生成离散解集合：
-$$S = \{ S_{k,m,n,p}=(\alpha_k, v_m, t_{1,n}, \Delta t_{d,p}) \mid k=0,\dots,39;\ m=0,\dots,14;\ n=0,\dots,20;\ p=0,\dots,8 \}$$
-总组合数为$40 \times 15 \times 21 \times 9 = 113400$组。\\[8pt]
-
-\noindent\textbf{步骤4 计算每个解的$\Delta t$}
-
-对任意$S_{k,m,n,p}$，按以下步骤计算$\Delta t$：
-\begin{itemize}
-    \item 算无人机投放位置：代入$t=t_{1,n}$、$\alpha=\alpha_k$、$v=v_m$，得$(x_{\text{FY1},t_1}, y_{\text{FY1},t_1}, z_{\text{FY1},t_1})$；
-    \item 算烟幕起爆位置：$t_2=t_{1,n}+\Delta t_{d,p}$，代入起爆位置公式，得$(x_{\text{FY11},t_2}, y_{\text{FY11},t_2}, z_{\text{FY11},t_2})$；
-    \item 算烟幕实时位置：对$t \in [t_2, t_2+20]$s（步长$0.1$s），得$(x_{\text{FY11},t}, y_{\text{FY11},t}, z_{\text{FY11},t})$；
-    \item 真目标采样与遮挡判断：在圆柱面取50个采样点，对每个$t$和采样点，验证$\Delta \geq 0$是否成立；
-    \item 统计$\Delta t$：合并遮挡时间区间，总时长即为该解的$\Delta t$。
-\end{itemize}
-
-\noindent\textbf{步骤5 筛选最优解}
-
-比较所有离散解的$\Delta t$，输出最大$\Delta t^*$及对应最优决策变量：
-$$(\alpha^*, v_{\text{FY1}}^*, t_1^*, t_2^*) = \mathrm{arg}\max _{S_{k,m,n,p}} \Delta t(S_{k,m,n,p}).$$
-
-\noindent\textbf{步骤6 局部精度优化}
-
-对$\alpha^*$、$v_{\text{FY1}}^*$附近区域缩小步长（如$\Delta\alpha=\pi/40$、$\Delta v=2$m/s），再次遍历，提升最优解精度。
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{标记图.png}
+\caption{}
+\label{图2}
+\end{figure}
 
 
 
 
 
 
-
-
-
-
-
-
-
->>>>>>> 75008762ebc888dad4df4a11cfa0cf2b63727c86
 
 
 

@@ -31,7 +31,7 @@
     \item 速度：$v_{\text{FY1}}' = v_{\text{FY1}} \pm 5$（$\text{m/s}$），超出$[70,140]$则截断至边界。
 \end{itemize}
 
-\noindent\textbf{步骤4  Metropolis准则（接受新解）}
+\noindent\textbf{步骤4  判断准则（接受新解）}
 
 计算目标函数差值$\Delta E = \Delta t(S') - \Delta t(S)$：
 \begin{itemize}
@@ -43,7 +43,15 @@
 
 每完成$L$次迭代后，按$T = k \cdot T$降温；重复“邻域搜索→接受准则→降温”，直至$T \leq T_{\text{end}}$，输出最优解$S^*=(\alpha^*, v_{\text{FY1}}^*)$及最大$\Delta t^*$。
 
+按照上述算法思路，利用Python求解得
 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{标记图.png}
+\caption{}
+\label{图3}
+\end{figure}
 
 
 

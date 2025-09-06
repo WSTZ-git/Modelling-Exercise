@@ -6,14 +6,15 @@
 \noindent \textbf{Step 1 目标函数}
 \par 在本问中，我们的目标是通过设计3架无人机$FY1$，$FY2$，$FY3$与其分别投放的1枚烟幕干扰弹相关参数，使得这3架无人机分别释放的3枚烟幕干扰弹对导弹$M1$的有效遮蔽总时间尽可能长，因此目标函数为：
 \begin{align}\label{19.1}
-  \underset{\alpha ,t_1,v_{FY1},t_2,j}{\max}\Delta t_{31}
+  \underset{\alpha_j ,v_{FYj},t_{FYj,j1},t_{FYj,j2}}{\max}\Delta t_{31}
 \end{align}
 \noindent \textbf{Step 2 决策变量}
 
 \begin{itemize}
-\item \textbf{无人机$FYj$的方向}:设$\alpha_j$为无人机$FYj$与$x$轴正方向的夹角，范围为$\left[ 0,2\pi \right] $，从而确定无人机$FYi$的飞行方向$(j=1,2,3)$。
-\item \textbf{烟幕干扰弹投放点}:设无人机$FYj$在受领任务 \( t_{FYj,11} \) s 后投放1枚烟幕干扰弹。
-\item  \textbf{无人机$FYj$的飞行速度} :设无人机$FYj$的飞行速度为 \( v_{FYj} \)，无人机受领任务后，保持等高度匀速直线运动。由问题一求得的\eqref{1.8}可知 \( t \) 时刻无人机 \( FYj \) 的位置坐标为：
+\item \textbf{无人机$FYj$的方向}:设$\alpha_j$为无人机$FYj$与$x$轴正方向的夹角，范围为$[ 0,2\pi ) $，从而确定无人机$FYj$的飞行方向$(j=1,2,3)$。
+\item  \textbf{无人机$FYj$的飞行速度} :设无人机$FYj$的飞行速度为 \( v_{FYj} \)。
+
+\item \textbf{烟幕干扰弹投放点}:设无人机$FYj$在受领任务 \( t_{FYj,11} \) s 后投放1枚烟幕干扰弹。无人机受领任务后，保持等高度匀速直线运动。由问题一求得的\eqref{1.8}可知 \( t \) 时刻无人机 \( FYj \) 的位置坐标为：
 \begin{align}\label{19.3}
   \begin{cases}
 x_{FYj,t} = x_{FYj,0} + v_{FYj} t \cos\alpha \\
@@ -21,7 +22,15 @@ y_{FYj,t} = y_{FYj,0} + v_{FYj} t \sin\alpha \\
 z_{FYi,t} = z_{FYj,0}
 \end{cases}
 \end{align}
-\item \textbf{烟幕干扰弹起爆点}:设无人机 FYj 投放一枚烟幕干扰弹在无人机受领任务 \( t_{FYj,12} \) s 后起爆，由问题一求得的\eqref{1.9}可得3架无人机投放的烟雾干扰弹在$t_{FYj,12}$时刻即其起爆时的位置坐标：
+从而可得\( t_{FYj,11} \) 时刻无人机 \( FYj \) 的位置坐标,即烟幕干扰弹投放点的位置坐标
+\begin{align}
+  \begin{cases}
+x_{FYj,t_{FYj,11}} = x_{FYj,0} + v_{FYj} t_{FYj,11} \cos\alpha \\
+y_{FYj,t_{FYj,11}} = y_{FYj,0} + v_{FYj} t_{FYj,11} \sin\alpha \\
+z_{FYi,t_{FYj,11}} = z_{FYj,0}
+\end{cases}
+\end{align}
+\item \textbf{烟幕干扰弹起爆点}:设无人机 $FYj $投放一枚烟幕干扰弹在无人机受领任务 \( t_{FYj,12} \) s 后起爆，由问题一求得的\eqref{1.9}可得3架无人机投放的烟雾干扰弹在$t_{FYj,12}$时刻即其起爆时的位置坐标：
 \begin{align}\label{19.4}
 \left\{ \begin{array}{l}
 	x_{FYj,t_{FYj,12}}=x_{FYj,t_{FYj,11}}+v_{FYj}\left( t_{FYj,12}-t_{FYj,11} \right) \cos \alpha\\
@@ -29,7 +38,7 @@ z_{FYi,t} = z_{FYj,0}
 	z_{FYj,t_{FYj,12}}=z_{FYj,t_{FYj,11}}-\frac{g\left( t_{FYj,12}-t_{FYj,11} \right) ^2}{2}\\
 \end{array} \right. 
 \end{align}
-\par 通过问题1中的\eqref{1.12}，得到 $t$ 时刻无人机$FYj$投放的烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FYj1}\left( x_l,y_l,z_s \right) $。并将其代入\eqref{1.19}中即
+\par 同理由问题1中的\eqref{1.12}，可得 $t_w$ 时刻无人机$FYj$投放的烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FYj1}\left( x_l,y_l,z_s \right) $。并将其代入\eqref{1.19}中即
 \begin{align}\label{1.98}
 	\left\{ \begin{array}{l}
 	\varDelta <0\ \ \ \text{未形成有效遮挡}\\
@@ -39,29 +48,28 @@ z_{FYi,t} = z_{FYj,0}
 \end{array} \right.\\
 \end{array} \right. 
 \end{align}
-\par 判断$t$时刻下无人机FYj释放的烟幕干扰弹形成的烟幕云团是否对真目标进行遮挡。并规定： 
+\par 判断$t_w$时刻下无人机$FYj$释放的烟幕干扰弹形成的烟幕云团是否对真目标进行遮挡。又因为每个烟幕弹形成的云团都将在20s后消散，所以规定： 
 \begin{align}\label{14.9}
 	\Delta _{FYj1}\left( x_l,y_l,z_s \right) =\left\{ \begin{array}{l}
-	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FY1,12}+\Delta t_0\\
-	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FY2,12}+\Delta t_0\\
+	-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FY1,12}+\Delta t_0\\
+	-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FY2,12}+\Delta t_0\\
 \end{array} \right.
 \end{align}
 \end{itemize}
+最后，同理遍历真目标圆柱上的所有离散点$(x_l,y_l,z_s)$和离散时刻$t_w$，将所有对真目标构成有效遮挡的时刻累加起来就得到该条件下的$\Delta t_{31}$.
 
-\textbf{Step 3 约束条件}
+\noindent \textbf{Step 3 约束条件}
 \begin{itemize}
 \item \textbf{无人机的飞行速度}：由于无人机受领任务后，可根据需要瞬时调整飞行方向，然后以70-140m/s的速度等高度匀速直线飞行。因此：
 \begin{align}\label{11.8}
-  70 \leq v_{\text{FY1}} \leq 140
+  70 \leq v_{FY1} \leq 140
 \end{align}
 \end{itemize}
 \textbf{Step 4 优化模型}
-\par 综上所述，3架无人机$FYj$释放的烟幕遮挡弹的有效遮蔽总时间单一目标优化模型为：
-
-
+\par 综上所述，3架无人机$FYj$释放的烟幕遮挡弹的有效遮蔽总时间单目标优化模型为：
 \begin{align}
   \begin{array}{c}
-	 \underset{\alpha ,t_1,v_{FY1},t_2,j}{\max}\Delta t_{31}
+  \underset{\alpha_j ,v_{FYj},t_{FYj,j1},t_{FYj,j2}}{\max}\Delta t_{31}
   \\
 \left\{ \begin{array}{l}
 	t\text{时刻无人机的位置坐标:}\\
@@ -69,10 +77,10 @@ z_{FYi,t} = z_{FYj,0}
 x_{FYj,t} = x_{FYj,0} + v_{FYj} t \cos\alpha \\
 y_{FYj,t} = y_{FYj,0} + v_{FYj} t \sin\alpha \\
 z_{FYi,t} = z_{FYj,0}\\
-0\leq \alpha \leq 2\pi \\
+0\leq \alpha < 2\pi \\
 \end{array} \right.\\
-  70 \leq v_{\text{FY1}} \leq 140\\
-	\text{无人机FYj投放的烟雾干扰弹起爆时的位置坐标:}\\
+  70 \leq v_{FY1} \leq 140\\
+	\text{无人机}FYj\text{投放的烟雾干扰弹起爆时的位置坐标:}\\
 	\left\{ \begin{array}{l}
 	x_{FYj,t_{FYj,12}}=x_{FYj,t_{FYj,11}}+v_{FYj}\left( t_{FYj,12}-t_{FYj,11} \right) \cos \alpha\\
 	y_{FYj,t_{FYj,12}}=y_{FYj,t_{FYj,11}}+v_{FYj}\left( t_{FYj,12}-t_{FYj,11} \right) \sin \alpha\\
