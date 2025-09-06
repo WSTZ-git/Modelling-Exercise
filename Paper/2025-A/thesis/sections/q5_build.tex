@@ -4,14 +4,14 @@
 \begin{document}
 % \todo[color=green!40]{完成问题三模型的建立(sections/q5\_build)}
 \noindent \textbf{Step 1 目标函数}
-\par 在本问中，我们的目标是通过设计5架无人机$FYj$与其分别投放的烟幕干扰弹相关参数，使得烟幕干扰弹对导弹$M1$，$M2$，$M3$的有效遮蔽总时间尽可能长,因此目标函数为：
+\par 在本问中，我们的目标是通过设计5架无人机$FYj$与其分别投放的烟幕干扰弹相关参数，使得烟幕干扰弹对导弹$M1$，$M2$，$M3$的有效遮蔽总时间尽可能长，因此目标函数为：
 \begin{align}\label{11.1}
-  \max \Delta t
+  \underset{\alpha ,t_1,v_{FY1},t_2,j,i,k}{\max}\Delta t
 \end{align}
 \noindent \textbf{Step 2 决策变量}
 
 \begin{itemize}
-\item \textbf{无人机$FYj$的方向}:设$\alpha_j$为无人机$FYj$与$x$轴正方向的夹角,从而确定无人机$FYi$的飞行方向.
+\item \textbf{无人机$FYj$的方向}:设$\alpha_j$为无人机$FYj$与$x$轴正方向的夹角，范围为$\left[ 0,2\pi \right] $，从而确定无人机$FYi$的飞行方向$(i=1,2,3,4,5.j=1,2,3)$。
 
 \item \textbf{来袭导弹}:由问题一可以得知导弹$Mk$在$t$时刻的位置坐标$Mk\left( t \right)$为:
 \begin{align}
@@ -21,7 +21,7 @@
 	z_{Mk,t}=z_{Mk,0}-\frac{z_{Mk,0}v_0t}{\sqrt{x_{Mk,0}^{2}+y_{Mk,0}^{2}+z_{Mk,0}^{2}}}\\
 \end{array} \right. 
 \end{align}
-\item \textbf{烟幕干扰弹投放点}:设无人机$FYj$在受领任务 \( t_{FYj,i1} \) s 后投放第i枚烟幕干扰弹.
+\item \textbf{烟幕干扰弹投放点}:设无人机$FYj$在受领任务 \( t_{FYj,i1} \) s 后投放第i枚烟幕干扰弹。 
 \item  \textbf{无人机$FYj$的飞行速度} :设无人机的飞行速度为 \( v_{FYj} \)，无人机受领任务后，保持等高度匀速直线运动。由第一问可知\( t \) 时刻无人机 \( FYj \) 的位置坐标为：
 \begin{align}\label{11.3}
   \begin{cases}
@@ -30,7 +30,7 @@ y_{FYj,t} = y_{FYj,0} + v_{FYj} t \sin\alpha \\
 z_{FYj,t} = z_{FYj,0}
 \end{cases}
 \end{align}
-\item \textbf{烟幕干扰弹起爆点}:设无人机 FYj 投放的第i枚烟幕干扰弹在无人机受领任务 \( t_{FYj,i2} \) s 后起爆，因此由问题1可得投放的第$i$枚烟雾干扰弹在$t_{FYj,i2}$时刻即其起爆时的位置坐标$\left( x_{FYji,t_{FYj,i2}},y_{FYji,t_{FYj,i2}},z_{FYji,t_{FYj,i2}} \right)$满足：
+\item \textbf{烟幕干扰弹起爆点}:设无人机 FYj 投放的第i枚烟幕干扰弹在无人机受领任务 \( t_{FYj,i2} \) s 后起爆，因此由问题1可得投放的第$i$枚烟雾干扰弹在$t_{FYj,i2}$时刻即其起爆时的位置坐标：
 \begin{align}\label{19.4}
 \left\{ \begin{array}{l}
 	x_{FYji,t_{FYj,i2}}=x_{FYj,t_{FYj,i1}}+v_{FYj}\left( t_{FYj,i2}-t_{FYj,i1} \right) \cos \alpha\\
@@ -38,38 +38,17 @@ z_{FYj,t} = z_{FYj,0}
 	z_{FYji,t_{FYj,i2}}=z_{FYj,t_{FYj,i1}}-\frac{g\left( t_{FYj,i2}-t_{FYj,i1} \right) ^2}{2}\\
 \end{array} \right. 
 \end{align}
-\par 无人机 FY1 投放的第$i$枚烟幕干扰弹在起爆之后$t$时刻的位置坐标满足：
-\begin{align}\label{19.9}
+\par 代入问题1中，得到 $t$ 时刻$(t\in \left[ \underset{i=1,2,3,4,5}{\min}\left\{ t_{FYj,12} \right\} ,\underset{i=1,2,3,4,5}{\max}\left\{ t_{FYj,32} \right\} +\Delta t_0 \right]$)第$i$枚烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FYji}\left( x_l,y_l,z_s \right) $。并将其代入\eqref{1.19}中即
+\begin{align}\label{1.88}
 	\left\{ \begin{array}{l}
-	x_{FYj1,t}=x_{FYj1,t_{FYj,i2}}\\
-	y_{FYj1,t}=y_{FYj1,t_{FYj,i2}}\\
-	z_{FYj1,t}=z_{FYj1,t_{FYj,i2}}-v_1\left( t-t_{FYj,i2} \right)\\
-	t\in \left[ t_{FYj,i2},t_{FYj,i2}+\Delta t_0 \right]
-\end{array} \right.
+	\varDelta <0\ \ \ \text{未形成有效遮挡}\\
+	\varDelta \ge 0\left\{ \begin{array}{l}
+	\min \left\{ d_1,d_2 \right\} >\left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{未形成有效遮挡}\\
+	\min \left\{ d_1,d_2 \right\} \le \left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{有效遮挡}\\
+\end{array} \right.\\
+\end{array} \right. 
 \end{align}
-\par 因此，无人机 FYj 投放的第$i$枚烟幕干扰弹在起爆之后形成的烟雾有效遮挡范围的云团球体球面方程为：
-\begin{align}
-	O_{FYji,t}:\left( x-x_{FYji,t} \right) ^2+\left( y-y_{FYji,t} \right) ^2+\left( z-z_{FYji,t} \right) ^2=r^2 
-\end{align}
-\par 代入问题1中，得到 $t$ 时刻$(t\in \left[ \underset{i=1,2,3,4,5}{\min}\left\{ t_{FYj,12} \right\} ,\underset{i=1,2,3,4,5}{\max}\left\{ t_{FYj,32} \right\} +\Delta t_0 \right]$)第$i$枚烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FYji}\left( x_1,y_1,z_1 \right) $.将真目标所在圆柱侧面上任一点坐标$(x_1, y_1, z_1)$ 带入，当 $\Delta _{FYji} \geq 0$ 时，第$i$枚烟幕干扰弹形成的烟幕云团对目标进行遮挡，当 $\Delta _{FYji} < 0$ 时，第$i$枚烟幕干扰弹形成的烟幕云团未对目标形成遮挡。 我们记无人机$FYj$投放的第$i$枚烟幕干扰弹形成的烟幕云团对目标形成遮挡为$a_{i}^{1}$，其为0,1向量，则
-\begin{align}
-a_{i}^{j}=\begin{cases}
-	0\ \ \ \Delta _{FYji}\geq 0&		\text{未遮挡}\\
-	1\ \ \ \Delta _{FYji}<0&		\text{遮挡}\\
-\end{cases}
-\end{align}\label{19.7}
-\par 对于无人机 FYj 投放的i枚烟幕干扰弹只要有一枚形成的烟幕云团对目标进行遮挡即可，因此
-\begin{align}
-\sum_{j=1}^5\sum_{i=1}^{3} a_{i}^{j} = 
-\begin{cases} 
-0 & \text{未遮挡} \\
-\text{else} & \text{遮挡}
-\end{cases}
-\end{align}
-
-
-
-
+\par 判断$t$时刻下无人机FYj释放的第$i$枚烟幕干扰弹形成的烟幕云团是否对真目标进行遮挡。
 \end{itemize}
 
 
@@ -81,36 +60,29 @@ a_{i}^{j}=\begin{cases}
 \begin{align}\label{11.8}
   70 \leq v_{\text{FY1}} \leq 140
 \end{align}
-\item \textbf{无人机投放的烟幕干扰弹的时间}：我们假定当导弹 \( M_k \) 匀速飞行至假目标时，发现该目标为假目标。已知该导弹飞行速度 \( v_0 \)，以及初始坐标 \( M_{k,0}(x_{mk,0}, y_{mk,0}, z_{mk,0}) \) 和假目标位置坐标（即原点 \( O \)）。因此警戒雷达发现导弹后 \( t \) 时刻满足范围为：
-\begin{align}
-\begin{cases}
-d_{mk,0} = \sqrt{(x_{mk,0})^2 + (z_{mk1,0})^2} \\
-0 \leq t \leq \frac{d_{mk,0}}{v_0}
-\end{cases}
-\end{align}
+\item \textbf{无人机投放的烟幕干扰弹的时间}：
 \par 由于题目要求每架无人机投放两枚烟幕干扰弹至少间隔1s，且据试验数据知，云团中心10m范围内的烟幕浓度在起爆20s内可为目标提供有效遮蔽。因此：
-\begin{align}
+\begin{align}\label{12345}
 \left\{ \begin{array}{l}
 	t_{FYj,11}\in \left[ 0, \frac{x_{mk,0}}{v_0} \right]
-	\\\\
+	\\
 	t_{FYj,12}\in \left[ t_{FYj,11}, \frac{d_{mk,0}}{v_0} \right]
-	\\\\
+	\\
 	t_{FYj,21}\in \left[ t_{FYj,11}+1, \frac{dx_{mk,0}}{v_0} \right]
-	\\\\
+	\\
 	t_{FYj,22}\in \left[ t_{FYj,21}, \frac{d_{mk,0}}{v_0} \right]
-	\\\\
+	\\
 	t_{FYj,31}\in \left[ t_{FYj,21}+1, \frac{d_{mk,0}}{v_0} \right]
-	\\\\
+	\\
 	t_{FYj,32}\in \left[ t_{FYj,21}, \frac{d_{mk,0}}{v_0} \right]
 \end{array} \right. 
 \end{align}
 \end{itemize}
 \textbf{Step 4 优化模型}
-\par 综上所述，有效遮蔽时间单一目标优化模型为：
+\par 综上所述，5架飞机释放的相应的烟幕干扰弹对真目标的有效遮蔽总时间单一目标优化模型为：
 \begin{align}
   \begin{array}{c}
-	 \max \Delta t
-  \\
+	   \underset{\alpha ,t_1,v_{FY1},t_2,j,i,k}{\max}\Delta t  \\
 \left\{ \begin{array}{l}
 \text{导弹$Mk$在$t$时刻的位置坐标:}\\
 	\left\{ \begin{array}{l}
@@ -123,8 +95,8 @@ d_{mk,0} = \sqrt{(x_{mk,0})^2 + (z_{mk1,0})^2} \\
 x_{FYj,t} = x_{FYj,0} + v_{FYj} t \cos\alpha \\
 y_{FYj,t} = y_{FYj,0} + v_{FYj} t \sin\alpha \\
 z_{FYj,t} = z_{FYj,0}
-\end{cases}\\
 	0\leq \alpha \leq 2\pi\\
+\end{cases}\\
   70 \leq v_{\text{FY1}} \leq 140\\
 	\text{第$j$架无人机的第$i$枚烟雾干扰弹起爆时的位置坐标:}\\
 	\left\{ \begin{array}{l}
@@ -132,31 +104,7 @@ z_{FYj,t} = z_{FYj,0}
 	y_{FYji,t_{FYj,i2}}=y_{FYj,t_{FYj,i1}}+v_{FYj}\left( t_{FYj,i2}-t_{FYj,i1} \right) \sin \alpha\\
 	z_{FYji,t_{FYj,i2}}=z_{FYj,t_{FYj,i1}}-\frac{g\left( t_{FYj,i2}-t_{FYj,i1} \right) ^2}{2}\\
 \end{array} \right.  \\
-	t\text{时刻第$j$架无人机的第$i$枚烟幕干扰弹形成的云团中心坐标:}\\
 	\left\{ \begin{array}{l}
-	x_{FYj1,t}=x_{FYj1,t_{FYj,i2}}\\
-	y_{FYj1,t}=y_{FYj1,t_{FYj,i2}}\\
-	z_{FYj1,t}=z_{FYj1,t_{FYj,i2}}-v_1\left( t-t_{FYj,i2} \right)\\
-	t\in \left[ t_{FYj,i2},t_{FYj,i2}+\Delta t_0 \right]
-\end{array} \right.\\
-	\text{第$j$架无人机的第$i$枚烟幕干扰弹形成的云团球体球面方程:}\\
-	O_{FYji,t}:\left( x-x_{FYji,t} \right) ^2+\left( y-y_{FYji,t} \right) ^2+\left( z-z_{FYji,t} \right) ^2=r^2 
-	\\
-	\text{圆柱面上点坐标:}\\
-	\left\{ \begin{array}{c}
-	\begin{array}{l}
-	x_{1}^{2}+\left( y_{1}^{2}-y_0 \right) ^2=r_{0}^{2}\\
-	z_1\in \left[ 0,h_0 \right]\\
-\end{array}\\
-\end{array} \right.\\
-	\text{烟幕云团遮挡判断条件:}\\
-	\sum_{j=1}^5\sum_{i=1}^{3} a_{i}^{j} = 
-\begin{cases} 
-0 & \text{未遮挡} \\
-\text{else} & \text{遮挡}
-\end{cases}
-\\
-\left\{ \begin{array}{l}
 	t_{FYj,11}\in \left[ 0, \frac{x_{mk,0}}{v_0} \right]
 	\\
 	t_{FYj,12}\in \left[ t_{FYj,11}, \frac{d_{mk,0}}{v_0} \right]

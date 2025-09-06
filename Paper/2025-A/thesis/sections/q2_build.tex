@@ -4,9 +4,9 @@
 \begin{document}
 % \todo[color=green!30]{完成问题二模型的建立(sections/q2\_build)}
 \noindent \textbf{Step 1 目标函数}
-\par 在第一问中，我们给出了无人机$FY1$投放的烟幕干扰弹对M1的有效遮蔽时长的$\Delta t_1$ 的计算公式。在本问中，我们的目标是通过设计无人机$FY1$与其投放的1枚烟幕干扰弹相关参数，使得烟幕干扰弹对导弹$M1$的有效遮蔽时间尽可能长,因此目标函数为：
+\par 在第一问中，我们给出了无人机$FY1$投放的烟幕干扰弹对M1的有效遮蔽时长的$\Delta t_{11}$ 的计算公式。在本问中，我们的目标是通过设计无人机$FY1$与其投放的1枚烟幕干扰弹相关参数，使得烟幕干扰弹对导弹$M1$的有效遮蔽时间尽可能长,因此目标函数为：
 \begin{align}\label{10.1}
-  \max \Delta t_1
+  \underset{\alpha ,t_1,v_{FY1},t_2}{\max}\Delta t_{11}
 \end{align}
 
 
@@ -36,7 +36,7 @@ z_{FY1,t} = z_{FY1,0}
 
 
 
-\textbf{Step 3 约束条件}
+\noindent \textbf{Step 3 约束条件}
 \begin{itemize}
 \item \textbf{无人机的飞行速度}：由于无人机受领任务后，可根据需要瞬时调整飞行方向，然后以70-140m/s的速度等高度匀速直线飞行。因此：
 \begin{align}\label{10.8}
@@ -49,7 +49,7 @@ z_{FY1,t} = z_{FY1,0}
 \par 综上所述，烟幕干扰弹对导弹$M1$的有效遮蔽时间单一目标优化模型为：
 \begin{align}
   \begin{array}{c}
-	\max \Delta t_1
+	\underset{\alpha ,t_1,v_{FY1},t_2}{\max}\Delta t_{11}
   \\
 \left\{ \begin{array}{l}
 	t\text{时刻无人机的位置坐标:}\\
