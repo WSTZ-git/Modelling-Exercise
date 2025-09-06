@@ -14,20 +14,9 @@
 \noindent \textbf{Step 2 决策变量}
 
 \begin{itemize}
-<<<<<<< HEAD
 \item \textbf{无人机$FY1$的方向}:设$\alpha $为无人机$FY1$与$x$轴正方向的夹角，范围为$\left[ 0,2\pi \right] $，从而确定了无人机$FY1$的飞行方向。
 \item \textbf{烟幕干扰弹投放点}:设无人机$FY1$在受领任务 \( t_1 \) s 后投放1枚烟幕干扰弹。
 \item  \textbf{无人机$FY1$的飞行速度} :设无人机的飞行速度为 \( v_{FY1} \)，根据问题一求得的\eqref{1.8}可以得到 \( t \) 时刻无人机 \( FY1 \) 的位置坐标：
-=======
-\item \textbf{无人机$FY1$的方向}:$\alpha $为无人机$FY1$与$x$轴正方向的夹角。
-\item \textbf{烟幕干扰弹投放点}:设无人机$FY1$在受领任务 \( t_1 \) 秒后投放1枚烟幕干扰弹。
-\item  \textbf{无人机$FY1$的飞行速度} :设无人机的飞行速度为 \( v_{FY1} \)，无人机受领任务后，保持等高度匀速直线运动。因此在 \( t \) 时刻可以确定无人机的飞行路程 \( S_1 \):
-\begin{align}\label{10.2}
-S_1 = v_{FY1} t
-\end{align}
-
-\par 该路程所在直线平行于水平面 \( xOy \)，因此可以得到 \( t \) 时刻无人机 \( FY1 \) 的位置坐标：
->>>>>>> 75008762ebc888dad4df4a11cfa0cf2b63727c86
 \begin{align}\label{10.3}
 \begin{cases}
 x_{FY1,t} = x_{FY1,0} + v_{FY1} t \cos\alpha \\
@@ -35,7 +24,6 @@ y_{FY1,t} = y_{FY1,0} + v_{FY1} t \sin\alpha \\
 z_{FY1,t} = z_{FY1,0}
 \end{cases}
 \end{align}
-<<<<<<< HEAD
 \item \textbf{烟幕干扰弹起爆点}:设无人机 FY1 投放的烟幕干扰弹在无人机受领任务 \( t_2 \) s 后起爆，因此由问题一求得的\eqref{1.9}可得烟幕干扰弹起爆时的位置坐标：
 \begin{align}\label{10.4}
     \left\{ \begin{array}{l}
@@ -43,17 +31,7 @@ z_{FY1,t} = z_{FY1,0}
 	y_{FY11,t_2}=y_{FY1,t_1}\\
 	z_{FY11,t_2}=z_{FY1,t_1}-\frac{g\left( t_2-t_1 \right) ^2}{2}\\
 \end{array} \right. 
-=======
-\item \textbf{烟幕干扰弹起爆点}:设无人机 FY1 投放的烟幕干扰弹在无人机受领任务 \( t_2 \)秒后起爆，因此由问题1\eqref{1.9}式同理可得烟幕干扰弹在投放后到起爆前的位置坐标满足：
-\begin{align}\label{10.4}
-    \begin{cases}
-x_{FY11,t}=x_{FY1,t_1}-v_{FY1}\left( t-t_1 \right)\\
-	y_{FY11,t}=y_{FY1,t_1}\\
-	z_{FY11,t}=z_{FY1,t_1}-\frac{g\left( t-t_1 \right) ^2}{2}\\
-\end{cases}
-\quad, t_1 \leq t \leq t_2
->>>>>>> 75008762ebc888dad4df4a11cfa0cf2b63727c86
-\end{align}
+g\end{align}
 \end{itemize}
 
 
@@ -68,11 +46,7 @@ x_{FY11,t}=x_{FY1,t_1}-v_{FY1}\left( t-t_1 \right)\\
 
 
 \textbf{Step 4 优化模型}
-<<<<<<< HEAD
 \par 综上所述，烟幕干扰弹对导弹$M1$的有效遮蔽时间单一目标优化模型为：
-=======
-\par 综上所述，有效遮蔽时间单目标优化模型为：
->>>>>>> 75008762ebc888dad4df4a11cfa0cf2b63727c86
 \begin{align}
   \begin{array}{c}
 	\underset{\alpha ,t_1,v_{FY1},t_2}{\max}\Delta t_{11}
