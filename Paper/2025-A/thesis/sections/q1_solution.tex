@@ -2,6 +2,47 @@
 \graphicspath{{figures/}{../figures/}}
 
 \begin{document}
-  % \todo[color=green!30]{完成问题一模型的求解(sections/q1\_solution)}
+% \todo[color=green!30]{完成问题一模型的求解(sections/q1\_solution)}
   
+烟幕干扰弹对导弹$M1$的有效遮挡时长计算步骤如下.
+\\
+\textbf{步骤1:}固定时间$t_w$,通过遍历$l$,$s$,得到$t_w$时刻下导弹$M1$与真目标所在圆柱所有点的连线方程，代入\eqref{1.12}中,得到判别式$\Delta \left( x_l,y_l,z_s \right)$。
+\\
+\textbf{步骤2:}如果判别式$\Delta \left( x_l,y_l,z_s \right)$满足\eqref{1.19}即
+\begin{align}\label{1.19}
+	\left\{ \begin{array}{l}
+	\varDelta <0\ \ \ \text{未形成有效遮挡}\\
+	\varDelta \ge 0\left\{ \begin{array}{l}
+	\min \left\{ d_1,d_2 \right\} >\left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{未形成有效遮挡}\\
+	\min \left\{ d_1,d_2 \right\} \le \left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{有效遮挡}\\
+\end{array} \right.\\
+\end{array} \right. 
+\end{align}
+\par 则可以判断$t_w$时刻下，烟幕云团是否有效遮蔽真目标。
+\\
+\textbf{步骤3:}遍历$w$,可以得知不同时间点烟幕云团是否有效遮蔽真目标。若遮挡真目标，则进行步骤4。反之，则遍历下一个$w$。
+\\
+\textbf{步骤4:}由于只有一个烟幕干扰弹干扰导弹，因此烟幕干扰弹对导弹$M1$的有效遮挡时间是连续的。从而将步骤3中得到的时间点的最大值减去最小值即可得到烟幕干扰弹对导弹$M1$的有效遮挡时长,即
+\begin{align}\label{1.189}
+	\varDelta t=\max t_w-\min t_w
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
