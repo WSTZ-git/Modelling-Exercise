@@ -105,7 +105,7 @@ def function(params, debug=False):
         return -1
 
     alpha, v, t1a, t2a, t3a, t1b, t2b, t3b = params
-    time_step = 0.01
+    time_step = 1e-4
     target = get_valid_initial_point()
 
     missile_time_to_target = np.linalg.norm(M1_0_position) / v_missile
