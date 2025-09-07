@@ -29,13 +29,24 @@ z_{FYi,t} = z_{FYj,0}
 	z_{FYj,t_{FYj,12}}=z_{FYj,t_{FYj,11}}-\frac{g\left( t_{FYj,12}-t_{FYj,11} \right) ^2}{2}\\
 \end{array} \right. 
 \end{align}
-\par 通过问题1中的\eqref{1.12}，得到 $t$ 时刻无人机$FYj$投放的烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FYj1}\left( x_l,y_l,z_s \right) $。并将其代入\eqref{1.19}中即
+\par 通过问题1中的\eqref{1.12}，得到 $t$ 时刻无人机$FYj$投放的烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FYj1}\left( x_l,y_l,z_s \right) $。代入\eqref{1.16}\eqref{1.17},得到：
+\begin{align}\label{1.1713}
+	\begin{aligned}
+d_{1j} &= \sqrt{k_{1j}^2(x_{M1(t)} - x_l)^2 + k_{1j}^2(y_{M1(t)} - y_l)^2 + k_{1j}^2(z_{M1(t)} - z_s)^2}, \\
+d_{2j} &= \sqrt{k_{2j}^2(x_{M1(t)} - x_1)^2 + k_{2j}^2(y_{M1(t)} - y_l)^2 + k_{2j}^2(z_{M1(t)} - z_s)^2},
+\end{aligned}
+\end{align}
+
+
+
+
+并将其代入\eqref{1.19}中即
 \begin{align}\label{1.98}
 	\left\{ \begin{array}{l}
 	\varDelta <0\ \ \ \text{未形成有效遮挡}\\
 	\varDelta \ge 0\left\{ \begin{array}{l}
-	\min \left\{ d_1,d_2 \right\} >\left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{未形成有效遮挡}\\
-	\min \left\{ d_1,d_2 \right\} \le \left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{有效遮挡}\\
+	\min \left\{ d_{1j},d_{2j} \right\} >\left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{未形成有效遮挡}\\
+	\min \left\{ d_{1j},d_{2j} \right\} \le \left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{有效遮挡}\\
 \end{array} \right.\\
 \end{array} \right. 
 \end{align}

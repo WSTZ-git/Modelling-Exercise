@@ -38,19 +38,44 @@ z_{FYj,t} = z_{FYj,0}
 	z_{FYji,t_{FYj,i2}}=z_{FYj,t_{FYj,i1}}-\frac{g\left( t_{FYj,i2}-t_{FYj,i1} \right) ^2}{2}\\
 \end{array} \right. 
 \end{align}
-\par 代入问题1中，得到 $t$ 时刻$(t\in \left[ \underset{i=1,2,3,4,5}{\min}\left\{ t_{FYj,12} \right\} ,\underset{i=1,2,3,4,5}{\max}\left\{ t_{FYj,32} \right\} +\Delta t_0 \right]$)第$i$枚烟幕干扰弹形成的烟幕云团是否对目标进行遮挡的判断条件$\Delta _{FYji}\left( x_l,y_l,z_s \right) $。并将其代入\eqref{1.19}中即
+\par 代入问题1中，得到 $t$ 时刻$(t\in \left[ \underset{i=1,2,3,4,5}{\min}\left\{ t_{FYj,12} \right\} ,\underset{i=1,2,3,4,5}{\max}\left\{ t_{FYj,32} \right\} +\Delta t_0 \right]$)第$i$枚烟幕干扰弹形成的烟幕云团是否对目标进行遮挡，避免导弹$Mk$发现真目标的判别式$\Delta _{FYjik}\left( x_l,y_l,z_s \right) $。代入\eqref{1.16}\eqref{1.17},得到：
+\begin{align}\label{1.1714}
+	\begin{aligned}
+d_{1ji} &= \sqrt{k_{1ji}^2(x_{Mk(t)} - x_l)^2 + k_{1ji}^2(y_{Mk(t)} - y_l)^2 + k_{1ji}^2(z_{Mk(t)} - z_s)^2}, \\
+d_{2ji} &= \sqrt{k_{2ji}^2(x_{Mk(t)} - x_l)^2 + k_{2ji}^2(y_{Mk(t)} - y_1)^2 + k_{2ji}^2(z_{Mk(t)} - z_s)^2},
+\end{aligned}
+\end{align}
+\par 其中导弹 \( M1 \) 到圆柱侧面上的点的的距离：
+\begin{align}\label{1.182}
+	\left| \overrightarrow{N1Mk} \right|=\sqrt{\left( x_{Mk(t)}-x_{n1} \right) ^2+\left( y_{Mk(t)}-y_{n1} \right) ^2+\left( y_{Mk(t)}-y_{n2} \right) ^2}
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+只有在$t$时刻，对于3枚导弹同时遮挡，才有可能看作有效遮挡，结合问题一中的\eqref{1.19},则此问中的有效遮挡判断为：
+
+
 \begin{align}\label{1.88}
 	\left\{ \begin{array}{l}
-	\varDelta <0\ \ \ \text{未形成有效遮挡}\\
-	\varDelta \ge 0\left\{ \begin{array}{l}
-	\min \left\{ d_1,d_2 \right\} >\left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{未形成有效遮挡}\\
-	\min \left\{ d_1,d_2 \right\} \le \left| \overrightarrow{N1M1} \right|\ \ \ \ \ \ \ \ \text{有效遮挡}\\
+	\min \left\{ \Delta _{FYji1},\Delta _{FYji2},\Delta _{FYji3} \right\} <0\,\,\,\,\,\,\text{未形成有效遮挡}\\
+	\min \left\{ \Delta _{FYji1},\Delta _{FYji2},\Delta _{FYji3} \right\} \ge 0\left\{ \begin{array}{l}
+	\min \left\{ d_{1ji},d_{2ji} \right\} >\left| \overrightarrow{N1Mk} \right|\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\text{未形成有效遮挡}\\
+	\min \left\{ d_{1ji},d_{2ji} \right\} \le \left| \overrightarrow{N1Mk} \right|\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\text{有效遮挡}\\
 \end{array} \right.\\
 \end{array} \right. 
 \end{align}
 \par 判断$t$时刻下无人机FYj释放的第$i$枚烟幕干扰弹形成的烟幕云团是否对真目标进行遮挡。并规定： 
 \begin{align}\label{14.907}
-	\Delta _{FYji}\left( x_l,y_l,z_s \right) =
+	\Delta _{FYjik}\left( x_l,y_l,z_s \right) =
 	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FYj,i2}+\Delta t_0\\
 \end{align}
 \end{itemize}
