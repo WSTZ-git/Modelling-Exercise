@@ -4,16 +4,16 @@
 \begin{document}
 % \todo[color=green!40]{完成问题三模型的建立(sections/q5\_build)}
 \noindent \textbf{Step 1 目标函数}
-\par 在本问中，我们的目标是通过设计5架无人机$FYj$与其分别投放的烟幕干扰弹相关参数，使得烟幕干扰弹对导弹$M1$，$M2$，$M3$的有效遮蔽总时间尽可能长，因此目标函数为：
+\par 本问中，我们的目标是通过设计5架无人机$FYj$与其分别投放的烟幕干扰弹相关参数，使得烟幕干扰弹对导弹$M1$，$M2$，$M3$的有效遮蔽总时间尽可能长，因此目标函数为：
 \begin{align}\label{11.1}
-  \underset{\alpha ,t_1,v_{FY1},t_2,j,i,k}{\max}\Delta t
+  \underset{\alpha _j,v_{FYj},t_{FYj,i1},t_{FYj,i2}}{\max}\Delta t
 \end{align}
 \noindent \textbf{Step 2 决策变量}
 
 \begin{itemize}
 \item \textbf{无人机$FYj$的方向}:设$\alpha_j$为无人机$FYj$与$x$轴正方向的夹角，范围为$\left[ 0,2\pi \right] $，从而确定无人机$FYi$的飞行方向$(i=1,2,3,4,5.j=1,2,3)$。
 
-\item \textbf{来袭导弹}:由问题一可以得知导弹$Mk$在$t$时刻的位置坐标$Mk\left( t \right)$为:
+\item \textbf{来袭导弹}:由问题一同理可知导弹$Mk(k=1,2,3)$在$t$时刻的位置坐标$Mk\left( t \right)$为:
 \begin{align}
 	\left\{ \begin{array}{l}
 	x_{Mk,t}=x_{Mk,0}-\frac{x_{Mk,0}v_0t}{\sqrt{x_{Mk,0}^{2}+y_{Mk,0}^{2}+z_{Mk,0}^{2}}}\\
@@ -21,16 +21,24 @@
 	z_{Mk,t}=z_{Mk,0}-\frac{z_{Mk,0}v_0t}{\sqrt{x_{Mk,0}^{2}+y_{Mk,0}^{2}+z_{Mk,0}^{2}}}\\
 \end{array} \right. 
 \end{align}
-\item \textbf{烟幕干扰弹投放点}:设无人机$FYj$在受领任务 \( t_{FYj,i1} \) s 后投放第i枚烟幕干扰弹。 
 \item  \textbf{无人机$FYj$的飞行速度} :设无人机的飞行速度为 \( v_{FYj} \)，无人机受领任务后，保持等高度匀速直线运动。由第一问可知\( t \) 时刻无人机 \( FYj \) 的位置坐标为：
 \begin{align}\label{11.3}
-  \begin{cases}
+\begin{cases}
 x_{FYj,t} = x_{FYj,0} + v_{FYj} t \cos\alpha \\
 y_{FYj,t} = y_{FYj,0} + v_{FYj} t \sin\alpha \\
 z_{FYj,t} = z_{FYj,0}
 \end{cases}
 \end{align}
-\item \textbf{烟幕干扰弹起爆点}:设无人机 FYj 投放的第i枚烟幕干扰弹在无人机受领任务 \( t_{FYj,i2} \) s 后起爆，因此由问题1可得投放的第$i$枚烟雾干扰弹在$t_{FYj,i2}$时刻即其起爆时的位置坐标：
+\item \textbf{烟幕干扰弹投放点}:设无人机$FYj$在受领任务 \( t_{FYj,i1} \) s 后投放第$i$枚烟幕干扰弹。 由\eqref{11.3}式可知,无人机$FYj$投放的第$i$枚烟幕干扰弹的投放点位置坐标为
+\begin{align}
+\begin{cases}
+x_{FYj,t_{FYj,i1}} = x_{FYj,0} + v_{FYj} t_{FYj,i1} \cos\alpha \\
+y_{FYj,t_{FYj,i1}} = y_{FYj,0} + v_{FYj} t_{FYj,i1} \sin\alpha \\
+z_{FYj,t_{FYj,i1}} = z_{FYj,0}
+\end{cases}
+\end{align}
+
+\item \textbf{烟幕干扰弹起爆点}:设无人机 $FYj$ 投放的第$i$枚烟幕干扰弹在无人机受领任务 \( t_{FYj,i2} \) 秒后起爆，因此由问题一可得投放的第$i$枚烟雾干扰弹在$t_{FYj,i2}$时刻即其起爆时的位置坐标：
 \begin{align}\label{19.4}
 \left\{ \begin{array}{l}
 	x_{FYji,t_{FYj,i2}}=x_{FYj,t_{FYj,i1}}+v_{FYj}\left( t_{FYj,i2}-t_{FYj,i1} \right) \cos \alpha\\
@@ -73,7 +81,7 @@ d_{2ji} &= \sqrt{k_{2ji}^2(x_{Mk(t)} - x_l)^2 + k_{2ji}^2(y_{Mk(t)} - y_1)^2 + k
 \end{array} \right.\\
 \end{array} \right. 
 \end{align}
-\par 判断$t$时刻下无人机FYj释放的第$i$枚烟幕干扰弹形成的烟幕云团是否对真目标进行遮挡。并规定： 
+判断$t$时刻下无人机$FYj$释放的第$i$枚烟幕干扰弹形成的烟幕云团是否对真目标进行遮挡。又因为每个烟幕干扰弹形成的云团都将在$\Delta t_0 = 20$秒后消散,所以规定： 
 \begin{align}\label{14.907}
 	\Delta _{FYjik}\left( x_l,y_l,z_s \right) =
 	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FYj,i2}+\Delta t_0\\
@@ -108,10 +116,11 @@ d_{2ji} &= \sqrt{k_{2ji}^2(x_{Mk(t)} - x_l)^2 + k_{2ji}^2(y_{Mk(t)} - y_1)^2 + k
 \end{align}
 \end{itemize}
 \textbf{Step 4 优化模型}
-\par 综上所述，5架飞机释放的相应的烟幕干扰弹对真目标的有效遮蔽总时间单一目标优化模型为：
+\par 综上所述，5架无人机释放的
+相应的烟幕干扰弹对真目标的有效遮蔽总时间单目标优化模型为：
 \begin{align}
   \begin{array}{c}
-	   \underset{\alpha ,t_1,v_{FY1},t_2,j,i,k}{\max}\Delta t  \\
+	   \underset{\alpha _j,v_{FYj},t_{FYj,i1},t_{FYj,i2}}{\max}\Delta t\\
 \left\{ \begin{array}{l}
 \text{导弹$Mk$在$t$时刻的位置坐标:}\\
 	\left\{ \begin{array}{l}

@@ -50,11 +50,11 @@ d_{2i} &= \sqrt{k_{2i}^2(x_{M1(t)} - x_l)^2 + k_{2i}^2(y_{M1(t)} - y_1)^2 + k_{2
 \end{array} \right.\\
 \end{array} \right. 
 \end{align}
-\par 判断$t$时刻下无人机FY1释放的第$i$枚烟幕干扰弹形成的烟幕云团是否对真目标进行遮挡。并规定： 
+\par 判断$t$时刻下无人机FY1释放的第$i$枚烟幕干扰弹形成的烟幕云团是否对真目标进行遮挡。又因为每个烟幕干扰弹形成的云团都将在$\Delta t_0 = 20$秒后消散,所以规定： 
 \begin{align}\label{14.9}
-	\Delta _{FY1i}\left( x_l,y_l,z_s \right) =\left\{ \begin{array}{l}
-	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FY1,i2}+\Delta t_0\\
-	=-1\ \ \ \ \ \ \ \ \ \ t\ge t_{FY1,i2}+\Delta t_0\\
+\Delta _{FY1i}\left( x_l,y_l,z_s \right) =\left\{ \begin{array}{l}
+-1,\,\,t\ge t_{FY1,i2}+\Delta t_0\\
+-1,\,\,t\ge t_{FY1,i2}+\Delta t_0\\
 \end{array} \right.
 \end{align}
 \end{itemize}
@@ -63,27 +63,22 @@ d_{2i} &= \sqrt{k_{2i}^2(x_{M1(t)} - x_l)^2 + k_{2i}^2(y_{M1(t)} - y_1)^2 + k_{2
 \begin{itemize}
 \item \textbf{无人机的飞行速度}：由于无人机受领任务后，可根据需要瞬时调整飞行方向，然后以70-140m/s的速度等高度匀速直线飞行。因此：
 \begin{align}\label{15.8}
-  70 \leq v_{\text{FY1}} \leq 140
+  70 \leq v_{FY1} \leq 140
 \end{align}
 \item \textbf{无人机投放的烟幕干扰弹的时间}：由于题目要求每架无人机投放两枚烟幕干扰弹至少间隔1s，且据试验数据知，云团中心10m范围内的烟幕浓度在起爆20s内可为目标提供有效遮蔽。因此：
 \begin{align}
-\left\{ \begin{array}{l}
-	t_{FY1,11}\in \left[ 0, \frac{x_{m1,0}}{v_0} \right]
-	\\
-	t_{FY1,12}\in \left[ t_{FY1,11}, \frac{d_{m1,0}}{v_0} \right]
-	\\
-	t_{FY1,21}\in \left[ t_{FY1,11}+1, \frac{dx_{m1,0}}{v_0} \right]
-	\\
-	t_{FY1,22}\in \left[ t_{FY1,21}, \frac{d_{m1,0}}{v_0} \right]
-	\\
-	t_{FY1,31}\in \left[ t_{FY1,21}+1, \frac{d_{m1,0}}{v_0} \right]
-	\\
-	t_{FY1,32}\in \left[ t_{FY1,21}, \frac{d_{m1,0}}{v_0} \right]
-\end{array} \right. 
+\begin{cases}
+t_{FY1,11}\in \left[ 0,\frac{x_{m1,0}}{v_0} \right]\\
+t_{FY1,12}\in \left[ t_{FY1,11},\frac{d_{m1,0}}{v_0} \right]\\
+t_{FY1,21}\in \left[ t_{FY1,11}+1,\frac{dx_{m1,0}}{v_0} \right]\\
+t_{FY1,22}\in \left[ t_{FY1,21},\frac{d_{m1,0}}{v_0} \right]\\
+t_{FY1,31}\in \left[ t_{FY1,21}+1,\frac{d_{m1,0}}{v_0} \right]\\
+t_{FY1,32}\in \left[ t_{FY1,21},\frac{d_{m1,0}}{v_0} \right]\\
+\end{cases}
 \end{align}
 \end{itemize}
 \textbf{Step 4 优化模型}
-\par 综上所述，无人机$FY1$释放的3枚烟幕干扰弹有效遮蔽时间单一目标优化模型为：
+\par 综上所述，无人机$FY1$释放的3枚烟幕干扰弹有效遮蔽时间单目标优化模型为：
 \begin{align}
   \begin{array}{c}
 \underset{\alpha ,t_1,v_{FY1},t_2,i}{\max}\Delta t_{13}
@@ -94,9 +89,9 @@ d_{2i} &= \sqrt{k_{2i}^2(x_{M1(t)} - x_l)^2 + k_{2i}^2(y_{M1(t)} - y_1)^2 + k_{2
 	x_{FY1,t}=x_{FY1,0}+v_{FY1}t\cos \alpha \\
 	y_{FY1,t}=y_{FY1,0}+v_{FY1}t\sin \alpha \\
 	z_{FY1,t}=z_{FY1,0}\\
-	0\leq \alpha \leq 2\pi \\
+	0\leq \alpha < 2\pi \\
 \end{array} \right.\\
-  70 \leq v_{\text{FY1}} \leq 140\\
+  70 \leq v_{FY1} \leq 140\\
 	\text{第$i$枚烟雾干扰弹起爆时的位置坐标:}\\
 	\left\{ \begin{array}{l}
 	x_{FY1i,t_{FY1,i2}}=x_{FY1,t_{FY1,i1}}+v_{FY1}\left( t_{FY1,i2}-t_{FY1,i1} \right) \cos \alpha\\
