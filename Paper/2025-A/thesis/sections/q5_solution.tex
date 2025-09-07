@@ -4,68 +4,38 @@
 \begin{document}
 % \todo[color=green!40]{完成问题三模型的求解(sections/q3\_solution)}
 
-通过模拟物理退火过程的随机搜索与概率接受机制，在多无人机、多烟幕弹的决策变量可行域内寻找使有效遮蔽时间$\Delta t$最大化的最优解，具体步骤如下：
+由于问题5的变量较多，直接使用启发式搜索算法进行优化非常容易陷入局部最优解中，并且与实际最优解差距过大。因此，我们采用的优化策略是先逐个优化一个无人机对三个导弹的投放策略，再将得到的有效时间合并(去掉重复有效时间)。反复操作，得到多组不同的投放策略和有效时间，再对比这些投放策略，选取其中有效时间最长的一组作为最优投放策略。以下是核心步骤：
 
-\noindent\textbf{步骤1 初始化参数}
+\textbf{步骤1 系统初始化}
 \begin{itemize}
-    \item \textbf{初始解生成}：在决策变量可行域内随机生成初始解$S_0=\{\alpha_j, v_{\text{FYj}}, t_{\text{FYj},i1}, t_{\text{FYj},i2}\}$（$j=1,2,\dots,5$为无人机编号，$i=1,2,3$为烟幕弹编号），确保满足时间约束（如$t_{\text{FYj},(i+1)1} \geq t_{\text{FYj},i1}+1$、$t_{\text{FYj},i2} \geq t_{\text{FYj},i1}$）；
-    \item \textbf{初始温度$T_0$}：设定较高的初始温度（如$T_0=100$），确保算法初期能接受较差解，扩大对多变量组合的搜索范围；
-    \item \textbf{降温系数$k$}：设定降温速率（如$k=0.95$），控制温度随迭代逐步降低，平衡全局探索与局部精细搜索；
-    \item \textbf{终止温度$T_{\text{end}}$}：设定停止阈值（如$T_{\text{end}}=10^{-5}$），当温度低于此值时，算法收敛，终止迭代；
-    \item \textbf{迭代次数$L$}：设定每轮温度下的迭代步数（如$L=100$），确保在当前温度下对邻域解进行充分搜索，避免遗漏较优解。
+    \item 设置初始参数：无人机飞行方向角、飞行速度速度、烟幕弹投放和起爆时间；
+    \item 计算投放点与起爆点；
+    \item 逐个离散时刻判断：计算导弹位置、判断烟幕是否完全遮蔽，若完全遮蔽则有效，反之，无效；
+    \item 。
 \end{itemize}
 
-\noindent\textbf{步骤2 目标函数计算（核心步骤）}
-
-对任意解$S=\{\alpha_j, v_{\text{FYj}}, t_{\text{FYj},i1}, t_{\text{FYj},i2}\}$，计算其对应的有效遮蔽时间$\Delta t$，步骤如下：
+\textbf{步骤2 无人机独立优化}
 \begin{itemize}
-\item \textbf{多轨迹同步模拟}：
-
-导弹$Mk$轨迹：按位置公式计算任意时刻$t$的坐标$(x_{\text{Mk},t}, y_{\text{Mk},t}, z_{\text{Mk},t})$，即沿指向假目标的直线飞行；
-
-无人机$FYj$轨迹：根据$\alpha_j$和$v_{\text{FYj}}$，计算投放时刻$t_{\text{FYj},i1}$的位置$(x_{\text{FYj},t_{\text{FYj},i1}}, y_{\text{FYj},t_{\text{FYj},i1}}, z_{\text{FYj},t_{\text{FYj},i1}})$，保持$z$轴高度不变；
-
-烟幕弹起爆轨迹：基于$t_{\text{FYj},i2} - t_{\text{FYj},i1}$的时间差，计算起爆位置$(x_{\text{FYji},t_{\text{FYj},i2}}, y_{\text{FYji},t_{\text{FYj},i2}}, z_{\text{FYji},t_{\text{FYj},i2}})$，$x,y$方向随无人机惯性运动，$z$方向受重力下落；
-
-烟幕云团轨迹：对$t \in [t_{\text{FYj},i2}, t_{\text{FYj},i2}+\Delta t_0]$（$\Delta t_0$为烟幕有效时长），计算云团中心坐标$(x_{\text{FYji},t}, y_{\text{FYji},t}, z_{\text{FYji},t})$，$x,y$坐标恒定，$z$方向以$v_1$匀速下沉；
-\item \textbf{真目标采样}：在真目标圆柱面（$x_1^2+(y_1-y_0)^2=r_0^2$，$z_1 \in [0,h_0]$）上均匀采样（如10个角度×5个高度，共50个采样点），覆盖目标所有关键区域；
-\item \textbf{遮挡时间判定}：对每个采样点和每个时间$t$，判断是否被任一烟幕云团球体（$O_{\text{FYji},t}: (x-x_{\text{FYji},t})^2+(y-y_{\text{FYji},t})^2+(z-z_{\text{FYji},t})^2=r^2$）遮挡，若满足$\sum_{j=1}^5\sum_{i=1}^3 a_i^j \neq 0$（$a_i^j$为遮挡标识，1表示遮挡，0表示未遮挡），则记录$t$为遮挡时刻；
-\item \textbf{有效时长统计}：合并所有连续的遮挡时间区间，计算总时长，即为该解对应的$\Delta t$。
+    \item 优化变量：方向角、速度、投放增量、延迟时间，设边界；
+    \item 多轮差分优化：每架优化5次，目标最大总遮蔽时间；
+    \item 转换最优变量为参数，计算单架无人机对各个导弹的贡献（单独激活1架，其余参数无效）献；
 \end{itemize}
 
-\noindent\textbf{步骤3 邻域解生成}
+合并5架最优参数，重新评估整体效果。
 
-为当前解$S=\{\alpha_j, v_{\text{FYj}}, t_{\text{FYj},i1}, t_{\text{FYj},i2}\}$生成邻域解$S'$，确保新解满足所有约束条件：
+\textbf{步骤4 结果输出}
 \begin{itemize}
-\item 方向角$\alpha_j'$：$\alpha_j' = \alpha_j + \Delta\alpha$，其中$\Delta\alpha$为$[-0.1,0.1]$弧度的随机扰动，若$\alpha_j'$超出$[0,2\pi]$，则通过取模（$\alpha_j' = \alpha_j' \mod 2\pi$）调整至可行域；
-\item 飞行速度$v_{\text{FYj}}'$：$v_{\text{FYj}}' = v_{\text{FYj}} + \Delta v$，其中$\Delta v$为$[-3,3]$ m/s的随机扰动，若$v_{\text{FYj}}'$超出$[70,140]$ m/s，则截断至边界（小于70取70，大于140取140）；
-\item 投放时刻$t_{\text{FYj},i1}'$：$t_{\text{FYj},i1}' = t_{\text{FYj},i1} + \Delta t$，其中$\Delta t$为$[-0.3,0.3]$ s的随机扰动，调整后需满足$t_{\text{FYj},(i+1)1}' \geq t_{\text{FYj},i1}'+1$及$t_{\text{FYj},i1}' \in [0, d_{\text{mk},0}/v_0]$（$d_{\text{mk},0}$为导弹初始距离假目标的距离）；
-\item 起爆时刻$t_{\text{FYj},i2}'$：$t_{\text{FYj},i2}' = t_{\text{FYj},i2} + \Delta t$，其中$\Delta t$为$[-0.3,0.3]$ s的随机扰动，调整后需满足$t_{\text{FYj},i2}' \geq t_{\text{FYj},i1}'$及$t_{\text{FYj},i2}' \in [t_{\text{FYj},i1}', d_{\text{mk},0}/v_0]$。
+    \item 合并效果：总遮蔽时间、单导弹遮蔽时间与区间；
+    \item 单架无人机投放策略：飞行方向、飞行速度、投放/起爆位置、贡献值。
 \end{itemize}
 
-\noindent\textbf{步骤4 判断准则（接受/拒绝新解）}
-\begin{itemize}
-\item 计算目标函数差值：$\Delta E = \Delta t(S') - \Delta t(S)$，其中$\Delta t(S')$为邻域解的有效遮蔽时间，$\Delta t(S)$为当前解的有效遮蔽时间；
-\item 若$\Delta E > 0$（新解更优）：直接接受$S'$作为当前解，更新当前解的参数与$\Delta t$；
-\item 若$\Delta E \leq 0$（新解较差）：以概率$P = \exp\left(\frac{\Delta E}{T}\right)$接受$S'$（$T$为当前温度），通过生成$[0,1]$区间的随机数$rand$，若$rand < P$，则接受$S'$，否则保留原解。温度越高，$P$越大，越容易接受较差解，利于跳出局部最优。
-\end{itemize}
-
-\noindent\textbf{步骤5 降温与迭代}
-\begin{itemize}
-\item 每完成$L$次迭代（即对当前温度下的$L$个邻域解完成接受/拒绝判断）后，按$T = k \cdot T$降低温度，逐步减小对较差解的接受概率；
-\item 重复“邻域解生成→接受/拒绝判断→降温”的循环过程，直至当前温度$T \leq T_{\text{end}}$，停止迭代。
-\end{itemize}
-
-\noindent\textbf{步骤6 终止与最优解输出}
-
-迭代终止后，从所有历史解中筛选出有效遮蔽时间$\Delta t$最大的解，作为最优解$S^*=\{\alpha_j^*, v_{\text{FYj}}^*, t_{\text{FYj},i1}^*, t_{\text{FYj},i2}^*\}$，并输出$S^*$的所有参数及对应的最大有效遮蔽时间$\Delta t^*$。
 
 
 
 
 
 \begin{table}[H]
-\caption{标准三线表格}
+\caption{问题5投放策略-1}
 \label{tab:001} 
 \centering
 \begin{small}
@@ -95,7 +65,7 @@ FY5          &120.32                  & 104.78     & 3      \\
 
 
 \begin{table}[H]
-\caption{标准三线表格}
+\caption{问题5投放策略-2}
 \label{tab:031} 
 \centering
 \begin{small}
@@ -127,7 +97,7 @@ FY5          &120.32                  & 104.78     & 3      \\
 
 
 \begin{table}[H]
-\caption{标准三线表格}
+\caption{问题5投放策略-3}
 \label{tab:031} 
 \centering
 \begin{small}
